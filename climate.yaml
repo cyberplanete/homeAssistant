@@ -30,20 +30,3 @@
     
     
     
-  - platform: generic_thermostat
-    name: Thermostat Cuisine
-    heater: light.radiateur_cuisine
-    target_sensor: sensor.mi_cuisine
-    min_temp: 15
-    max_temp: 21
-    ac_mode: false
-    target_temp: 17
-    cold_tolerance: 0.3
-    hot_tolerance: 0
-    min_cycle_duration:
-      seconds: 5
-    keep_alive:
-      minutes: 3
-    initial_hvac_mode: "off"
-    away_temp: 16
-    precision: 0.1
