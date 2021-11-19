@@ -1,0 +1,2 @@
+   turn_off_nas_netgear: bash /config/scripts/nas-netgear.sh
+   turn_off_nas_nl54l: bash /config/scripts/nas-nl54l.sh

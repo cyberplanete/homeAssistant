@@ -1,0 +1,211 @@
+  - platform: template
+    sensors:
+       low_battery:
+        friendly_name: "Low Battery"
+        value_template: >
+          {%- set threshold_high = 40 -%}
+          {%- set threshold_low = -1 -%}
+          {% macro battery_level(domain) %}
+          {%- for item in states[domain] if (item.attributes['battery_level'] is defined or ("battery" in item.name | lower and not "voltage" in item.name | lower and not "runtime" in item.name | lower )) -%}
+          {% if (item.attributes['battery_level'] is defined and (item.attributes['battery_level'] is number or item.attributes['battery_level'] | length == item.attributes['battery_level'] | int | string | length) and item.attributes['battery_level'] | int < threshold_high and item.attributes['battery_level'] | int > threshold_low) -%}
+          {{ item.name }} ({{ item.attributes['battery_level'] }}){%- if not loop.last %}, {% endif -%}{%- endif -%}
+          {%- if "battery" in item.name | lower and ((item.state != item.state | string and item.state | int < threshold_high and item.state | int > threshold_low) or item.state | lower == "low" or item.state | lower == "unknown") -%}
+          {{ item.name }} ({{ item.state }}){% if not loop.last %}, {% endif %}{% endif -%}
+          {%- endfor -%}
+          {% endmacro %}
+          {%- set domains = ['light', 'switch', 'sensor', 'zwave', 'lock', 'device_tracker'] -%}
+          {%- for domain in domains if battery_level(domain) |trim != ""-%}
+          {{ battery_level(domain) }}{%- if not loop.last %}, {% endif -%}
+          {%- endfor -%}
+
+##################################################### Gestion couleur ampoule  chambre clarence################################################################      
+  - platform: template
+    sensors:
+       color_template_chambre_rue:
+         friendly_name: "Main colour"
+         value_template: >-
+           {% if states.input_number.color_select_chambre_rue.state == "1.0" -%}
+           White
+           {% elif states.input_number.color_select_chambre_rue.state == "2.0" -%}
+           Lurid Green
+           {% elif states.input_number.color_select_chambre_rue.state == "3.0" -%}
+           Green
+           {% elif states.input_number.color_select_chambre_rue.state == "4.0" -%}
+           Cyan
+           {% elif states.input_number.color_select_chambre_rue.state == "5.0" -%}
+           Light Blue
+           {% else -%}
+           White
+           {% endif -%}
+         attribute_templates:
+          x: >-
+            {% if states.input_number.color_select_chambre_rue.state == "1.0" -%}
+            0.385
+            {% elif states.input_number.color_select_chambre_rue.state == "2.0" -%}
+            0.223
+            {% elif states.input_number.color_select_chambre_rue.state == "3.0" -%}
+            0.169
+            {% elif states.input_number.color_select_chambre_rue.state == "4.0" -%}
+            0.156
+            {% elif states.input_number.color_select_chambre_rue.state == "5.0" -%}
+            0.165
+            {% else -%}
+            0.323
+            {% endif -%}
+          y: >-
+            {% if states.input_number.color_select_chambre_rue.state == "1.0" -%}
+            0.384
+            {% elif states.input_number.color_select_chambre_rue.state == "2.0" -%}
+            0.688
+            {% elif states.input_number.color_select_chambre_rue.state == "3.0" -%}
+            0.549
+            {% elif states.input_number.color_select_chambre_rue.state == "4.0" -%}
+            0.342
+            {% elif states.input_number.color_select_chambre_rue.state == "5.0" -%}
+            0.196
+            {% else -%}
+            0.329
+            {% endif -%}
+
+
+  - platform: time_date
+    display_options:
+      - "time"
+      - "date"
+      - "date_time"
+      - "date_time_utc"
+      - "date_time_iso"
+      - "time_date"
+      - "time_utc"
+      - "beat"
+  #Téléinfo récupération des données MQTT
+  - platform: mqtt
+    name: index_edf_wh
+    state_topic: "edf/index_wh"
+    unit_of_measurement: "Wh"
+  - platform: mqtt
+    name: index_edf_kwh
+    state_topic: "edf/index_kwh"
+    unit_of_measurement: "kWh"
+  - platform: mqtt
+    name: inst_A
+    state_topic: "edf/iinst"
+    unit_of_measurement: "A"
+  - platform: mqtt
+    name: index_hp_kwh
+    state_topic: "edf/index_hp_kwh"
+    unit_of_measurement: "kWh"
+  - platform: mqtt
+    name: index_hc_kwh
+    state_topic: "edf/index_kwh"
+    unit_of_measurement: "kWh"
+  - platform: mqtt
+    name: instantannee_watt
+    state_topic: "edf/puissance_inst"
+    unit_of_measurement: "Watt"
+# ######################################################### TEMPLATE #######################################################################""
+  # Conso EDF journalière
+  - platform: template
+    sensors:
+      cout_edf_journalier:
+        friendly_name: "Coût aujourd'hui"
+        unit_of_measurement: "€"
+        value_template: >-
+          {% set dhc =states('sensor.edf_daily_index_hc')| float *0.0992 %}
+          {% set dhp =states('sensor.edf_daily_index_hp')| float *0.0700 %}
+          {{ (dhc + dhp ) |round(2) }}
+
+      # Conso EDF mensuelle
+      cout_edf_par_mois:
+        friendly_name: "Coût ce mois"
+        unit_of_measurement: "€"
+        value_template: >-
+          {% set mhc =states('sensor.edf_monthly_index_hc')| float *0.0992 %}
+          {% set mhp =states('sensor.edf_monthly_index_hp')| float *0.0700 %}
+          {{ (mhc + mhp ) |round(2) }}
+
+      # Conso EDF annuelle
+      cout_edf_par_annee:
+        friendly_name: "Coût cette année"
+        unit_of_measurement: "€"
+        value_template: >-
+          {% set yhc =states('sensor.edf_yearly_index_hc')| float *0.0992 %}
+          {% set yhp =states('sensor.edf_yearly_index_hp')| float *0.0700 %}
+          {{ (yhc + yhp ) |round(2) }}
+      # Conso EDF Hier
+      cout_edf_hier:
+        friendly_name: Consommation hier
+        value_template: "{{ state_attr('sensor.cout_daily_edf','last_period') }}"
+        unit_of_measurement: €
+      # Conso EDF le mois dernier
+      cout_edf_le_dernier:
+        friendly_name: Consommation edf le mois dernier
+        value_template: "{{ state_attr('sensor.cout_monthly_edf','last_period') }}"
+        unit_of_measurement: €
+      # Conso EDF l'année dernière
+      cout_edf_annee_precedente:
+        friendly_name: Consommation edf l'année dernière
+        value_template: "{{ state_attr('sensor.cout_yearly_edf','last_period') }}"
+        unit_of_measurement: €
+        
+###################################### GOOGLE CALENDAR - TEMPLATE ########################################################################################
+      rappel_agenda_pascal:
+        friendly_name: Temps avant rappel agenda pascal
+        value_template: >-
+          {{((as_timestamp(states.calendar.pascal_joret_gmail_com.attributes.start_time) - as_timestamp(now())) / 60) | default(99) | int }}
+          
+      rappel_agenda_eloise:
+        friendly_name: Temps avant rappel agenda eloise
+        value_template: >-
+          {{((as_timestamp(states.calendar.eloise_joret_gmail_com.attributes.start_time) - as_timestamp(now())) / 60) | default(99) | int }}
+         
+      rappel_agenda_clarence:
+        friendly_name: Temps avant rappel agenda clarence
+        value_template: >-
+          {{((as_timestamp(states.calendar.joret_clarence_gmail_com.attributes.start_time) - as_timestamp(now())) / 60) | default(99) | int }}         
+          
+###################################### SURVEILLANCE DES BATTERIE - TEMPLATE ########################################################################################
+
+  ######### NUT UPS ################################################################################################################################
+  - platform: nut
+    name: UPS
+    host: IP_ADDRESS
+    port: 3493
+    alias: Ellipse PRO 650
+    username: !secret username_ups
+    password: !secret password_ups
+    resources:
+      - ups.status.display
+      - ups.load
+      - ups.realpower.nominal
+      - input.voltage
+      - battery.runtime
+      - ups.timer.shutdown
+      - ups.timer.start
+      - ups.delay.shutdown
+      - output.voltage.nominal
+      - output.voltage
+      - input.voltage
+      - input.transfer.low
+      - input.transfer.high
+      - battery.runtime
+      - battery.charge.low
+      - battery.charge
+
+
+########################################## GITHUB ##################################################################################################
+
+
+  - platform: github
+    access_token: !secret github_access_token
+    repositories:
+      - path: 'cyberplanete/homeAssistant'
+        name: HomeAssistant Config
+
+
+########################################## SENSORS ##################################################################################################
+#   - platform: snmp
+#     host: 192.168.0.1
+#     baseoid: 1.3.6.1.4.1.8072.3.2.10
+
+

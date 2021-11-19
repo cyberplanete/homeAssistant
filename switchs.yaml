@@ -1,0 +1,98 @@
+  - platform: wake_on_lan
+    mac: 4c-60-de-24-a8-38
+    name: NAS_NETGEAR
+    host: 192.168.0.141
+    broadcast_address: 192.168.0.255
+    turn_off:
+      service: shell_command.turn_off_nas_netgear
+
+  - platform: wake_on_lan
+    mac: 28:92:4a:30:77:f7
+    name: NAS_NL54
+    host: 192.168.0.140
+    broadcast_address: 192.168.0.255
+    turn_off:
+      service: rest_command.truenas_shutdown 
+      
+
+    
+  - platform: template
+    switches:
+     arret_radiateur_cuisine:
+            turn_on:
+              - service: light.turn_on
+                target:
+                  entity_id: light.radiateur_cuisine
+                data:
+                  brightness_pct: 0
+            turn_off:
+              - service: light.turn_off
+                target:
+                  entity_id: light.radiateur_cuisine
+                data:
+                 brightness_pct: 0
+     arret_radiateur_sam:
+            turn_on:
+              - service: light.turn_on
+                target:
+                  entity_id: light.radiateur_sam
+                data:
+                  brightness_pct: 0
+            turn_off:
+              - service: light.turn_off
+                target:
+                  entity_id: light.radiateur_sam
+                data:
+                 brightness_pct: 0
+     arret_radiateur_entree:
+            turn_on:
+              - service: light.turn_on
+                target:
+                  entity_id: light.radiateur_cuisine
+                data:
+                  brightness_pct: 0
+            turn_off:
+              - service: light.turn_off
+                target:
+                  entity_id: light.radiateur_cuisine
+                data:
+                 brightness_pct: 0
+     arret_radiateur_ch_jardin:
+            turn_on:
+              - service: light.turn_on
+                target:
+                  entity_id: light.radiateur_sam
+                data:
+                  brightness_pct: 0
+            turn_off:
+              - service: light.turn_off
+                target:
+                  entity_id: light.radiateur_sam
+                data:
+                 brightness_pct: 0
+     arret_radiateur_ch_rue:
+            turn_on:
+              - service: light.turn_on
+                target:
+                  entity_id: light.radiateur_cuisine
+                data:
+                  brightness_pct: 0
+            turn_off:
+              - service: light.turn_off
+                target:
+                  entity_id: light.radiateur_cuisine
+                data:
+                 brightness_pct: 0
+     arret_radiateur_buanderie:
+            turn_on:
+              - service: light.turn_on
+                target:
+                  entity_id: light.radiateur_sam
+                data:
+                  brightness_pct: 0
+            turn_off:
+              - service: light.turn_off
+                target:
+                  entity_id: light.radiateur_sam
+                data:
+                 brightness_pct: 0

@@ -1,0 +1,30 @@
+
+  #   - name: SMS_Pascal
+  #     platform: sms
+  #     recipient: !secret pascal_number
+
+  #   - name: SMS_Stephanie
+  #     platform: sms
+  #     recipient: !secret stephanie_number
+
+  - name: Telegram_Pascal
+    platform: telegram
+    chat_id: !secret telegram_pascal_id
+
+  - name: Telegram_Stephanie
+    platform: telegram
+    chat_id: !secret telegram_stephanie_id
+    
+  - name: Telegram_Eloise
+    platform: telegram
+    chat_id: !secret telegram_eloise_id
+
+  - name: SMS_Clarence
+    platform: free_mobile
+    username: !secret freeIdClarence 
+    access_token: !secret freeTokenClarence
+    
+  - name: SMS_Eloise
+    platform: free_mobile
+    username: !secret freeIdEloise
+    access_token: !secret freeTokenEloise

@@ -1,0 +1,88 @@
+#Qubino Fil Pilote - Mode de chauffe Général (tous les radiateurs)
+  mode_chauffage_general:
+    name: Qubino Fil Pilote - Modes de chauffe Général
+    icon: mdi:radiator
+    options:
+      - Confort
+      - Confort -1
+      - Confort -2
+      - Eco
+      - Hors-Gel
+      - Arrêt
+
+
+  #Qubino Fil Pilote - Mode de chauffe Radiateur_CUISINE
+  mode_chauffage_radcuisine:
+    name: Qubino Fil Pilote - Modes de chauffe Radiateur_CUISINE
+    icon: mdi:radiator
+    options:
+      - Confort
+      - Confort -1
+      - Confort -2
+      - Eco
+      - Hors-Gel
+      - Arrêt
+      
+  #Qubino Fil Pilote - Mode de chauffe Radiateur_SAM
+  mode_chauffage_radsam:
+    name: Qubino Fil Pilote - Modes de chauffe Radiateur_SAM
+    icon: mdi:radiator
+    options:
+      - Confort
+      - Confort -1
+      - Confort -2
+      - Eco
+      - Hors-Gel
+      - Arrêt
+
+
+  #Qubino Fil Pilote - Mode de chauffe Radiateur_CHAMBRE_JARDIN
+  mode_chauffage_radchambre_jardin:
+    name: Qubino Fil Pilote - Modes de chauffe Radiateur_CHAMBRE_JARDIN
+    icon: mdi:radiator
+    options:
+      - Confort
+      - Confort -1
+      - Confort -2
+      - Eco
+      - Hors-Gel
+      - Arrêt
+
+
+  #Qubino Fil Pilote - Mode de chauffe Radiateur_ENTREE
+  mode_chauffage_radentree:
+    name: Qubino Fil Pilote - Modes de chauffe Radiateur_ENTREE
+    icon: mdi:radiator
+    options:
+      - Confort
+      - Confort -1
+      - Confort -2
+      - Eco
+      - Hors-Gel
+      - Arrêt
+
+
+  #Qubino Fil Pilote - Mode de chauffe Radiateur_BUANDERIE
+  mode_chauffage_radbuanderie:
+    name: Qubino Fil Pilote - Modes de chauffe Radiateur_BUANDERIE
+    icon: mdi:radiator
+    options:
+      - Confort
+      - Confort -1
+      - Confort -2
+      - Eco
+      - Hors-Gel
+      - Arrêt
+
+
+  #Qubino Fil Pilote - Mode de chauffe Radiateur_CHAMBRE_RUE
+  mode_chauffage_radchambrerue:
+    name: Qubino Fil Pilote - Modes de chauffe Radiateur_CHAMBRE_RUE
+    icon: mdi:radiator
+    options:
+      - Confort
+      - Confort -1
+      - Confort -2
+      - Eco
+      - Hors-Gel
+      - Arrêt

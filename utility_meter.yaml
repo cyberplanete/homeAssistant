@@ -1,0 +1,56 @@
+ #Compteur journalier
+  edf_daily_index:
+    source: sensor.index_edf_kwh
+    cycle: daily
+  #Compteur mensuel
+  edf_monthly_index:
+    source: sensor.index_edf_kwh
+    cycle: monthly
+  #Compteur annuel
+  edf_yearly_index:
+    source: sensor.index_edf_kwh
+    cycle: yearly
+  #Compteur daily heure creuse
+  edf_daily_index_hc:
+    source: sensor.index_hc_kwh
+    cycle: daily
+  #Compteur daily heure hp
+  edf_daily_index_hp:
+    source: sensor.index_hp_kwh
+    cycle: daily
+  #Compteur index monthly heure creuse
+  edf_monthly_index_hc:
+    source: sensor.index_hc_kwh
+    cycle: monthly
+  #Compteur index monthly heure hp
+  edf_monthly_index_hp:
+    source: sensor.index_hp_kwh
+    cycle: monthly
+  #Compteur index yearly heure creuse
+  edf_yearly_index_hc:
+    source: sensor.index_hc_kwh
+    cycle: yearly
+  #Compteur index yearly heure hp
+  edf_yearly_index_hp:
+    source: sensor.index_hp_kwh
+    cycle: yearly
+  # #Coût daily
+  cout_daily_edf:
+    source: sensor.cout_edf_journalier
+    cycle: daily
+  # #Coût monthly
+  cout_monthly_edf:
+    source: sensor.cout_edf_par_mois
+    cycle: monthly
+  #Coût yearly
+  cout_yearly_edf:
+    source: sensor.cout_edf_par_annee
+    cycle: yearly
+  #Instanstannée en Watt daily
+  instant_watt_daily_edf:
+    source: sensor.instantannee_watt
+    cycle: daily
+  #Instanstannée en A daily
+  instant_ampere_daily_edf:
+    source: sensor.inst_A
+    cycle: daily

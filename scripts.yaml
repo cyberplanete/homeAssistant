@@ -1,0 +1,389 @@
+desactivation_alarme_nuit:
+  alias: Alarme - Désactivation mode nuit
+  sequence:
+  - type: turn_off
+    device_id: 1108bbb071a63feba904b38a0809c9ef
+    entity_id: switch.sirene_garage_switch
+    domain: switch
+  - service: script.notification_alexa_cuisine
+    data:
+      message: <amazon:effect name='whispered'>Alarme pour la nuit est maintenant
+        désactivée!!!</amazon:effect>
+  - service: alarm_control_panel.alarm_disarm
+    data: {}
+    entity_id: alarm_control_panel.blink_maison
+  - service: script.telegram_tous
+    data:
+      message: Alarme  désactivée à {{ states('sensor.time') }}
+  mode: single
+  icon: mdi:alarm-bell
+envoyer_last_ring_doorbird_telegram:
+  alias: Doorbird - Envoyer last_Ring via telegram
+  sequence:
+  - delay: '5'
+  - service: camera.snapshot
+    entity_id: camera.portier_last_ring
+    data:
+      filename: /config/www/snapshots/snapshots_portier_last_ring.jpg
+  - delay: '2'
+  - service: telegram_bot.send_photo
+    data:
+      file: /config/www/snapshots/snapshots_portier_last_ring.jpg
+      target: '246735540'
+  mode: single
+  icon: mdi:camera-front
+envoyer_un_mms:
+  alias: Envoyer un mms
+  sequence:
+  - service: notify.sms_pascal
+    data:
+      title: Doorbell
+      message: Une personne sonne au portail
+      data:
+        images:
+        - /config/www/snapshots/snapshots_portier_last_ring.jpg
+  mode: single
+snapshot_cam_garage_vers_telegram:
+  alias: Camera Garage - Snapshot vers telegram
+  sequence:
+  - service: blink.trigger_camera
+    data:
+      entity_id: camera.blink_cam_garage
+  - delay: '5'
+  - service: blink.blink_update
+    data: {}
+  - delay: '2'
+  - service: camera.snapshot
+    data:
+      filename: /config/www/snapshots/snapshots_blink_cam_garage.jpg
+    entity_id: camera.blink_cam_garage
+  - service: telegram_bot.send_photo
+    data:
+      file: /config/www/snapshots/snapshots_blink_cam_garage.jpg
+      target: '246735540'
+  - service: telegram_bot.send_photo
+    data:
+      file: /config/www/snapshots/snapshots_blink_cam_garage.jpg
+      target: '315573228'
+  mode: single
+  icon: mdi:cctv
+alexa_colis:
+  alias: Alexa - annonce un colis
+  sequence:
+  - service: notify.huawei_lte
+    data:
+      message: Un colis a été déposé dans la boite aux lettres !!!
+  - service: script.snapshot_doobird_telegram
+    data: {}
+  - service: script.notification_alexa_cuisine
+    data:
+      message: Un colis a été déposé dans la boite aux lettres !!!
+  mode: single
+  icon: mdi:cube
+eteindre_des_appareils_pour_la_nuit:
+  alias: Alarme - Éteindre des appareils en mode nuit
+  sequence:
+  - type: turn_off
+    device_id: c32107b871cf3b58c686e3959867ce44
+    entity_id: switch.prise_outillage_switch_2
+    domain: switch
+  - type: turn_off
+    device_id: fdee8daf04786ab995308f316c379570
+    entity_id: switch.onoff_tv_chambre_jardin_switch_2
+    domain: switch
+  - type: turn_off
+    device_id: 41e819de2b021fdddaf2ee5d9e3d246c
+    entity_id: switch.onoff_tv_chambre_parent_switch
+    domain: switch
+  - type: turn_off
+    device_id: 7da117ce2c7f922758d08c7a12f9fe5d
+    entity_id: switch.prisetv_salon_switch
+    domain: switch
+  - type: turn_on
+    device_id: 1c2983f3b65682564333caca04d4e8a6
+    entity_id: switch.onoff_bureau_salon_switch_3
+    domain: switch
+  mode: single
+  icon: mdi:alarm-bell
+alarme_desactivation:
+  alias: Alarme - Désactivation
+  sequence:
+  - type: turn_off
+    device_id: 1108bbb071a63feba904b38a0809c9ef
+    entity_id: switch.sirene_garage_switch
+    domain: switch
+  - type: turn_off
+    device_id: 2c8fd124a13a66f5d4c300bc0b5f15d3
+    entity_id: switch.sirene_entree_switch_2
+    domain: switch
+  - service: script.alarme_notification
+    data:
+      message: Alarme  désactivée à "{{ states('sensor.time') }}"
+  - service: script.notification_alexa_cuisine
+    data:
+      message: Alarme  désactivée à "{{ states('sensor.time') }}"
+  - service: alarm_control_panel.alarm_disarm
+    data: {}
+    entity_id: alarm_control_panel.blink_maison
+  mode: single
+  icon: mdi:alarm-bell
+allumer_des_appareils_quand_alarme_eteinte:
+  alias: Alarme - Allumer des appareils après mode nuit
+  sequence:
+  - type: turn_on
+    device_id: 1c2983f3b65682564333caca04d4e8a6
+    entity_id: switch.onoff_bureau_salon_switch_3
+    domain: switch
+  - type: turn_on
+    device_id: 7da117ce2c7f922758d08c7a12f9fe5d
+    entity_id: switch.prisetv_salon_switch
+    domain: switch
+  - type: turn_on
+    device_id: ed01ebc43447ff7bfedbfd8efde38a5d
+    entity_id: switch.prise_bureau_chambre_clarence
+    domain: switch
+  mode: single
+  icon: mdi:alarm-bell
+telegram_tous:
+  alias: Telegram - Notification - Tous
+  sequence:
+  - service: notify.telegram_pascal
+    data:
+      message: '{{ message }}'
+  - service: notify.telegram_stephanie
+    data:
+      message: '{{ message }}'
+  - service: notify.telegram_eloise
+    data:
+      message: '{{ message }}'
+  - service: telegram_bot.send_message
+    data:
+      target: '2099122657'
+      message: '''{{ message }}'''
+  mode: single
+envoyer_last_move_doorbird_via_telegram_duplicate:
+  alias: Doorbird - Envoyer last_motion via telegram
+  sequence:
+  - delay: '5'
+  - service: camera.snapshot
+    entity_id: camera.portier_last_motion
+    data:
+      filename: /config/www/snapshots/snapshots_portier_last_motion.jpg
+  - delay: '2'
+  - service: telegram_bot.send_photo
+    data:
+      file: /config/www/snapshots/snapshots_portier_last_motion.jpg
+      target: '246735540'
+  - service: telegram_bot.send_photo
+    data:
+      file: /config/www/snapshots/snapshots_portier_last_motion.jpg
+      target: '315573228'
+  mode: single
+  icon: mdi:camera-front
+ouverture_partielle_portail:
+  alias: Portail extérieur - Ouverture partielle portail
+  sequence:
+  - type: turn_on
+    device_id: 45e8584c4797248cd483bcf51c0664a9
+    entity_id: switch.portail_exterieur
+    domain: switch
+  - delay: '6'
+  - type: turn_on
+    device_id: 45e8584c4797248cd483bcf51c0664a9
+    entity_id: switch.portail_exterieur
+    domain: switch
+  mode: single
+  icon: mdi:gate
+snapshot_doobird_telegram:
+  alias: Doorbird - Snapshot via telegram
+  sequence:
+  - service: camera.snapshot
+    data:
+      filename: /config/www/snapshots/snapshots_doorbird.jpg
+    entity_id: camera.portier_live
+  - delay: '5'
+  - service: telegram_bot.send_photo
+    data:
+      file: /config/www/snapshots/snapshots_doorbird.jpg
+      target: '246735540'
+  - service: telegram_bot.send_photo
+    data:
+      file: /config/www/snapshots/snapshots_doorbird.jpg
+      target: '315573228'
+  - service: telegram_bot.send_photo
+    data:
+      target: '2099122657'
+      file: /config/www/snapshots/snapshots_doorbird.jpg
+  mode: single
+  icon: mdi:camera-front
+alexa_courrier:
+  alias: Alexa - annonce un courrier
+  sequence:
+  - service: script.notification_sms
+    data:
+      message: Du courrier a été déposé dans la boite aux lettres !!!
+  - service: script.snapshot_doobird_telegram
+    data: {}
+  - service: script.notification_alexa_cuisine
+    data:
+      message: Du courrier a été déposé dans la boite aux lettres !!!
+  mode: single
+  icon: mdi:email-newsletter
+notification_alexa_cuisine:
+  alias: Alexa - Notification - Cuisine
+  sequence:
+  - service: notify.alexa_media_echo_cuisine
+    data:
+      data:
+        type: announce
+      message: '{{ message }}'
+  - service: notify.alexa_media_echo_cuisine
+    data:
+      message: a que coucou
+  mode: single
+  icon: mdi:cube
+notification_sms:
+  alias: Notification SMS
+  sequence:
+  - service: notify.huawei_lte
+    data:
+      message: '{{ message }}'
+  mode: single
+notification_alexa_clarence:
+  alias: Alexa - Notification - Clarence
+  sequence:
+  - service: media_player.volume_up
+    data: {}
+    entity_id: media_player.joret_2eme_echo_dot
+  - delay: '2'
+  - service: notify.alexa_media_echo_clarence
+    data:
+      data:
+        type: announce
+      message: '{{ message }}'
+  mode: single
+  icon: mdi:cube
+notification_alexa_eloise:
+  alias: Alexa - Notification - Eloise
+  sequence:
+  - service: media_player.volume_up
+    data: {}
+    entity_id: media_player.cuisine_echo_dot
+  - delay: '2'
+  - service: notify.alexa_media_echo_eloise
+    data:
+      data:
+        type: announce
+      message: '{{ message }}'
+  mode: single
+  icon: mdi:cube
+volume_alexa_tous:
+  alias: Alexa - Volume - Tous
+  sequence:
+  - service: media_player.volume_up
+    data: {}
+    entity_id: media_player.joret_2eme_echo_dot
+  - delay: '1'
+  - service: media_player.volume_up
+    data: {}
+    entity_id: media_player.cuisine_echo_dot
+  - delay: '1'
+  - service: media_player.volume_up
+    data: {}
+    entity_id: media_player.joret_3eme_echo_dot
+  mode: single
+  icon: mdi:cube
+alexa_notification_tous:
+  alias: Alexa - Notification - Tous
+  sequence:
+  - service: notify.alexa_media_echo_clarence
+    data:
+      data:
+        type: announce
+      message: '{{ message }}'
+  - service: notify.alexa_media_echo_eloise
+    data:
+      data:
+        type: announce
+      message: '{{ message }}'
+  - service: notify.alexa_media_echo_cuisine
+    data:
+      data:
+        type: announce
+      message: '{{ message }}'
+  mode: single
+  icon: mdi:cube
+telegram_notification_pascal:
+  alias: Telegram - Notification - Pascal
+  sequence:
+  - service: notify.telegram_pascal
+    data:
+      message: '{{ message }}'
+  - service: notify.telegram_stephanie
+    data:
+      message: '{{ message }}'
+  mode: single
+telegram_notification_stephanie:
+  alias: Telegram - Notification - Stephanie
+  sequence:
+  - service: notify.telegram_stephanie
+    data:
+      message: '{{ message }}'
+  mode: single
+alarme_notification:
+  alias: Alarme - Notification
+  sequence:
+  - service: script.telegram_tous
+    data:
+      message: '{{ message }}'
+  - service: script.notification_sms
+    data:
+      message: '{{ message }}'
+  mode: single
+  icon: mdi:alarm-bell
+portails:
+  alias: Portails - Ouvertures des portails en sortie
+  sequence:
+  - type: turn_on
+    device_id: 28c5881462bdb208a01e1845323f575e
+    entity_id: switch.portail_garage_switch_2
+    domain: switch
+  - delay: '15'
+  - type: turn_on
+    device_id: 45e8584c4797248cd483bcf51c0664a9
+    entity_id: switch.portail_exterieur
+    domain: switch
+  - delay: '30'
+  - type: turn_on
+    device_id: 28c5881462bdb208a01e1845323f575e
+    entity_id: switch.portail_garage_switch_2
+    domain: switch
+  mode: single
+  icon: hass:door
+portails_ouvertures_des_portails_en_rentrant:
+  alias: Portails - Ouvertures des portails en rentrant
+  sequence:
+  - type: turn_on
+    device_id: 45e8584c4797248cd483bcf51c0664a9
+    entity_id: switch.portail_exterieur
+    domain: switch
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  - type: turn_on
+    device_id: 28c5881462bdb208a01e1845323f575e
+    entity_id: switch.portail_garage_switch_2
+    domain: switch
+  - delay:
+      hours: 0
+      minutes: 2
+      seconds: 0
+      milliseconds: 0
+  - type: turn_on
+    device_id: 28c5881462bdb208a01e1845323f575e
+    entity_id: switch.portail_garage_switch_2
+    domain: switch
+  mode: single
+  icon: hass:door
