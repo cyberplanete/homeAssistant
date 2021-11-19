@@ -2055,4 +2055,7 @@
     data:
       addon: a0d7b954_ssh
       input: /bin/bash /config/scripts/ha_gitpush.sh
+  - service: notify.telegram_pascal
+    data:
+      message: Sauveagarde GITHUB
   mode: single
