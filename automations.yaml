@@ -2043,3 +2043,16 @@
         domain: switch
     default: []
   mode: single
+- id: '1637359735435'
+  alias: HA GitHub
+  description: ''
+  trigger:
+  - platform: time
+    at: '18:30:00'
+  condition: []
+  action:
+  - service: hassio.addon_stdin
+    data:
+      addon: a0d7b954_ssh
+      input: /bin/bash /config/scripts/ha_gitpush.sh
+  mode: single
