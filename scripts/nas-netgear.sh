@@ -1,1 +1,0 @@
-ssh -i /config/ssh_keys/id_rsa -o StrictHostKeyChecking=no root@nas-netgear.cyberplanete.local "echo 3spnN99C | sudo -S poweroff"
