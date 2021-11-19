@@ -1,0 +1,1 @@
+ssh -i /config/ssh_keys/id_rsa -o StrictHostKeyChecking=no root@nas-nl54.cyberplanete.local "echo 7uqWXvr | sudo -S poweroff"

@@ -1,0 +1,25 @@
+esphome:
+  name: NodeMCU Ballon Eau chaude
+  platform: ESP8266
+  board: nodemcuv2
+
+wifi:
+  ssid: "NodeMCU Ballon Eau chaude"
+  password: "NodeMCU Ballon Eau chaude"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Nodemcu Ballon Eau Chaude"
+    password: !secret nodeMCUBallonEau
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: !secret nodeMCUBallonEauAPI
+
+ota:
+  password: !secret nodeMCUBallonEauAPI
