@@ -321,7 +321,6 @@ sensor.c_clima_buanderie_battery_level:
      return 'red';
 
 
-
 ############################################################## IRs ##########################################################   
 sensor.ir_couloir_battery_level_3:
   templates:
