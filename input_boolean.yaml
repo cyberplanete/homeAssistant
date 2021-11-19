@@ -1,0 +1,3 @@
+         doorbell_raw:
+            name: Etat Radiateur cuisine
+            initial: off

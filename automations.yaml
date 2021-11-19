@@ -1,0 +1,2045 @@
+- id: '1603796374419'
+  alias: Radiateur Entree - Confort
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radentree
+    to: Confort
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 255
+    target:
+      device_id: 852da301776de672569d07ec1761432b
+  mode: single
+- id: '1603796632004'
+  alias: Radiateur Entree - Confort -1
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radentree
+    to: Confort -1
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 105
+    entity_id: light.radiateur_entree_level
+  mode: single
+- id: '1603796663354'
+  alias: Radiateur Entree - Confort -2
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radentree
+    to: Confort -2
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 79
+    entity_id: light.radiateur_entree_level
+  mode: single
+- id: '1603796717486'
+  alias: Radiateur Entree - Eco
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radentree
+    to: Eco
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 54
+    entity_id: light.radiateur_entree_level
+  mode: single
+- id: '1603796751932'
+  alias: Radiateur Cuisine - Hors-Gel
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radcuisine
+    to: Hors-Gel
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 28
+    target:
+      entity_id: light.radiateur_cuisine
+  mode: single
+- id: '1603796799230'
+  alias: Radiateur Entree - Arrêt
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radentree
+    to: Arrêt
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 0
+    entity_id: light.radiateur_entree_level
+  mode: single
+- id: '1603797426350'
+  alias: Radiateur Cuisine - Arrêt
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radcuisine
+    to: Arrêt
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 0
+    target:
+      entity_id:
+      - light.radiateur_cuisine
+  mode: single
+- id: '1603797479282'
+  alias: Radiateur Cuisine - Confort
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radcuisine
+    to: Confort
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 255
+    target:
+      entity_id:
+      - light.radiateur_cuisine
+  mode: single
+- id: '1603797606692'
+  alias: Radiateur Cuisine - Confort -1
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radcuisine
+    to: Confort -1
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 105
+    target:
+      entity_id:
+      - light.radiateur_cuisine
+  mode: single
+- id: '1603797653259'
+  alias: Radiateur Cuisine - Confort -2
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radcuisine
+    to: Confort -2
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 79
+    target:
+      entity_id:
+      - light.radiateur_cuisine
+  mode: single
+- id: '1603797692021'
+  alias: Radiateur Cuisine - Eco
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radcuisine
+    to: Eco
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 54
+    target:
+      entity_id: light.radiateur_cuisine
+  mode: single
+- id: '1603797784898'
+  alias: Radiateur Entree - Hors-Gel
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radentree
+    to: Hors-Gel
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 28
+    entity_id: light.radiateur_entree_level
+  mode: single
+- id: '1603798163703'
+  alias: Radiateur chambre jardin - Arrêt
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radchambre_jardin
+    to: Arrêt
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 0
+    entity_id: light.radiateur_etage_jardin_level_3
+  mode: single
+- id: '1603798253140'
+  alias: Radiateur chambre jardin - Confort
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radchambre_jardin
+    to: Confort
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 255
+    entity_id: light.radiateur_etage_jardin_level_3
+  mode: single
+- id: '1603798311782'
+  alias: Radiateur chambre jardin - Confort -1
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radchambre_jardin
+    to: Confort -1
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 105
+    entity_id: light.radiateur_etage_jardin_level_3
+  mode: single
+- id: '1603798347266'
+  alias: Radiateur chambre jardin - Confort -2
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.chambrejardin_radiateur_dimmer
+    to: Confort -2
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 79
+    entity_id: light.radiateur_etage_jardin_level_3
+  mode: single
+- id: '1603798400406'
+  alias: Radiateur chambre jardin - Hors-Gel
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radchambre_jardin
+    to: Hors-Gel
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 28
+    entity_id: light.radiateur_etage_jardin_level_3
+  mode: single
+- id: '1603798441016'
+  alias: Radiateur chambre jardin - Eco
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radchambre_jardin
+    to: Eco
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 54
+    entity_id: light.radiateur_etage_jardin_level_3
+  mode: single
+- id: '1603821586833'
+  alias: Test - Demo SMS
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: notify.huawei_lte
+    data:
+      message: test
+  - service: notify.sms_pascal
+    data:
+      message: test
+  - service: notify.alexa_media_cuisine_echo_dot
+    data:
+      data:
+        type: tts
+      message: lesalexiens.fr  premier site francophone dactualité consacré à Alexa
+        et aux appareils Amazon Echo
+  mode: single
+- id: '1603972802135'
+  alias: Test - Demo Alexa et sms
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: light.radiateur_cuisine_0000_id_0000_level
+  condition: []
+  action:
+  - service: notify.alexa_media_cuisine_echo_dot
+    data:
+      data:
+        type: tts
+      message: 'Alarme en cours d''activation, 30 secondes pour quitter la maison '
+  - service: notify.telegram_pascal
+    data:
+      message: 'Alarme en cours d''activation, 30 secondes pour quitter la maison '
+  - service: notify.telegram_stephanie
+    data:
+      message: 'Alarme en cours d''activation, 30 secondes pour quitter la maison '
+  - service: notify.alexa_media_cuisine_echo_dot
+    data:
+      data:
+        type: tts
+      message: <amazon:effect name='whispered'>Une personne sonne au portail!!! bande
+        de bouffon!!</amazon:effect>
+  mode: single
+- id: '1604585592706'
+  alias: Portail rue - Ouverture Totale
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_on
+    device_id: 28b5f1f0c60a45459a7257b099b8076a
+    entity_id: switch.smart_plug_portail_exterieur
+    domain: switch
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 2
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 72ebde3ed15ff3c2f5996783bd6c6d8c
+    entity_id: switch.portail_exterieur
+    domain: switch
+  mode: single
+- id: '1604585879645'
+  alias: Notification - Courrier
+  description: Déterminer si du courrier à été déposé dans la boite aux lettres
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 2bd95f516ad4eeac8f2b1c4f36542c32
+    entity_id: binary_sensor.co_boite_aux_lettres_lettres_contact
+    domain: binary_sensor
+  condition:
+  - condition: template
+    value_template: '{{ state_attr(''weather.maison'', ''wind_speed'')|float < 23
+      }}'
+  action:
+  - service: script.alexa_courrier
+    data: {}
+  mode: single
+- id: '1604585988801'
+  alias: Notification - Colis
+  description: Déterminer si un colis à été déposé dans la boite aux lettres
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 5eee4c1bd2e37dc885dc58fc650d70d4
+    entity_id: binary_sensor.co_boite_aux_lettres_colis_contact
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: script.alexa_colis
+    data: {}
+    entity_id: media_player.joret_3eme_echo_dot
+  mode: single
+- id: '1605186494057'
+  alias: Lumière garage - Allumer
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.ir_garage_occupancy
+    to: 'on'
+  condition:
+  - condition: or
+    conditions:
+    - condition: device
+      type: is_off
+      device_id: f94339fbd45af1553dd5bd95e20da635
+      entity_id: light.multilevel_power_switch_instance_1_level
+      domain: light
+    - condition: device
+      type: is_off
+      device_id: ae72f85d094b1d5f9b065e93603aeb94
+      entity_id: light.multilevel_power_switch_instance_2_level
+      domain: light
+  action:
+  - type: turn_on
+    device_id: bbc66fea8aa0736685f922ae89f70989
+    entity_id: light.multilevel_power_switch_instance_1_level
+    domain: light
+    brightness_pct: 99
+  mode: single
+- id: '1605186547932'
+  alias: Lumière garage - Eteindre
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.ir_garage_occupancy
+    to: 'off'
+    from: 'on'
+  condition:
+  - condition: device
+    type: is_on
+    device_id: f94339fbd45af1553dd5bd95e20da635
+    entity_id: light.multilevel_power_switch_instance_1_level
+    domain: light
+  action:
+  - type: turn_off
+    device_id: bbc66fea8aa0736685f922ae89f70989
+    entity_id: light.multilevel_power_switch_instance_1_level
+    domain: light
+  mode: single
+- id: '1605456758895'
+  alias: Radiateur chambre rue - Arrêt
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radchambrerue
+    to: Arrêt
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 0
+    entity_id: light.radiateur_etage_rue_level_4
+  mode: single
+- id: '1605456816883'
+  alias: Radiateur chambre rue - Confort
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radchambrerue
+    to: Confort
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 255
+    target:
+      entity_id: light.radiateur_etage_rue_level_4
+  mode: single
+- id: '1605456850759'
+  alias: Radiateur chambre rue - Confort -1
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radchambrerue
+    to: Confort -1
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 105
+    entity_id: light.radiateur_etage_rue_level_4
+  mode: single
+- id: '1605456884106'
+  alias: Radiateur chambre rue - Confort -2
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radchambrerue
+    to: Confort -2
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 79
+    entity_id: light.radiateur_etage_rue_level_4
+  mode: single
+- id: '1605456918615'
+  alias: Radiateur chambre rue - Hors-Gel
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radchambrerue
+    to: Hors-Gel
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 28
+    entity_id: light.radiateur_etage_rue_level_4
+  mode: single
+- id: '1605456976196'
+  alias: Radiateur chambre rue - Eco
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radchambrerue
+    to: Eco
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 54
+    entity_id: light.radiateur_etage_rue_level_4
+  mode: single
+- id: '1605457071719'
+  alias: Radiateur Buanderie - Arrêt
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radbuanderie
+    to: Arrêt
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 0
+    entity_id: light.radiateur_buanderie_level_2
+  mode: single
+- id: '1605457127434'
+  alias: 'Radiateur Buanderie - Confort '
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radbuanderie
+    to: Confort
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 255
+    entity_id: light.radiateur_buanderie_level_2
+  mode: single
+- id: '1605457155472'
+  alias: Radiateur Buanderie - Confort -1
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radbuanderie
+    to: Confort -1
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 105
+    entity_id: light.radiateur_buanderie_level_2
+  mode: single
+- id: '1605457201332'
+  alias: Radiateur Buanderie - Confort -2
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radbuanderie
+    to: Confort -2
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 79
+    entity_id: light.radiateur_buanderie_level_2
+  mode: single
+- id: '1605457314895'
+  alias: Radiateur Buanderie - Eco
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radbuanderie
+    to: Eco
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 54
+    entity_id: light.radiateur_buanderie_level_2
+  mode: single
+- id: '1605457349833'
+  alias: Radiateur Buanderie - Hors-Gel
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radbuanderie
+    to: Hors-Gel
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 28
+    entity_id: light.radiateur_buanderie_level_2
+  mode: single
+- id: '1605644746631'
+  alias: Désactivation auto de l'alarme nuit
+  description: ''
+  trigger:
+  - platform: time
+    at: 06:30:00
+  condition: []
+  action:
+  - service: alarm_control_panel.alarm_disarm
+    data:
+      entity_id: alarm_control_panel.alarme_maison
+      code: '1234'
+    entity_id: alarm_control_panel.alarme_maison
+  mode: single
+- id: '1609924641527'
+  alias: Media Cuisine - On
+  description: Allumer la tablette sur détection de mouvement
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.zp3102_pir_motion_sensor_sensor
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: media_player.tab_cuisine
+    state: paused
+  - condition: time
+    after: 07:00:00
+    before: '21:00:00'
+  action:
+  - service: media_player.turn_on
+    data: {}
+    entity_id: media_player.tab_cuisine
+  - service: media_player.select_source
+    data:
+      source: io.homeassistant.companion.android
+    entity_id: media_player.tab_cuisine
+  mode: single
+- id: '1609933185202'
+  alias: 'Doorbird '
+  description: Gestionnaire doorbird
+  trigger:
+  - platform: event
+    event_type: doorbird_portier_ouvrir_portail
+    id: ouvrir portail
+  - platform: event
+    event_type: doorbird_portier_une_personne_sonne
+    id: Sonnette vers carillon
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: ouvrir portail
+      sequence:
+      - service: script.ouverture_partielle_portail
+        data: {}
+        entity_id: automation.portail_rue_ouverture_partielle
+      - service: notify.alexa_media_echo_cuisine
+        data:
+          data:
+            type: announce
+          message: Ouverture du portail déclenchée!!!
+    - conditions:
+      - condition: trigger
+        id: Sonnette vers carillon
+      sequence:
+      - type: turn_on
+        device_id: 57c0c0a0ac6024abf04b0698e114c698
+        entity_id: switch.carillon_switch
+        domain: switch
+      - service: media_player.select_source
+        data:
+          entity_id: media_player.tablette_cuisine
+          source: com.doorbird.doorbird
+        entity_id: media_player.tab_cuisine
+      - service: notify.alexa_media_echo_cuisine
+        data:
+          data:
+            type: announce
+          message: Une personne sonne au portail!!!
+      - service: script.snapshot_doobird_telegram
+        data: {}
+      - delay:
+          hours: 0
+          minutes: 1
+          seconds: 0
+          milliseconds: 0
+      - service: media_player.select_source
+        data:
+          entity_id: media_player.tablette_cuisine
+          source: io.homeassistant.companion.android
+        entity_id: media_player.tab_cuisine
+    default: []
+  mode: single
+- id: '1610117493414'
+  alias: Portail garage - Auto off
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_on
+    device_id: 28c5881462bdb208a01e1845323f575e
+    entity_id: switch.portail_garage_switch_2
+    domain: switch
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 2
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 28c5881462bdb208a01e1845323f575e
+    entity_id: switch.portail_garage_switch_2
+    domain: switch
+  mode: single
+- id: '1610377943566'
+  alias: Battery Alert
+  trigger:
+  - platform: time
+    at: '10:00:00'
+  - platform: time
+    at: '18:00:00'
+  condition:
+  - condition: template
+    value_template: '{%- set threshold_high = 40 -%} {%- set threshold_low = -1 -%}
+      {% macro battery_level() %} {% set domains = [''light'', ''switch'', ''sensor'',
+      ''zwave'', ''lock'', ''device_tracker''] %} {% for domain in domains -%} {%-
+      for item in states[domain] if (item.attributes[''battery_level''] is defined
+      or ("battery" in item.name | lower and not "voltage" in item.name | lower and
+      not "runtime" in item.name | lower )) -%} {% if (item.attributes[''battery_level'']
+      is defined and (item.attributes[''battery_level''] is number or item.attributes[''battery_level'']
+      | length == item.attributes[''battery_level''] | int | string | length) and
+      item.attributes[''battery_level''] | int < threshold_high and item.attributes[''battery_level'']
+      | int > threshold_low) -%} {{ item.name }}{% endif -%} {%- if ("battery" in
+      item.name | lower and ((item.state is number or item.state | length == item.state
+      | int | string | length) and item.state | int < threshold_high and item.state
+      | int > threshold_low) or item.state | lower == "low" or item.state | lower
+      == "unknown") -%} {{ item.name }}{% endif -%} {% endfor %} {%- endfor %} {%
+      endmacro %} {{ battery_level() |trim != "" }}
+
+      '
+  action:
+  - service: persistent_notification.create
+    data:
+      title: Low Battery
+      message: '{%- set threshold_high = 40 -%} {%- set threshold_low = -1 -%} {%
+        macro battery_level(domain) %} {%- for item in states[domain] if (item.attributes[''battery_level'']
+        is defined or ("battery" in item.name | lower and not "voltage" in item.name
+        | lower and not "runtime" in item.name | lower )) -%} {% if (item.attributes[''battery_level'']
+        is defined and (item.attributes[''battery_level''] is number or item.attributes[''battery_level'']
+        | length == item.attributes[''battery_level''] | int | string | length) and
+        item.attributes[''battery_level''] | int < threshold_high and item.attributes[''battery_level'']
+        | int > threshold_low) -%} {{ item.name }} ({{ item.attributes[''battery_level'']
+        }}){%- if not loop.last %}, {% endif -%}{%- endif -%} {%- if ("battery" in
+        item.name | lower and ((item.state is number or item.state | length == item.state
+        | int | string | length) and item.state | int < threshold_high and item.state
+        | int > threshold_low) or item.state | lower == "low" or item.state | lower
+        == "unknown") -%} {{ item.name }} ({{ item.state }}){% if not loop.last %},
+        {% endif %}{% endif -%} {%- endfor -%} {% endmacro %} {%- set domains = [''light'',
+        ''switch'', ''sensor'', ''zwave'', ''lock'', ''device_tracker''] -%} {%- for
+        domain in domains if battery_level(domain) |trim != ""-%} {{ battery_level(domain)
+        }}{%- if not loop.last %}, {% endif -%} {%- endfor -%}
+
+        '
+      notification_id: low-battery-alert
+  - service: notify.telegram_pascal
+    data:
+      message: '{%- set threshold_high = 40 -%} {%- set threshold_low = -1 -%} {%
+        macro battery_level(domain) %} {%- for item in states[domain] if (item.attributes[''battery_level'']
+        is defined or ("battery" in item.name | lower and not "voltage" in item.name
+        | lower and not "runtime" in item.name | lower )) -%} {% if (item.attributes[''battery_level'']
+        is defined and (item.attributes[''battery_level''] is number or item.attributes[''battery_level'']
+        | length == item.attributes[''battery_level''] | int | string | length) and
+        item.attributes[''battery_level''] | int < threshold_high and item.attributes[''battery_level'']
+        | int > threshold_low) -%} {{ item.name }} ({{ item.attributes[''battery_level'']
+        }}){%- if not loop.last %}, {% endif -%}{%- endif -%} {%- if ("battery" in
+        item.name | lower and ((item.state is number or item.state | length == item.state
+        | int | string | length) and item.state | int < threshold_high and item.state
+        | int > threshold_low) or item.state | lower == "low" or item.state | lower
+        == "unknown") -%} {{ item.name }} ({{ item.state }}){% if not loop.last %},
+        {% endif %}{% endif -%} {%- endfor -%} {% endmacro %} {%- set domains = [''light'',
+        ''switch'', ''sensor'', ''zwave'', ''lock'', ''device_tracker''] -%} {%- for
+        domain in domains if battery_level(domain) |trim != ""-%} {{ battery_level(domain)
+        }}{%- if not loop.last %}, {% endif -%} {%- endfor -%}
+
+        '
+  mode: single
+- id: '1610552427664'
+  alias: Test Variable
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: group.alarme_absence_detecteurs
+    to: 'on'
+  condition: []
+  action:
+  - service: notify.telegram_pascal
+    data:
+      message: Attention!!! intrusion détectée "{% for state in states|selectattr('entity_id','in',state_attr('group.alarme_absence_detecteurs','entity_id'))|selectattr('state','eq','on')|list
+        -%}{{state.name+', '}}{%- endfor %}"
+  mode: single
+- id: '1610711516999'
+  alias: Notification - Portail ouvert
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 4fa57e73c85f4ffd040e1be5154cff1d
+    entity_id: binary_sensor.pst02_c_door_window_3_in_1_sensor_access_control_door_window_open
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: script.notification_alexa_cuisine
+    data:
+      message: Le portail est ouvert !!!
+  mode: single
+- id: '1610711662990'
+  alias: Notification - Portail fermé
+  description: ''
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: 4fa57e73c85f4ffd040e1be5154cff1d
+    entity_id: binary_sensor.pst02_c_door_window_3_in_1_sensor_access_control_door_window_open
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: script.notification_alexa_cuisine
+    data:
+      message: Le portail est fermé !!!
+  mode: single
+- id: '1611044575778'
+  alias: Portail exterieur - Auto off
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_on
+    device_id: 45e8584c4797248cd483bcf51c0664a9
+    entity_id: switch.portail_exterieur
+    domain: switch
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 2
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 45e8584c4797248cd483bcf51c0664a9
+    entity_id: switch.portail_exterieur
+    domain: switch
+  mode: single
+- id: '1611918566892'
+  alias: Télécommande - Lumière chambre parents
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 220d38f14d0987bef65fef9214036272
+    type: click
+    subtype: 'on'
+    discovery_id: 0xbc33acfffe9e14ec click_on
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 6d810297e723e676bb9b0e5d54c91648
+    entity_id: switch.lumiere_chambre_parents
+    domain: switch
+  mode: single
+- id: '1612280007839'
+  alias: Informatique - Auto Off des NAS
+  description: En cas de coupure d'alimentation électrique et éviter tout dommage
+    sur les NAS
+  trigger:
+  - platform: state
+    entity_id: sensor.ups_status
+    from: Online Battery Charging
+    to: On Battery Battery Discharging
+    for: '10'
+  condition:
+  - condition: state
+    entity_id: switch.nas_netgear
+    state: 'on'
+  - condition: state
+    entity_id: switch.nas_nl54
+    state: 'on'
+  action:
+  - service: shell_command.turn_off_nas_netgear
+    data: {}
+  - service: shell_command.turn_off_nas_nl54l
+  - service: script.notification_sms
+    data:
+      message: 'Coupure électrique détectée - extinction des NAS: {{ states(''sensor.ups_status'')
+        }}'
+  mode: parallel
+  max: 2
+- id: '1622294598941'
+  alias: Télécommande - Lumière chambre parents - Eteindre
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 220d38f14d0987bef65fef9214036272
+    type: click
+    subtype: 'off'
+    discovery_id: 0xbc33acfffe9e14ec click_off
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 6d810297e723e676bb9b0e5d54c91648
+    entity_id: switch.lumiere_chambre_parents
+    domain: switch
+  mode: single
+- id: '1622294777620'
+  alias: Télécommande - Lumière chambre parents - Brightness up
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 220d38f14d0987bef65fef9214036272
+    type: click
+    subtype: brightness_up
+    discovery_id: 0xbc33acfffe9e14ec click_brightness_up
+  condition: []
+  action:
+  - type: brightness_increase
+    device_id: 9a12351086d4917e89bfe85b9c29f7d5
+    entity_id: light.ampoule_chambre_parents_1
+    domain: light
+  - type: brightness_increase
+    device_id: 81cd7b9439966aacf93c64a52a530ab7
+    entity_id: light.ampoule_chambre_parents_2
+    domain: light
+  mode: single
+- id: '1622294849441'
+  alias: Télécommande - Lumière chambre parents - Brightness down
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 220d38f14d0987bef65fef9214036272
+    type: click
+    subtype: brightness_down
+    discovery_id: 0xbc33acfffe9e14ec click_brightness_down
+  condition: []
+  action:
+  - type: brightness_decrease
+    device_id: 9a12351086d4917e89bfe85b9c29f7d5
+    entity_id: light.ampoule_chambre_parents_1
+    domain: light
+  - type: brightness_decrease
+    device_id: 81cd7b9439966aacf93c64a52a530ab7
+    entity_id: light.ampoule_chambre_parents_2
+    domain: light
+  mode: single
+- id: '1622295384548'
+  alias: Télécommande - Lumière ampoule salon
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 05b888e6f7d4aa518b8e2c159c197489
+    type: click
+    subtype: 'on'
+    discovery_id: 0xbc33acfffe8c2782 click_on
+  condition: []
+  action:
+  - type: turn_on
+    device_id: dc07a6d14ce1549c6ad6e9f597210abf
+    entity_id: light.ampoule_salon
+    domain: light
+  mode: single
+- id: '1622295480165'
+  alias: Télécommande - Lumière ampoule salon - Arrêt
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 05b888e6f7d4aa518b8e2c159c197489
+    type: click
+    subtype: 'off'
+    discovery_id: 0xbc33acfffe8c2782 click_off
+  condition: []
+  action:
+  - type: turn_off
+    device_id: dc07a6d14ce1549c6ad6e9f597210abf
+    entity_id: light.ampoule_salon
+    domain: light
+  mode: single
+- id: '1622295617541'
+  alias: Télécommande - Lumière ampoule salon - Brightness up
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 05b888e6f7d4aa518b8e2c159c197489
+    type: click
+    subtype: brightness_up
+    discovery_id: 0xbc33acfffe8c2782 click_brightness_up
+  condition: []
+  action:
+  - type: brightness_increase
+    device_id: dc07a6d14ce1549c6ad6e9f597210abf
+    entity_id: light.ampoule_salon
+    domain: light
+  mode: single
+- id: '1622295646274'
+  alias: Télécommande - Lumière ampoule salon - Brightness down
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 05b888e6f7d4aa518b8e2c159c197489
+    type: click
+    subtype: brightness_down
+    discovery_id: 0xbc33acfffe8c2782 click_brightness_down
+  condition: []
+  action:
+  - type: brightness_decrease
+    device_id: dc07a6d14ce1549c6ad6e9f597210abf
+    entity_id: light.ampoule_salon
+    domain: light
+  mode: single
+- id: '1622296528917'
+  alias: Télécommande - Lumière ampoule salon lecture
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: ba796d7a559c7826dd4060b98d0934e5
+    type: click
+    subtype: 'on'
+    discovery_id: 0xbc33acfffe8c26e2 click_on
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 42872dec91c960f366ea3e3512481909
+    entity_id: light.ampoule_salon_lecture
+    domain: light
+  mode: single
+- id: '1622297006892'
+  alias: Télécommande - Lumière ampoule salon lecture - Arrêt
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: ba796d7a559c7826dd4060b98d0934e5
+    type: click
+    subtype: 'off'
+    discovery_id: 0xbc33acfffe8c26e2 click_off
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 42872dec91c960f366ea3e3512481909
+    entity_id: light.ampoule_salon_lecture
+    domain: light
+  mode: single
+- id: '1622297329796'
+  alias: Télécommande - Lumière ampoule salon lecture - Brightness up
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: ba796d7a559c7826dd4060b98d0934e5
+    type: action
+    subtype: brightness_move_up
+    discovery_id: 0xbc33acfffe8c26e2 action_brightness_move_up
+  condition: []
+  action:
+  - type: brightness_increase
+    device_id: 42872dec91c960f366ea3e3512481909
+    entity_id: light.ampoule_salon_lecture
+    domain: light
+  mode: single
+- id: '1622297404878'
+  alias: Télécommande - Lumière ampoule salon lecture - Brightness up (Duplicate)
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: ba796d7a559c7826dd4060b98d0934e5
+    type: action
+    subtype: brightness_move_down
+    discovery_id: 0xbc33acfffe8c26e2 action_brightness_move_down
+  condition: []
+  action:
+  - type: brightness_decrease
+    device_id: 42872dec91c960f366ea3e3512481909
+    entity_id: light.ampoule_salon_lecture
+    domain: light
+  mode: single
+- id: '1622297405112'
+  alias: Télécommande - Lumière ampoule salon lecture - Brightness up (Duplicate)
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: ba796d7a559c7826dd4060b98d0934e5
+    type: action
+    subtype: brightness_move_down
+    discovery_id: 0xbc33acfffe8c26e2 action_brightness_move_down
+  condition: []
+  action:
+  - type: brightness_decrease
+    device_id: 42872dec91c960f366ea3e3512481909
+    entity_id: light.ampoule_salon_lecture
+    domain: light
+  mode: single
+- id: '1622297405879'
+  alias: Télécommande - Lumière ampoule salon lecture - Brightness up (Duplicate)
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: ba796d7a559c7826dd4060b98d0934e5
+    type: action
+    subtype: brightness_move_down
+    discovery_id: 0xbc33acfffe8c26e2 action_brightness_move_down
+  condition: []
+  action:
+  - type: brightness_decrease
+    device_id: 42872dec91c960f366ea3e3512481909
+    entity_id: light.ampoule_salon_lecture
+    domain: light
+  mode: single
+- id: '1622312500488'
+  alias: Rappel Agenda Pascal
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.rappel_agenda
+    to: '120'
+  condition: []
+  action:
+  - service: notify.telegram_pascal
+    data:
+      message: 'Rappel d''un évenement de votre agenda: {{(states.calendar.pascal_joret_gmail_com.attributes.message)}}
+        le  {{(states.calendar.pascal_joret_gmail_com.attributes.start_time)}} '
+  mode: single
+- id: '1622562309284'
+  alias: Rappel Agenda Eloise
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.rappel_agenda_eloise
+    to: '360'
+  condition: []
+  action:
+  - service: notify.sms_eloise
+    data:
+      message: '{{(states.calendar.eloise_joret_gmail_com.attributes.message)}}'
+  mode: single
+- id: '1622569565669'
+  alias: Rappel Agenda Clarence
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.rappel_agenda_clarence
+    to: '60'
+  - platform: state
+    entity_id: sensor.rappel_agenda_clarence
+    to: '1440'
+  - platform: state
+    entity_id: sensor.rappel_agenda_clarence
+    to: '2880'
+  condition: []
+  action:
+  - service: notify.sms_clarence
+    data:
+      message: '{{(states.calendar.joret_clarence_gmail_com.attributes.message)}}'
+  mode: single
+- id: '1635359831272'
+  alias: Radiateur SAM - Arrêt
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radcuisine
+    to: Arrêt
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 0
+    target:
+      entity_id:
+      - light.radiateur_sam
+  mode: single
+- id: '1635359922878'
+  alias: Radiateur SAM - Confort
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radcuisine
+    to: Confort
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 255
+    target:
+      entity_id:
+      - light.radiateur_sam
+  mode: single
+- id: '1635359962468'
+  alias: Radiateur SAM - Confort -1
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radcuisine
+    to: Confort -1
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 105
+    target:
+      entity_id: light.radiateur_sam
+  mode: single
+- id: '1635360007965'
+  alias: Radiateur SAM - Confort -2
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radcuisine
+    to: Confort -2
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 79
+    target:
+      entity_id: light.radiateur_sam
+  mode: single
+- id: '1635360035581'
+  alias: 'Radiateur SAM - Eco '
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radcuisine
+    to: Eco
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 54
+    target:
+      entity_id: light.radiateur_sam
+  mode: single
+- id: '1635360078581'
+  alias: Radiateur SAM - Hors-Gel
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radcuisine
+    to: Hors-Gel
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 28
+    target:
+      entity_id: light.radiateur_sam
+  mode: single
+- id: '1635360477515'
+  alias: Radiateur general - Arrêt
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_general
+    to: Arrêt
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 0
+    target:
+      entity_id:
+      - light.radiateur_cuisine
+      - light.radiateur_buanderie_level_2
+      - light.radiateur_entree_level
+      - light.radiateur_etage_jardin_level_3
+      - light.radiateur_etage_rue_level_4
+      - light.radiateur_sam
+  mode: single
+- id: '1635360544149'
+  alias: Radiateur general - Confort
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_general
+    to: Confort
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 255
+    target:
+      entity_id:
+      - light.radiateur_cuisine
+      - light.radiateur_buanderie_level_2
+      - light.radiateur_entree_level
+      - light.radiateur_etage_jardin_level_3
+      - light.radiateur_etage_rue_level_4
+      - light.radiateur_sam
+  mode: single
+- id: '1635360587772'
+  alias: Radiateur general- Confort -1
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_general
+    to: Confort -1
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 105
+    target:
+      entity_id:
+      - light.radiateur_cuisine
+      - light.radiateur_buanderie_level_2
+      - light.radiateur_entree_level
+      - light.radiateur_etage_jardin_level_3
+      - light.radiateur_etage_rue_level_4
+      - light.radiateur_sam
+  mode: single
+- id: '1635360647902'
+  alias: Radiateur general- Confort -1
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_radcuisine
+    to: Confort -1
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 105
+    target:
+      entity_id:
+      - light.radiateur_cuisine
+      - light.radiateur_buanderie_level_2
+      - light.radiateur_entree_level
+      - light.radiateur_etage_jardin_level_3
+      - light.radiateur_etage_rue_level_4
+      - light.radiateur_sam
+  mode: single
+- id: '1635360692373'
+  alias: Radiateur general- Confort -2
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_general
+    to: Confort -2
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 79
+    target:
+      entity_id:
+      - light.radiateur_cuisine
+      - light.radiateur_buanderie_level_2
+      - light.radiateur_entree_level
+      - light.radiateur_etage_jardin_level_3
+      - light.radiateur_etage_rue_level_4
+      - light.radiateur_sam
+  mode: single
+- id: '1635360745303'
+  alias: Radiateur general- Eco
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_general
+    to: Eco
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 54
+    target:
+      entity_id:
+      - light.radiateur_cuisine
+      - light.radiateur_buanderie_level_2
+      - light.radiateur_entree_level
+      - light.radiateur_etage_jardin_level_3
+      - light.radiateur_etage_rue_level_4
+      - light.radiateur_sam
+  mode: single
+- id: '1635360789025'
+  alias: Radiateur general- Hors-Gel
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_select.mode_chauffage_general
+    to: Hors-Gel
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 28
+    target:
+      entity_id:
+      - light.radiateur_cuisine
+      - light.radiateur_buanderie_level_2
+      - light.radiateur_entree_level
+      - light.radiateur_etage_jardin_level_3
+      - light.radiateur_etage_rue_level_4
+      - light.radiateur_sam
+  mode: single
+- id: '1637085470962'
+  alias: Chauffage rez de chaussée - En Semaine
+  description: Le chauffage de la cuisine se déclenche pour le petit déjeuner des
+    enfants . Quand le chauffage de la buanderie est déclenche, le radiateur cuisine
+    sera éteind après un délai défini dans le script
+  trigger:
+  - platform: time
+    at: input_datetime.radiateur_cuisine_on_only_time
+    id: Radiateur cuisine
+  - platform: time
+    at: input_datetime.radiateur_buanderie_on_only_time
+    id: Radiateur Buanderie
+  - platform: time
+    at: input_datetime.radiateur_cuisine_off_only_time
+    id: Radiateur cuisine off
+  - platform: time
+    at: input_datetime.radiateur_buanderie_off_only_time
+    id: Radiateur Buanderie off
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: Radiateur Buanderie
+      - condition: time
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      sequence:
+      - service: climate.set_preset_mode
+        target:
+          entity_id: climate.radiateur_buanderie
+        data:
+          preset_mode: comfort
+      - delay:
+          hours: 0
+          minutes: 30
+          seconds: 0
+          milliseconds: 0
+      - service: climate.set_preset_mode
+        target:
+          entity_id: climate.radiateur_cuisine
+        data:
+          preset_mode: eco
+      - service: script.telegram_tous
+        data:
+          message: '"Passage du radiateur de la cuisine en mode eco"'
+      - service: notify.alexa_media_echo_cuisine
+        data:
+          data:
+            type: announce
+          message: '"Passage du radiateur de la cuisine en mode eco"'
+    - conditions:
+      - condition: trigger
+        id: Radiateur cuisine
+      - condition: time
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      sequence:
+      - service: climate.set_preset_mode
+        target:
+          entity_id: climate.radiateur_cuisine
+        data:
+          preset_mode: comfort
+    - conditions:
+      - condition: trigger
+        id: Radiateur Buanderie off
+      - condition: time
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
+      sequence:
+      - service: climate.set_preset_mode
+        target:
+          entity_id: climate.radiateur_buanderie
+        data:
+          preset_mode: eco
+      - service: climate.set_preset_mode
+        target:
+          entity_id: climate.radiateur_cuisine
+        data:
+          preset_mode: comfort
+      - service: script.telegram_tous
+        data:
+          message: '"Passage du radiateur de la buanderie en mode eco et activation
+            du mode confort pour le radiateur cuisine"'
+      - service: notify.alexa_media_echo_cuisine
+        data:
+          data:
+            type: announce
+          message: '"Passage du radiateur de la buanderie en mode eco et activation
+            du mode confort pour le radiateur cuisine"'
+    - conditions:
+      - condition: trigger
+        id: Radiateur cuisine off
+      - condition: time
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      sequence:
+      - service: climate.set_preset_mode
+        target:
+          entity_id: climate.radiateur_cuisine
+        data:
+          preset_mode: eco
+      - service: script.telegram_tous
+        data:
+          message: '"Passage du radiateur de la cuisine en mode eco"'
+      - service: notify.alexa_media_echo_cuisine
+        data:
+          data:
+            type: announce
+          message: '"Passage du radiateur de la cuisine en mode eco"'
+    default: []
+  mode: single
+- id: '1637268010654'
+  alias: Notification - NAS-NETGEAR ou TRUENAS - ON
+  description: Notifier quand NAS-NETGEAR OU TRUENAS est ON après une commande Alexa
+  trigger:
+  - platform: state
+    entity_id: switch.nas_netgear
+    id: NasNetgear
+    from: 'off'
+    to: 'on'
+  - platform: state
+    entity_id: switch.nas_nl54
+    id: TrueNas
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: NasNetgear
+      sequence:
+      - service: notify.alexa_media_joret_echo_flex
+        data:
+          data:
+            type: announce
+          message: '"Information matériel: Nas Netgear est en marche"'
+    - conditions:
+      - condition: trigger
+        id: TrueNas
+      sequence:
+      - service: notify.alexa_media_joret_echo_flex
+        data:
+          message: '"Information matériel: Le serveur de fichier est en marche"'
+          data:
+            type: announce
+    default: []
+  mode: single
+- id: '1637331991736'
+  alias: Alarme maison
+  description: Script gérant l'alarme de la maison
+  trigger:
+  - platform: state
+    entity_id: alarm_control_panel.alarme_maison
+    id: AlarmeNuit
+    from: disarmed
+    to: armed_night
+  - platform: state
+    entity_id: alarm_control_panel.alarme_maison
+    to: armed_away
+    id: AlarmeTotale
+    from: disarmed
+  - platform: state
+    entity_id: alarm_control_panel.alarme_maison
+    id: Alarme - Désactivation
+    from: armed_away
+    to: disarmed
+  - platform: state
+    entity_id: alarm_control_panel.alarme_maison
+    id: Alarme - Désactivation nuit
+    from: armed_night
+    to: disarmed
+  - platform: state
+    entity_id: group.detecteurs_incendie
+    id: Alarme - Détection incendie
+    from: 'off'
+    to: 'on'
+  - platform: state
+    entity_id: group.detecteurs_inondation
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 0
+    id: Alarme - Détection inondation
+  - platform: state
+    entity_id: binary_sensor.detecteur_inondation_buanderie_water_leak_state
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 0
+    id: Alarme - Détection inondation_buanderie
+  - platform: state
+    entity_id: alarm_control_panel.alarme_maison
+    to: arming
+    id: Alarme - En cours d'activation
+  - platform: state
+    to: 'on'
+    entity_id: group.alarme_nuit_detecteurs
+    id: Alarme nuit - Déclenchement si présence
+  - platform: state
+    entity_id: group.alarme_absence_detecteurs
+    id: Alarme totale - Déclenchement si présence
+    to: 'on'
+  - platform: time
+    at: 06:30:00
+    id: Désactivation auto de l'alarme nuit
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: AlarmeNuit
+      sequence:
+      - service: script.eteindre_des_appareils_pour_la_nuit
+      - service: alarm_control_panel.alarm_arm_away
+        data: {}
+        entity_id: alarm_control_panel.blink_maison
+      - service: notify.telegram_stephanie
+        data:
+          message: Alarme pour la nuit est maintenant activée à {{ states('sensor.time')
+            }}
+      - service: notify.telegram_pascal
+        data:
+          message: Alarme pour la nuit est maintenant activée à {{ states('sensor.time')
+            }}
+      - service: notify.alexa_media_echo_cuisine
+        data:
+          data:
+            type: tts
+          message: <amazon:effect name='whispered'>Alarme pour la nuit est maintenant
+            activée!!!</amazon:effect>
+    - conditions:
+      - condition: trigger
+        id: AlarmeTotale
+      sequence:
+      - service: notify.alexa_media_cuisine_echo_dot
+        data:
+          data:
+            type: tts
+          message: Alarme activée à {{ states('sensor.time') }}
+      - service: script.alarme_notification
+        data:
+          message: Alarme activée à {{ states('sensor.time') }}
+      - service: alarm_control_panel.alarm_arm_away
+        data: {}
+        entity_id: alarm_control_panel.blink_maison
+    - conditions:
+      - condition: trigger
+        id: Alarme - Désactivation
+      sequence:
+      - entity_id: script.1604241663547
+        service: script.alarme_desactivation
+    - conditions:
+      - condition: trigger
+        id: Alarme - Désactivation nuit
+      sequence:
+      - entity_id: script.desactivation_alarme
+        service: script.turn_on
+      - service: script.allumer_des_appareils_quand_alarme_eteinte
+        data: {}
+    - conditions:
+      - condition: trigger
+        id: Alarme - Détection incendie
+      sequence:
+      - service: script.alarme_notification
+        data:
+          message: Alerte incendie sur {{trigger.to_state.attributes.friendly_name}}
+      - repeat:
+          while:
+          - condition: state
+            entity_id: group.detecteurs_incendie
+            state: 'on'
+          sequence:
+          - service: notify.alexa_media_echo_cuisine
+            data:
+              data:
+                type: announce
+              message: Attention!!! Alerte incendie sur {{trigger.to_state.attributes.friendly_name}}
+          - delay: '20'
+          - service: notify.alexa_media_echo_eloise
+            data:
+              data:
+                type: announce
+              message: Attention!!! Alerte incendie sur {{trigger.to_state.attributes.friendly_name}}
+          - service: notify.alexa_media_echo_clarence
+            data:
+              data:
+                type: announce
+              message: Attention!!! Alerte incendie sur {{trigger.to_state.attributes.friendly_name}}
+          - condition: time
+            after: '22:00:00'
+            before: 07:00:00
+          - type: turn_on
+            device_id: 6d810297e723e676bb9b0e5d54c91648
+            entity_id: switch.lumiere_chambre_parents
+            domain: switch
+          - type: turn_on
+            device_id: 2fd221df91cfdfc26ce1f20ef853e5c3
+            entity_id: switch.lumiere_chambre_rue
+            domain: switch
+    - conditions:
+      - condition: trigger
+        id: Alarme - Détection inondation
+      - condition: or
+        conditions:
+        - condition: trigger
+          id: Alarme - Détection inondation_buanderie
+      sequence:
+      - choose:
+        - conditions:
+          - condition: numeric_state
+            entity_id: sensor.routing_alarm_sensor_flood
+            above: '0'
+          sequence:
+          - service: script.alarme_notification
+            data:
+              message: Alerte inondation sur le détecteur de la buanderie
+        - conditions:
+          - condition: state
+            entity_id: group.detecteurs_inondation
+            state: 'on'
+          sequence:
+          - service: script.alarme_notification
+            data:
+              message: Alerte inondation sur "{% for state in states|selectattr('entity_id','in',state_attr('group.detecteurs_inondation','entity_id'))|selectattr('state','eq','on')|list
+                -%}{{state.name+', '}}{%- endfor %}"
+          - service: notify.alexa_media_partout
+            data:
+              data:
+                type: announce
+              message: Alerte inondation sur "{% for state in states|selectattr('entity_id','in',state_attr('group.detecteurs_inondation','entity_id'))|selectattr('state','eq','on')|list
+                -%}{{state.name+', '}}{%- endfor %}"
+          - service: notify.huawei_lte
+            data:
+              message: Alerte inondation détectée. Regarder le garage ou la buanderie
+          - repeat:
+              while:
+              - condition: or
+                conditions:
+                - condition: state
+                  entity_id: binary_sensor.detecteur_inondation_buanderie_water_leak_state
+                  state: 'on'
+                  for: '10'
+                - condition: state
+                  entity_id: group.detecteurs_inondation
+                  state: 'on'
+              sequence:
+              - service: notify.alexa_media_echo_cuisine
+                data:
+                  data:
+                    type: announce
+                  message: Alerte inondation détectée. Regarder le garage ou la buanderie
+              - delay:
+                  hours: 0
+                  minutes: 0
+                  seconds: 30
+                  milliseconds: 0
+              - condition: time
+                after: '22:00:00'
+                before: 07:00:00
+              - type: turn_on
+                device_id: 6d810297e723e676bb9b0e5d54c91648
+                entity_id: switch.lumiere_chambre_parents
+                domain: switch
+        default: []
+    - conditions:
+      - condition: trigger
+        id: Alarme - En cours d'activation
+      sequence:
+      - service: alarm_control_panel.alarm_arm_away
+        data: {}
+        entity_id: alarm_control_panel.blink_maison
+      - service: script.alarme_notification
+        data:
+          message: Alarme est en cours d'activation. Reste 60 secondes avant activation
+      - service: alarm_control_panel.alarm_arm_away
+        data: {}
+        entity_id: alarm_control_panel.blink_maison
+    - conditions:
+      - condition: trigger
+        id: Alarme nuit - Déclenchement si présence
+      - condition: state
+        entity_id: alarm_control_panel.alarme_maison
+        state: armed_night
+      sequence:
+      - repeat:
+          while:
+          - condition: state
+            entity_id: alarm_control_panel.alarme_maison
+            state: armed_night
+          sequence:
+          - service: script.alexa_notification_tous
+            data:
+              message: Attention une intrusion a été détectée!!!
+          - delay: '10'
+      - service: script.snapshot_cam_garage_vers_telegram
+        data: {}
+      - service: script.alarme_notification
+        data:
+          message: Attention!!! intrusion détectée "{% for state in states|selectattr('entity_id','in',state_attr('group.alarme_nuit_detecteurs','entity_id'))|selectattr('state','eq','on')|list
+            -%}{{state.name+', '}}{%- endfor %}"
+      - type: turn_on
+        device_id: f57ea3ccabf15f2744fb7bbec1447840
+        entity_id: switch.sirene_garage_switch
+        domain: switch
+    - conditions:
+      - condition: trigger
+        id: Alarme totale - Déclenchement si présence
+      - condition: state
+        entity_id: alarm_control_panel.alarme_maison
+        state: armed_away
+      sequence:
+      - type: turn_on
+        device_id: f57ea3ccabf15f2744fb7bbec1447840
+        entity_id: switch.sirene_garage_switch
+        domain: switch
+      - type: turn_on
+        device_id: 97b9995af5377260806feee4859739c2
+        entity_id: switch.sirene_entree_switch_2
+        domain: switch
+      - service: script.alarme_notification
+        data:
+          message: Attention!!! intrusion détectée "{% for state in states|selectattr('entity_id','in',state_attr('group.alarme_absence_detecteurs','entity_id'))|selectattr('state','eq','on')|list
+            -%}{{state.name+', '}}{%- endfor %}"
+    - conditions:
+      - condition: trigger
+        id: Désactivation auto de l'alarme nuit
+      sequence:
+      - service: alarm_control_panel.alarm_disarm
+        data:
+          entity_id: alarm_control_panel.alarme_maison
+          code: '1234'
+        entity_id: alarm_control_panel.alarme_maison
+    default: []
+  mode: single
+- id: '1637339572634'
+  alias: Ballon Eau Chaude
+  description: Gestionnaire du ballon eau chaude
+  trigger:
+  - platform: template
+    value_template: '{{ states.sensor.temperature_ballon_eau_chaude.state | float
+      }}'
+  - platform: time
+    at: 07:00:00
+    id: Ballon eau chaude - Arrêt matin
+  - platform: time
+    at: '21:00:00'
+    id: Ballon eau chaude - Arrêt PM
+  - type: value
+    platform: device
+    device_id: ee8663b349afc7665d58051c2ba8f255
+    entity_id: sensor.temperature_ballon_eau_chaude
+    domain: sensor
+    above: 43
+    below: 43
+  - platform: time
+    at: '16:30:00'
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: and
+        conditions:
+        - condition: or
+          conditions:
+          - condition: template
+            value_template: '{{ states.sensor.temperature_ballon_eau_chaude.state
+              | float >= 55 }}'
+          - type: is_value
+            condition: device
+            device_id: ee8663b349afc7665d58051c2ba8f255
+            entity_id: sensor.temperature_ballon_eau_chaude
+            domain: sensor
+            above: 55
+        - condition: device
+          type: is_on
+          device_id: 66df720f2014d4da4f744175d7052986
+          entity_id: switch.onoff_ballon_eau_chaude_switch
+          domain: switch
+        - condition: or
+          conditions:
+          - condition: time
+            after: 05:15:00
+            before: 08:00:00
+            weekday:
+            - mon
+            - tue
+            - wed
+            - thu
+            - fri
+            - sat
+            - sun
+          - condition: time
+            after: '18:30:00'
+            before: '21:30:00'
+      sequence:
+      - type: turn_off
+        device_id: 66df720f2014d4da4f744175d7052986
+        entity_id: switch.onoff_ballon_eau_chaude_switch
+        domain: switch
+      - service: script.telegram_tous
+        data:
+          message: 'Arrêt du ballon eau chaude. Température de l''eau: {{ states(''sensor.temperature_ballon_eau_chaude'')
+            }}'
+      - service: notify.alexa_media_echo_cuisine
+        data:
+          data:
+            type: announce
+          message: 'Arrêt du ballon eau chaude. Température de l''eau: {{ states(''sensor.temperature_ballon_eau_chaude'')
+            }}'
+    - conditions:
+      - condition: and
+        conditions:
+        - condition: or
+          conditions:
+          - condition: template
+            value_template: '{{ states.sensor.temperature_ballon_eau_chaude.state
+              | float <= 43 }}'
+          - type: is_value
+            condition: device
+            device_id: ee8663b349afc7665d58051c2ba8f255
+            entity_id: sensor.temperature_ballon_eau_chaude
+            domain: sensor
+            below: 43
+        - condition: device
+          type: is_off
+          device_id: 66df720f2014d4da4f744175d7052986
+          entity_id: switch.onoff_ballon_eau_chaude_switch
+          domain: switch
+        - condition: or
+          conditions:
+          - condition: time
+            after: '16:30:00'
+            before: '19:30:00'
+          - condition: time
+            after: 03:30:00
+            before: 05:00:00
+      sequence:
+      - type: turn_on
+        device_id: 66df720f2014d4da4f744175d7052986
+        entity_id: switch.onoff_ballon_eau_chaude_switch
+        domain: switch
+      - service: script.telegram_tous
+        data:
+          message: 'Mise en marche du ballon eau chaude. Température de l''eau: {{
+            states(''sensor.temperature_ballon_eau_chaude'') }}'
+      - service: notify.alexa_media_echo_cuisine
+        data:
+          data:
+            type: announce
+          message: 'Mise en marche du ballon eau chaude. Température de l''eau: {{
+            states(''sensor.temperature_ballon_eau_chaude'') }}'
+    default: []
+  mode: single
+- id: '1637347853910'
+  alias: Lumière - Chambre rue
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.telecommande_ikea_action
+    to: arrow_right_click
+    id: arrow_right_click
+  - platform: state
+    entity_id: sensor.telecommande_ikea_action
+    to: arrow_left_click
+    id: arrow_left_click
+  - platform: state
+    entity_id: sensor.telecommande_ikea_action
+    to: brightness_down_click
+    id: brightness_down_click
+  - platform: state
+    entity_id: sensor.telecommande_ikea_action
+    to: brightness_up_click
+    id: brightness_up_click
+  - platform: state
+    entity_id: sensor.telecommande_ikea_action
+    to: toggle
+    id: toggle
+  condition:
+  - condition: device
+    type: is_on
+    device_id: 2fd221df91cfdfc26ce1f20ef853e5c3
+    entity_id: switch.lumiere_chambre_rue
+    domain: switch
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: arrow_right_click
+      sequence:
+      - service: input_number.decrement
+        data: {}
+        entity_id: input_number.color_select_chambre_rue
+      - service: light.turn_on
+        data:
+          xy_color:
+          - '{{state_attr(''sensor.color_template_chambre_rue'', ''x'') | float}}'
+          - '{{state_attr(''sensor.color_template_chambre_rue'', ''y'') | float}}'
+        entity_id: light.ampoule_chambre_clarence
+    - conditions:
+      - condition: trigger
+        id: arrow_left_click
+      sequence:
+      - service: input_number.increment
+        data: {}
+        entity_id: input_number.color_select_chambre_rue
+      - service: light.turn_on
+        data:
+          xy_color:
+          - '{{state_attr(''sensor.color_template_chambre_rue'', ''x'') | float}}'
+          - '{{state_attr(''sensor.color_template_chambre_rue'', ''y'') | float}}'
+        entity_id: light.ampoule_chambre_clarence
+    - conditions:
+      - condition: trigger
+        id: brightness_down_click
+      sequence:
+      - type: brightness_decrease
+        device_id: 6ee72608604ed5059cfef33d26d9e35c
+        entity_id: light.ampoule_chambre_clarence
+        domain: light
+    - conditions:
+      - condition: trigger
+        id: brightness_up_click
+      sequence:
+      - type: brightness_increase
+        device_id: 6ee72608604ed5059cfef33d26d9e35c
+        entity_id: light.ampoule_chambre_clarence
+        domain: light
+    - conditions:
+      - condition: trigger
+        id: toggle
+      sequence:
+      - type: toggle
+        device_id: 2fd221df91cfdfc26ce1f20ef853e5c3
+        entity_id: switch.lumiere_chambre_rue
+        domain: switch
+    default: []
+  mode: single

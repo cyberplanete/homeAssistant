@@ -1,0 +1,89 @@
+#   - platform: template
+#     sensors:
+#       testliving_room_door_on_off_icon_test:
+#         # Note that 'value_template' is required. I have to add it, but I only want to change the icon...
+#         value_template: "{{ is_state('switch.lumiere_sam','on') }}"
+
+#   - platform: template
+#     sensors:
+    #   etat_radiateur_cuisine:
+    #   # Note that 'value_template' is required. I have to add it, but I only want to change the icon...
+    #         friendly_name: "etat_radiateur_cuisine"
+    #         device_class: problem
+    #         value_template: >
+    #                         {% if states.light.radiateur_sam.state == 'on' %}
+    #                          {{ state_attr("climate.radiateur_sam", "preset_mode") }}
+    #                         {% elif states.light.radiateur_sam.state == 'off' %}
+    #                         En Arrêt
+    #                         {% endif -%}
+
+
+    #   etat_radiateur_sam:
+    #   # Note that 'value_template' is required. I have to add it, but I only want to change the icon...
+    #         value_template: >
+    #                         {% if is_state('light.radiateur_sam','on') %}
+    #                         {{ state_attr("climate.radiateur_sam", "preset_mode") }}
+    #                         {% elif is_state('light.radiateur_sam','off') %}
+    #                         {{'En Arrêt'}}
+    #                         {% endif -%}
+
+         
+
+    #   etat_radiateur_entree:
+    #   # Note that 'value_template' is required. I have to add it, but I only want to change the icon...
+    #         value_template: >
+    #                         {% if is_state('light.radiateur_entree_level','on') %}
+    #                         {{ state_attr("climate.radiateur_sam", "preset_mode") }}
+    #                         {% elif is_state('light.radiateur_entree_level','off') %}
+    #                         {{'En Arrêt'}}
+    #                         {% endif -%}
+         
+
+
+    #   etat_radiateur_ch_jardin:
+    #   # Note that 'value_template' is required. I have to add it, but I only want to change the icon...
+    #          value_template: >
+    #                         {% if is_state('light.radiateur_etage_jardin_level_3','on') %}
+    #                         {{ state_attr("climate.radiateur_sam", "preset_mode") }}
+    #                         {% elif is_state('light.radiateur_etage_jardin_level_3','off') %}
+    #                         {{'En Arrêt'}}
+    #                         {% endif -%}
+
+
+
+    #   etat_radiateur_ch_rue:
+    #   # Note that 'value_template' is required. I have to add it, but I only want to change the icon...
+    #         value_template: >
+    #                         {% if is_state('light.radiateur_etage_rue_level_4','on') %}
+    #                         {{ state_attr("climate.radiateur_sam", "preset_mode") }}
+    #                         {% elif is_state('light.radiateur_etage_rue_level_4','off') %}
+    #                         {{'En Arrêt'}}
+    #                         {% endif -%}
+
+
+
+    #   etat_radiateur_buanderie:
+    #   # Note that 'value_template' is required. I have to add it, but I only want to change the icon...
+    #         value_template: >
+    #                         {% if is_state('light.radiateur_buanderie_level_2','on') %}
+    #                         {{ state_attr("climate.radiateur_sam", "preset_mode") }}
+    #                         {% elif is_state('light.radiateur_buanderie_level_2','off') %}
+    #                         {{'En Arrêt'}}
+    #                         {% endif -%}
+         
+         
+
+    #   etat_poele_granules:
+    #   # Note that 'value_template' is required. I have to add it, but I only want to change the icon...
+    #         entity_id: sensor.time
+    #         value_template: >
+    #                         {% if states.sensor.prise_poele_electric_w | float > 18  %}
+    #                             {{'En marche'}}
+    #                         {% elif states.sensor.prise_poele_electric_w | float < 18  %}
+    #                             {{'En Arrêt'}}
+    #                         {% endif -%}      
+         
+         
+         
+         
+       

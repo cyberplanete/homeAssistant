@@ -1,0 +1,357 @@
+############################################################## CHAUFFAGE  ########################################################## 
+input_select.mode_chauffage_radbuanderie:
+  templates:
+    icon_color: >
+        if (state == 'Eco') return 'green'; 
+        if (state == 'Confort') return 'yellow'; 
+        if (state == 'Hors-Gel') return 'rgb(103,184,234)'; 
+        if (state == 'Confort -2') return 'rgb(34,191,55)'; 
+        if (state == 'Confort -1') return 'rgb(131,158,14)';
+        
+input_select.mode_chauffage_radchambre_jardin:
+  templates:
+    icon_color: >
+        if (state == 'Eco') return 'green'; 
+        if (state == 'Confort') return 'yellow'; 
+        if (state == 'Hors-Gel') return 'rgb(103,184,234)'; 
+        if (state == 'Confort -2') return 'rgb(34,191,55)'; 
+        if (state == 'Confort -1') return 'rgb(131,158,14)'; 
+        
+input_select.mode_chauffage_radchambrerue:
+  templates:
+    icon_color: >
+        if (state == 'Eco') return 'green'; 
+        if (state == 'Confort') return 'yellow'; 
+        if (state == 'Hors-Gel') return 'rgb(103,184,234)'; 
+        if (state == 'Confort -2') return 'rgb(34,191,55)'; 
+        if (state == 'Confort -1') return 'rgb(131,158,14)';
+        
+input_select.mode_chauffage_radcuisine:
+  templates:
+    icon_color: >
+        if (state == 'Eco') return 'green'; 
+        if (state == 'Confort') return 'yellow'; 
+        if (state == 'Hors-Gel') return 'rgb(103,184,234)'; 
+        if (state == 'Confort -2') return 'rgb(34,191,55)'; 
+        if (state == 'Confort -1') return 'rgb(131,158,14)'; 
+
+input_select.mode_chauffage_radentree:
+  templates:
+    icon_color: >
+        if (state == 'Eco') return 'green'; 
+        if (state == 'Confort') return 'yellow'; 
+        if (state == 'Hors-Gel') return 'rgb(103,184,234)'; 
+        if (state == 'Confort -2') return 'rgb(34,191,55)'; 
+        if (state == 'Confort -1') return 'rgb(131,158,14)'; 
+
+input_select.mode_chauffage_general:
+  templates:
+    icon_color: >
+        if (state == 'Eco') return 'green'; 
+        if (state == 'Confort') return 'yellow'; 
+        if (state == 'Hors-Gel') return 'rgb(103,184,234)'; 
+        if (state == 'Confort -2') return 'rgb(34,191,55)'; 
+        if (state == 'Confort -1') return 'rgb(131,158,14)'; 
+
+        
+########################################## PORTE GARAGE ###########################################################################
+binary_sensor.co_garage_access_control_window_door_is_open_2:
+  templates:
+    icon: >
+      if (state == 'on') return 'mdi:garage-open';
+      if (state == 'off') return 'mdi:garage';
+    icon_color: >
+      if (state == 'on') return 'green'; 
+
+switch.portail_garage_switch_2:
+  device_class: door
+###########################################  POELE ###################################################################################
+sensor.prise_poele_electric_w:
+  templates:
+    icon_color: >
+     if (state > 33) return 'red'; 
+     return 'blue';  
+############################################################## TEMPERATURES ########################################################## 
+sensor.routing_multilevel_sensor_instance_1_air_temperature:
+  templates:
+    icon_color: >
+     if (state > 25) return 'red'; 
+     if (state >= 18) return 'green';
+     if (state >= 16) return 'rgb(181,244,202)';
+     return 'blue';
+#### Entrée ######    
+sensor.degc_clima_entree_temperature:
+  templates:
+    icon_color: >
+     if (state > 25) return 'red'; 
+     if (state >= 18) return 'green';
+     if (state >= 16) return 'rgb(181,244,202)';
+     return 'blue;
+###### Chambre jardin #####     
+sensor.degc_clima_chambre_jardin_temperature:
+  templates:
+    icon_color: >
+     if (state > 25) return 'red'; 
+     if (state >= 18) return 'green';
+     if (state >= 16) return 'rgb(181,244,202)';
+     return 'blue';
+###### Chambre rue #####     
+sensor.c_clima_buanderie_air_temperature:
+  templates:
+    icon_color: >
+     if (state > 25) return 'red'; 
+     if (state >= 18) return 'green';
+     if (state >= 16) return 'rgb(181,244,202)';
+     return 'blue';
+###### Chambre parents #####    
+sensor.degc_clima_chambre_parents_temperature:
+  templates:
+    icon_color: >
+     if (state > 25) return 'red'; 
+     if (state >= 18) return 'green';
+     if (state >= 16) return 'rgb(181,244,202)';
+     return 'blue';
+###### Cuisine ##### 
+sensor.ir_cuisine_air_temperature:
+  templates:
+    icon_color: >
+     if (state > 25) return 'red'; 
+     if (state >= 18) return 'green';
+     if (state >= 16) return 'rgb(181,244,202)';
+     return 'blue';
+###### Salon #####      
+sensor.ir_salon_air_temperature_2:
+  templates:
+    icon_color: >
+     if (state > 25) return 'red'; 
+     if (state >= 18) return 'green';
+     if (state >= 16) return 'rgb(181,244,202)';
+     return 'blue';
+     
+sensor.blink_cam_jardin_2_temperature:
+  templates:
+    icon_color: >
+     if (state > 25) return 'red'; 
+     if (state >= 18) return 'green';
+     if (state >= 16) return 'rgb(181,244,202)';
+     return 'blue';
+
+sensor.ir_couloir_air_temperature_3:
+  templates:
+    icon_color: >
+     if (state > 25) return 'red'; 
+     if (state >= 18) return 'green';
+     if (state >= 16) return 'rgb(181,244,202)';
+     return 'blue';
+############################################################## IMPRIMANTES ########################################################## 
+sensor.brother_mfc_j5720dw_bk:
+  templates:
+    icon_color: black
+    
+sensor.brother_mfc_j5720dw_m:
+  templates:
+    icon_color: magenta
+    
+sensor.brother_mfc_j5720dw_c:
+  templates:
+    icon_color: cyan
+    
+sensor.brother_mfc_j5720dw_y:
+  templates:
+    icon_color: yellow
+############################################################## BATTERIES ##########################################################    
+sensor.co_entree_battery_level:
+  templates:
+    icon_color: >
+     if (state >= 40) return 'green'; 
+     if (state >= 20) return 'orange';
+     return 'red';
+     
+sensor.co_garage_battery_level:
+  templates:
+    icon_color: >
+     if (state >= 40) return 'green'; 
+     if (state >= 20) return 'orange';
+     return 'red';
+#### Buanderie ######   
+sensor.co_buanderie_battery:
+  templates:
+    icon_color: >
+     if (state >= 40) return 'green'; 
+     if (state >= 20) return 'orange';
+     return 'red';
+     
+#### Buanderie ######   
+sensor.ir_buanderie_battery:
+  templates:
+    icon_color: >
+     if (state >= 40) return 'green'; 
+     if (state >= 20) return 'orange';
+     return 'red';
+
+#### CO Colis ######   
+sensor.co_boite_aux_lettres_colis_battery:
+  templates:
+    icon_color: >
+     if (state >= 40) return 'green'; 
+     if (state >= 20) return 'orange';
+     return 'red';
+     
+#### CO Lettre ######  
+sensor.co_boite_aux_lettres_lettres_battery:
+  templates:
+    icon_color: >
+     if (state >= 40) return 'green'; 
+     if (state >= 20) return 'orange';
+     return 'red';
+     
+#### Buanderie ######        
+sensor.detecteur_incendie_buanderie_battery_level_5:
+  templates:
+    icon_color: >
+     if (state >= 40) return 'green'; 
+     if (state >= 20) return 'orange';
+     return 'red';
+#### Chambre rue ######          
+sensor.detecteur_incendie_chambre_clarence_battery_level_4:
+  templates:
+    icon_color: >
+     if (state >= 40) return 'green'; 
+     if (state >= 20) return 'orange';
+     return 'red';
+     
+#### SAM ######  
+sensor.detecteur_incendie_sam_battery_level:
+  templates:
+    icon_color: >
+     if (state >= 40) return 'green'; 
+     if (state >= 20) return 'orange';
+     return 'red';
+
+sensor.detecteurincendie_entree_battery_level_2:
+  templates:
+    icon_color: >
+     if (state >= 40) return 'green'; 
+     if (state >= 20) return 'orange';
+     return 'red';
+     
+#### GARAGE ######  
+sensor.detecteur_incendie_garage_battery_level_6:
+  templates:
+    icon_color: >
+     if (state >= 40) return 'green'; 
+     if (state >= 20) return 'orange';
+     return 'red';
+
+sensor.detecteur_incendie_couloir_battery_level_3:
+  templates:
+    icon_color: >
+     if (state >= 40) return 'green'; 
+     if (state >= 20) return 'orange';
+     return 'red';
+     
+#### CUISINE ######  
+sensor.zp3102_pir_motion_sensor_battery_level:
+  templates:
+    icon_color: >
+     if (state >= 40) return 'green'; 
+     if (state >= 20) return 'orange';
+     return 'red';
+     
+#### COULOIR ######        
+sensor.zp3102_pir_motion_sensor_battery_level_2:
+  templates:
+    icon_color: >
+     if (state >= 40) return 'green'; 
+     if (state >= 20) return 'orange';
+     return 'red';
+###### IR Garage ######
+sensor.ir_garage_battery:
+  templates:
+    icon_color: >
+     if (state >= 40) return 'green'; 
+     if (state >= 20) return 'orange';
+     return 'red';
+     
+###### IR Salon ######
+sensor.zp3102_pir_motion_sensor_battery_level_3:
+  templates:
+    icon_color: >
+     if (state >= 40) return 'green'; 
+     if (state >= 20) return 'orange';
+     return 'red';
+
+
+
+###### Clima Ch Jardin ######
+sensor.degc_clima_chambre_jardin_battery:
+  templates:
+    icon_color: >
+     if (state >= 40) return 'green'; 
+     if (state >= 20) return 'orange';
+     return 'red';
+###### Clima Ch parents ######
+sensor.degc_clima_chambre_parents_battery:
+  templates:
+    icon_color: >
+     if (state >= 40) return 'green'; 
+     if (state >= 20) return 'orange';
+     return 'red';
+
+###### Clima Ch rue ######
+sensor.degc_clima_chambre_clarence_battery:
+  templates:
+    icon_color: >
+     if (state >= 40) return 'green'; 
+     if (state >= 20) return 'orange';
+     return 'red';
+###### Clima entree ######
+sensor.degc_clima_entree_battery:
+  templates:
+    icon_color: >
+     if (state >= 40) return 'green'; 
+     if (state >= 20) return 'orange';
+     return 'red';
+
+sensor.c_clima_buanderie_battery_level:
+  templates:
+    icon_color: >
+     if (state >= 40) return 'green'; 
+     if (state >= 20) return 'orange';
+     return 'red';
+
+
+
+############################################################## IRs ##########################################################   
+sensor.ir_couloir_battery_level_3:
+  templates:
+    icon: >
+      if (state == 'on') return 'mdi:run';
+      if (state == 'off') return 'mdi:walk';
+    icon_color: >
+      if (state == 'on') return 'red';
+sensor.ir_cuisine_battery_level:
+  templates:
+    icon: >
+      if (state == 'on') return 'mdi:run';
+      if (state == 'off') return 'mdi:walk';
+    icon_color: >
+      if (state == 'on') return 'red';
+sensor.ir_salon_battery_level_2:
+  templates:
+    icon: >
+      if (state == 'on') return 'mdi:run';
+      if (state == 'off') return 'mdi:walk';
+    icon_color: >
+      if (state == 'on') return 'red';
+##### Garage #########      
+binary_sensor.lumi_lumi_sensor_motion_aq2_afe94c05_ias_zone:
+  templates:
+    icon_color: >
+      if (state == 'on') return 'red';
+##### Buanderie #########         
+binary_sensor.lumi_lumi_sensor_motion_aq2_d47e8a05_ias_zone:
+  templates:
+     icon_color: >
+      if (state == 'on') return 'red';
+      

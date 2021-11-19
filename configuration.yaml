@@ -1,0 +1,240 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+lovelace:
+  resources:
+    - url: /local/community/lovelace-multiple-entity-row/multiple-entity-row.js
+      type: module
+    - url: /local/community/lovelace-climate-mode-entity-row/climate-mode-entity-row.js
+      type: module
+      
+frontend:
+  extra_module_url:
+    - /local/custom-ui/custom-ui.js
+    
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+input_select: !include input_select.yaml
+utility_meter: !include utility_meter.yaml
+sensor: !include sensors.yaml
+binary_sensor: !include binary_sensors.yaml
+shell_command: !include shellCommand.yaml
+notify: !include notify.yaml
+climate: !include climate.yaml
+switch: !include switchs.yaml
+input_text: !include input_text.yaml
+light: !include light.yaml
+input_number: !include input_number.yaml
+input_datetime: !include input_dateTime.yaml
+input_boolean: !include input_boolean.yaml
+
+homeassistant:
+  customize: !include customize.yaml
+
+wake_on_lan:
+
+########################################## DATABASE ##################################################################################################
+recorder:
+  db_url: !secret url_posgres_db
+  purge_interval: 2
+  purge_keep_days: 90
+  include:
+    domains:
+      - sensor
+      - switch
+      - binary_sensor
+  exclude:
+    domains:
+      - weblink
+      - updater
+      - input_boolean
+      - input_number
+      - input_select
+      - input_text
+      - light
+      - media_player
+      - sun
+      - timer
+      - weather
+      - camera
+      - automation
+    entity_globs:
+      - sensor.weather_*
+      - sensor.sensor.ups_*
+      - binary_sensor.huawei_*
+      - switch.echo_*
+    entities:
+      - sun.sun # Don't record sun data
+      - sensor.last_boot # Comes from 'systemmonitor' sensor platform
+      - sensor.date
+      - sensor.hacs
+    event_types:
+      - service_removed
+      - service_executed
+      - platform_discovered
+      - homeassistant_start
+      - homeassistant_stop      
+      - feedreader
+      - service_registered
+      - call_service
+      - component_loaded
+      - logbook_entry
+      - system_log_event
+      - automation_triggered
+      - script_started
+      - timer_out_of_sync
+      
+# influxdb:
+#   host: a0d7b954-influxdb
+#   port: 8086
+#   database: homeAssistant
+#   username: !secret influxdb_user
+#   password: !secret influxdb_pwd
+#   max_retries: 3
+#   default_measurement: state
+#   tags_attributes:
+#     - friendly_name
+#     - hidden
+#   exclude:
+#     domains:
+#       - automation
+#       - group
+
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+discovery:
+
+http:
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+
+
+mqtt:
+  broker: core-mosquitto
+  username: !secret mosquitto_username
+  password: !secret mosquitto_password
+  discovery: true
+  
+
+#Zwave mise à jour openzwave
+# zwave:
+#  usb_path: /dev/ttyACM0
+#  config_path: /config/z-wave/open-zwave/config
+
+#Google Agenda
+google:
+  client_id: !secret google_id
+  client_secret: !secret google_key
+ 
+ 
+########################################## TELEGRAM ##################################################################################################
+
+#TELEGRAM
+telegram_bot:
+  - platform: polling
+    api_key: !secret telegram_token
+    allowed_chat_ids:
+      - !secret telegram_pascal_id
+      - !secret telegram_stephanie_id
+      - !secret telegram_eloise_id
+
+########################################## ALEXA ##################################################################################################
+
+
+# # Alexa media player set up
+# alexa_media:
+#   accounts:
+#     - email: !secret username_amazon
+#       password: !secret password_amazon
+#       url: "amazon.fr"
+
+########################################## DOORBIRD ##################################################################################################
+
+#Doorbird
+doorbird:
+  devices:
+    - host: !secret DOORBIRD_IP
+      username: !secret DOORBIRD_USERNAME
+      password: !secret DOORBIRD_PASSWORD
+      token: !secret Token
+      name: Portier
+      events:
+        - carillon
+        - une_personne_sonne
+        - ouvrir_portail
+        - unit_2_bell
+
+# configuration SMS avec cle
+# sms:
+#   device: /dev/ttyUSB1
+
+
+
+########################################## MODEM GSM ##################################################################################################
+
+huawei_lte:
+  - url: http://192.169.8.1
+    username: !secret usernamegsm
+    password: !secret motdepassegsm
+    notify:
+      recipient:
+        - !secret stephanie_number
+        - !secret pascal_number
+
+rest_command:
+  truenas_shutdown:
+    url: http://192.168.0.140/api/v2.0/system/shutdown/
+    method: post
+    username: !secret truenas_user
+    password: !secret truenas_password
+    headers:
+      content-Type: application/json
+        
+########################################## ALARME ##################################################################################################
+
+alarm_control_panel:
+  - platform: manual
+    name: Alarme maison
+    code: "1234"
+    arming_time: 60
+    delay_time: 20
+    trigger_time: 4
+    disarmed:
+      trigger_time: 0
+    armed_night:
+      arming_time: 0
+      delay_time: 0
+    armed_home:
+      arming_time: 0
+      delay_time: 0
+########################################## ANDROID TV ##################################################################################################
+
+media_player:
+  - platform: androidtv
+    adb_server_ip: 192.168.0.90
+    name: Tab Cuisine
+    host: 192.168.0.168
+    
+
+######################################### VACUUM XIAOMI ########################################################################################
+# vacuum:
+#   - platform: xiaomi_miio
+#     host: 192.168.0.28
+#     token: 7231576b674d425647756d6272675054
+    
+#device_tracker:
+#   - platform: synology_srm
+#     host: 192.168.0.1
+#     username: !secret syno_username
+#     password: !secret syno_password
+#     port: 8001
+#   - platform: snmp
+#     host: 192.168.0.1
+#     community: Routeur
+#     baseoid: 1.3.6.1.4.1.8072.3.2.10

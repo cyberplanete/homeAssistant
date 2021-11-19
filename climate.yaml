@@ -1,0 +1,49 @@
+  - platform: qubino_wire_pilot
+    heater: light.radiateur_cuisine
+    name: radiateur_cuisine
+    sensor: sensor.ir_cuisine_air_temperature
+
+  - platform: qubino_wire_pilot
+    heater: light.radiateur_sam
+    name: radiateur_sam
+    sensor: sensor.ir_salon_air_temperature_2
+
+  - platform: qubino_wire_pilot
+    heater: light.radiateur_entree_level
+    name: radiateur_entree
+    sensor: sensor.degc_clima_entree_temperature
+
+  - platform: qubino_wire_pilot
+    heater: light.radiateur_etage_jardin_level_3
+    name: radiateur_ch_jardin
+    sensor: sensor.degc_clima_chambre_jardin_temperature
+
+  - platform: qubino_wire_pilot
+    heater: light.radiateur_etage_rue_level_4
+    name: radiateur_ch_rue
+    sensor: sensor.degc_clima_chambre_clarence_temperature
+
+  - platform: qubino_wire_pilot
+    heater: light.radiateur_buanderie_level_2
+    name: radiateur_buanderie
+    sensor: sensor.ir_buanderie_temperature
+    
+    
+    
+  - platform: generic_thermostat
+    name: Thermostat Cuisine
+    heater: light.radiateur_cuisine
+    target_sensor: sensor.mi_cuisine
+    min_temp: 15
+    max_temp: 21
+    ac_mode: false
+    target_temp: 17
+    cold_tolerance: 0.3
+    hot_tolerance: 0
+    min_cycle_duration:
+      seconds: 5
+    keep_alive:
+      minutes: 3
+    initial_hvac_mode: "off"
+    away_temp: 16
+    precision: 0.1

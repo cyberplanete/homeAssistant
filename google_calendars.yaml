@@ -1,0 +1,78 @@
+
+- cal_id: p#weeknum@group.v.calendar.google.com
+  entities:
+  - device_id: numeros_de_semaine
+    ignore_availability: true
+    name: "Num\xE9ros de semaine"
+    track: true
+
+- cal_id: pascal.joret@gmail.com
+  entities:
+  - device_id: pascal_joret_gmail_com
+    ignore_availability: true
+    name: pascal.joret@gmail.com
+    track: true
+    offset: "!!"
+
+- cal_id: joret.clarence@gmail.com
+  entities:
+  - device_id: joret_clarence_gmail_com
+    ignore_availability: true
+    name: joret.clarence@gmail.com
+    track: true
+    offset: "!!"
+
+- cal_id: eloise.joret@gmail.com
+  entities:
+  - device_id: eloise_joret_gmail_com
+    ignore_availability: true
+    name: eloise.joret@gmail.com
+    track: true
+  - device_id: reminder_nettoyage_sdb
+    name: Reminder Nettoyage SDB
+    track: true
+    search: "#Nettoyer salle de bain"
+    offset: "!!"
+
+- cal_id: family11212882908177741758@group.calendar.google.com
+  entities:
+  - device_id: famille
+    ignore_availability: true
+    name: Famille
+    track: true
+
+- cal_id: fr.french#holiday@group.v.calendar.google.com
+  entities:
+  - device_id: jours_feries_en_france
+    ignore_availability: true
+    name: "Jours f\xE9ri\xE9s en France"
+    track: true
+
+- cal_id: dupont.stephanie@gmail.com
+  entities:
+  - device_id: stephanie
+    ignore_availability: true
+    name: "St\xE9phanie"
+    track: true
+    offset: "!!"
+
+- cal_id: r02oc25nmlccmn498rt77umfrmd9d9pu@import.calendar.google.com
+  entities:
+  - device_id: notre_tableau
+    ignore_availability: true
+    name: Notre tableau
+    track: true
+
+- cal_id: 90kmsfbmhueurlhf74e6od3rc8@group.calendar.google.com
+  entities:
+  - device_id: domotique
+    ignore_availability: true
+    name: Domotique
+    track: true
+
+- cal_id: nshqh2b84dlrjnd2mhpiijo9hc@group.calendar.google.com
+  entities:
+  - device_id: pascal_pro
+    ignore_availability: true
+    name: Pascal Pro
+    track: true
