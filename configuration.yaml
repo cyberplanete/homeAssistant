@@ -179,13 +179,14 @@ doorbird:
 ########################################## MODEM GSM ##################################################################################################
 
 huawei_lte:
-  - url: http://192.169.8.1
+  - url: https://192.169.8.1
     username: !secret usernamegsm
     password: !secret motdepassegsm
     notify:
-      recipient:
-        - !secret stephanie_number
-        - !secret pascal_number
+        recipient:
+            - !secret stephanie_number
+            - !secret pascal_number
+
 
 rest_command:
   truenas_shutdown:

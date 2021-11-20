@@ -68,9 +68,17 @@ snapshot_cam_garage_vers_telegram:
   mode: single
   icon: mdi:cctv
 alexa_colis:
-  alias: Alexa - annonce un colis
+  alias: Notification - annoncer un colis
   sequence:
-  - service: notify.huawei_lte
+  - service: script.notification_sms_variable_message_obligatoire_stephanie_duplicate
+    data:
+      message: Un colis a été déposé dans la boite aux lettres !!!
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - service: script.notification_sms_variable_obligatoire_pascal
     data:
       message: Un colis a été déposé dans la boite aux lettres !!!
   - service: script.snapshot_doobird_telegram
@@ -84,24 +92,20 @@ eteindre_des_appareils_pour_la_nuit:
   alias: Alarme - Éteindre des appareils en mode nuit
   sequence:
   - type: turn_off
-    device_id: c32107b871cf3b58c686e3959867ce44
-    entity_id: switch.prise_outillage_switch_2
+    device_id: 3c5b5cf5f84886f42059d0a23d64ac09
+    entity_id: switch.prisetv_salon_switch
     domain: switch
   - type: turn_off
-    device_id: fdee8daf04786ab995308f316c379570
+    device_id: 4942a6bddcf769b3f7ec50a2877fe694
+    entity_id: switch.prise_bureau_chambre_clarence
+    domain: switch
+  - type: turn_off
+    device_id: 18a82f3877d876fdbb8f16e454b6f845
     entity_id: switch.onoff_tv_chambre_jardin_switch_2
     domain: switch
   - type: turn_off
-    device_id: 41e819de2b021fdddaf2ee5d9e3d246c
+    device_id: 87b502772e2fe9cb7c2dad2f09dbd72a
     entity_id: switch.onoff_tv_chambre_parent_switch
-    domain: switch
-  - type: turn_off
-    device_id: 7da117ce2c7f922758d08c7a12f9fe5d
-    entity_id: switch.prisetv_salon_switch
-    domain: switch
-  - type: turn_on
-    device_id: 1c2983f3b65682564333caca04d4e8a6
-    entity_id: switch.onoff_bureau_salon_switch_3
     domain: switch
   mode: single
   icon: mdi:alarm-bell
@@ -131,16 +135,12 @@ allumer_des_appareils_quand_alarme_eteinte:
   alias: Alarme - Allumer des appareils après mode nuit
   sequence:
   - type: turn_on
-    device_id: 1c2983f3b65682564333caca04d4e8a6
-    entity_id: switch.onoff_bureau_salon_switch_3
-    domain: switch
-  - type: turn_on
-    device_id: 7da117ce2c7f922758d08c7a12f9fe5d
-    entity_id: switch.prisetv_salon_switch
-    domain: switch
-  - type: turn_on
-    device_id: ed01ebc43447ff7bfedbfd8efde38a5d
+    device_id: 4942a6bddcf769b3f7ec50a2877fe694
     entity_id: switch.prise_bureau_chambre_clarence
+    domain: switch
+  - type: turn_on
+    device_id: 3c5b5cf5f84886f42059d0a23d64ac09
+    entity_id: switch.prisetv_salon_switch
     domain: switch
   mode: single
   icon: mdi:alarm-bell
@@ -237,18 +237,8 @@ notification_alexa_cuisine:
       data:
         type: announce
       message: '{{ message }}'
-  - service: notify.alexa_media_echo_cuisine
-    data:
-      message: a que coucou
   mode: single
   icon: mdi:cube
-notification_sms:
-  alias: Notification SMS
-  sequence:
-  - service: notify.huawei_lte
-    data:
-      message: '{{ message }}'
-  mode: single
 notification_alexa_clarence:
   alias: Alexa - Notification - Clarence
   sequence:
@@ -336,7 +326,10 @@ alarme_notification:
   - service: script.telegram_tous
     data:
       message: '{{ message }}'
-  - service: script.notification_sms
+  - service: script.notification_sms_variable_message_obligatoire_stephanie_duplicate
+    data:
+      message: '{{ message }}'
+  - service: script.notification_sms_variable_obligatoire_pascal
     data:
       message: '{{ message }}'
   mode: single
@@ -387,3 +380,19 @@ portails_ouvertures_des_portails_en_rentrant:
     domain: switch
   mode: single
   icon: hass:door
+notification_sms_variable_obligatoire_pascal:
+  alias: Notification SMS - Variable {{message}} obligatoire - Pascal
+  sequence:
+  - service: notify.huawei_lte
+    data:
+      target: 650295195
+      message: '{{ message }}'
+  mode: single
+notification_sms_variable_message_obligatoire_stephanie_duplicate:
+  alias: Notification SMS - Variable {{message}} obligatoire - Stephanie
+  sequence:
+  - service: notify.huawei_lte
+    data:
+      message: '{{ message }}'
+      target: 604420252
+  mode: single
