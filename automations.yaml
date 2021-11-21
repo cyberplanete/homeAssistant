@@ -81,17 +81,12 @@
     id: Notification - Courrier
   condition: []
   action:
-  - service: script.alexa_colis
-    data: {}
-    entity_id: media_player.joret_3eme_echo_dot
   - choose:
     - conditions:
       - condition: trigger
         id: Notification - Colis
       sequence:
       - service: script.alexa_colis
-        data: {}
-        entity_id: media_player.joret_3eme_echo_dot
     - conditions:
       - condition: trigger
         id: Notification - Courrier
@@ -110,12 +105,10 @@
   - platform: state
     entity_id: binary_sensor.ir_garage_occupancy
     to: 'on'
-    from: 'off'
     id: Lumière garage - Allumer
   - platform: state
     entity_id: binary_sensor.ir_garage_occupancy
     to: 'off'
-    from: 'on'
     id: Lumière garage - Eteindre
     for:
       hours: 0
@@ -138,10 +131,11 @@
       - condition: trigger
         id: Lumière garage - Eteindre
       sequence:
-      - type: turn_off
-        device_id: bbc66fea8aa0736685f922ae89f70989
-        entity_id: light.multilevel_power_switch_instance_1_level
-        domain: light
+      - service: light.turn_on
+        data:
+          brightness: 0
+        target:
+          entity_id: light.multilevel_power_switch_instance_1_level
     default: []
   mode: single
 - id: '1605644746631'
@@ -593,6 +587,15 @@
     data:
       message: 'Rappel d''un évenement de votre agenda:  {{(states.calendar.pascal_joret_gmail_com.attributes.message)}}
         le  {{(states.calendar.pascal_joret_gmail_com.attributes.start_time)}}'
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  - service: script.notification_sms_variable_obligatoire_pascal
+    data:
+      message: 'Rappel d''un évenement de l''agenda famille:  {{(states.calendar.famille.attributes.message)}}
+        le  {{(states.calendar.famille.attributes.start_time)}}'
   mode: single
 - id: '1622562309284'
   alias: Rappel Agenda Eloise
@@ -613,6 +616,15 @@
     data:
       message: 'Rappel d''un évenement de votre agenda:  {{(states.calendar.eloise_joret_gmail_com.attributes.message)}}
         le  {{(states.calendar.eloise_joret_gmail_com.attributes.start_time)}}'
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  - service: notify.sms_eloise
+    data:
+      message: 'Rappel d''un évenement de l''agenda famille:  {{(states.calendar.famille.attributes.message)}}
+        le  {{(states.calendar.famille.attributes.start_time)}}'
   mode: single
 - id: '1622569565669'
   alias: Rappel Agenda Clarence
@@ -633,6 +645,15 @@
     data:
       message: 'Rappel d''un évenement de votre agenda:  {{(states.calendar.joret_clarence_gmail_com.attributes.message)}}
         le  {{(states.calendar.joret_clarence_gmail_com.attributes.start_time)}}'
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  - service: notify.sms_clarence
+    data:
+      message: 'Rappel d''un évenement de l''agenda famille:  {{(states.calendar.famille.attributes.message)}}
+        le  {{(states.calendar.famille.attributes.start_time)}}'
   mode: single
 - id: '1637085470962'
   alias: Chauffage - rez de chaussée - En Semaine
@@ -719,8 +740,6 @@
         - wed
         - thu
         - fri
-        - sat
-        - sun
       sequence:
       - service: climate.set_preset_mode
         target:
@@ -768,7 +787,7 @@
           message: '"Passage du radiateur de la cuisine en mode eco"'
     - conditions:
       - condition: trigger
-        id: weekend
+        id: weekend_cuisine
       - condition: or
         conditions:
         - condition: time
@@ -789,8 +808,6 @@
           - sat
           - sun
           after: '19:00:00'
-      - condition: trigger
-        id: weekend_cuisine
       sequence:
       - service: climate.set_preset_mode
         target:
@@ -985,7 +1002,11 @@
               data:
                 type: announce
               message: Attention!!! Alerte incendie sur {{trigger.to_state.attributes.friendly_name}}
-          - delay: '20'
+          - delay:
+              hours: 0
+              minutes: 20
+              seconds: 0
+              milliseconds: 0
           - service: notify.alexa_media_echo_eloise
             data:
               data:
@@ -1049,10 +1070,19 @@
                 - condition: state
                   entity_id: binary_sensor.detecteur_inondation_buanderie_water_leak_state
                   state: 'on'
-                  for: '10'
+                  for:
+                    hours: 0
+                    minutes: 0
+                    seconds: 10
+                    milliseconds: 0
                 - condition: state
                   entity_id: group.detecteurs_inondation
                   state: 'on'
+                  for:
+                    hours: 0
+                    minutes: 0
+                    seconds: 10
+                    milliseconds: 0
               sequence:
               - service: notify.alexa_media_echo_cuisine
                 data:
@@ -1081,7 +1111,7 @@
         entity_id: alarm_control_panel.blink_maison
       - service: script.alarme_notification
         data:
-          message: Alarme est en cours d'activation. Reste 60 secondes avant activation
+          message: Alarme est en cours d'activation. 60 secondes avant activation
       - service: alarm_control_panel.alarm_arm_away
         data: {}
         entity_id: alarm_control_panel.blink_maison
@@ -1101,7 +1131,11 @@
           - service: script.alexa_notification_tous
             data:
               message: Attention une intrusion a été détectée!!!
-          - delay: '10'
+          - delay:
+              hours: 0
+              minutes: 10
+              seconds: 10
+              milliseconds: 0
       - service: script.snapshot_cam_garage_vers_telegram
         data: {}
       - service: script.alarme_notification
@@ -1230,7 +1264,7 @@
             device_id: ee8663b349afc7665d58051c2ba8f255
             entity_id: sensor.temperature_ballon_eau_chaude
             domain: sensor
-            below: 43
+            below: 45
         - condition: device
           type: is_off
           device_id: 66df720f2014d4da4f744175d7052986

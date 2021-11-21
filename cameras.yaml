@@ -1,0 +1,25 @@
+  - platform: xiaomi_cloud_map_extractor
+    name: Aspirateur etage
+    host: !secret xiaomi_vacuum_host_etage
+    token: !secret xiaomi_vacuum_token_etage
+    username: !secret xiaomi_cloud_username
+    password: !secret xiaomi_cloud_password
+    store_map_raw: true
+    force_api: dreame
+    country: de
+    draw: ['all']
+    attributes:
+      - calibration_points
+      
+  - platform: xiaomi_cloud_map_extractor
+    name: Aspirateur_Salon
+    host: !secret xiaomi_vacuum_host_salon
+    token: !secret xiaomi_vacuum_token_salon
+    username: !secret xiaomi_cloud_username
+    password: !secret xiaomi_cloud_password
+    store_map_raw: true
+    force_api: dreame
+    draw: ['all']
+    country: de
+    attributes:
+      - calibration_points

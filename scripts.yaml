@@ -76,7 +76,7 @@ alexa_colis:
   - delay:
       hours: 0
       minutes: 0
-      seconds: 5
+      seconds: 10
       milliseconds: 0
   - service: script.notification_sms_variable_obligatoire_pascal
     data:
@@ -145,7 +145,7 @@ allumer_des_appareils_quand_alarme_eteinte:
   mode: single
   icon: mdi:alarm-bell
 telegram_tous:
-  alias: Telegram - Notification - Tous
+  alias: Telegram - Notification Variable {{message}} obligatoire - Tous
   sequence:
   - service: notify.telegram_pascal
     data:
@@ -156,10 +156,6 @@ telegram_tous:
   - service: notify.telegram_eloise
     data:
       message: '{{ message }}'
-  - service: telegram_bot.send_message
-    data:
-      target: '2099122657'
-      message: '''{{ message }}'''
   mode: single
 envoyer_last_move_doorbird_via_telegram_duplicate:
   alias: Doorbird - Envoyer last_motion via telegram
@@ -217,13 +213,21 @@ snapshot_doobird_telegram:
   mode: single
   icon: mdi:camera-front
 alexa_courrier:
-  alias: Alexa - annonce un courrier
+  alias: Notification - annonce un courrier
   sequence:
-  - service: script.notification_sms
+  - service: script.notification_sms_variable_message_obligatoire_stephanie_duplicate
     data:
       message: Du courrier a été déposé dans la boite aux lettres !!!
   - service: script.snapshot_doobird_telegram
     data: {}
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  - service: script.notification_sms_variable_obligatoire_pascal
+    data:
+      message: Du courrier a été déposé dans la boite aux lettres !!!
   - service: script.notification_alexa_cuisine
     data:
       message: Du courrier a été déposé dans la boite aux lettres !!!
@@ -304,17 +308,14 @@ alexa_notification_tous:
   mode: single
   icon: mdi:cube
 telegram_notification_pascal:
-  alias: Telegram - Notification - Pascal
+  alias: Telegram - Notification Variable {{message}} obligatoire - Pascal
   sequence:
   - service: notify.telegram_pascal
     data:
       message: '{{ message }}'
-  - service: notify.telegram_stephanie
-    data:
-      message: '{{ message }}'
   mode: single
 telegram_notification_stephanie:
-  alias: Telegram - Notification - Stephanie
+  alias: Telegram - Notification Variable {{message}} obligatoire - Stephanie
   sequence:
   - service: notify.telegram_stephanie
     data:
