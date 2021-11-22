@@ -397,3 +397,54 @@ notification_sms_variable_message_obligatoire_stephanie_duplicate:
       message: '{{ message }}'
       target: 604420252
   mode: single
+notification_sms_variable_message_obligatoire_eloise:
+  alias: 'Notification SMS - Variable {{message}} obligatoire - Eloise '
+  sequence:
+  - service: notify.huawei_lte
+    data:
+      message: '{{ message }}'
+      target: 651213063
+  mode: single
+notification_sms_variable_message_obligatoire_clarence:
+  alias: Notification SMS - Variable {{message}} obligatoire - Clarence
+  sequence:
+  - service: notify.huawei_lte
+    data:
+      message: '{{ message }}'
+      target: 752031947
+  mode: single
+notification_sms_variable_message_obligatoire_tous:
+  alias: Notification SMS - Variable {{message}} obligatoire - Tous
+  sequence:
+  - service: notify.huawei_lte
+    data:
+      message: '{{ message }}'
+      target: 604420252
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - service: notify.huawei_lte
+    data:
+      message: '{{ message }}'
+      target: 752031947
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - service: notify.huawei_lte
+    data:
+      message: '{{ message }}'
+      target: 651213063
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - service: notify.huawei_lte
+    data:
+      target: 650295195
+      message: '{{ message }}'
+  mode: single

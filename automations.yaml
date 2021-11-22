@@ -4,18 +4,39 @@
   trigger: []
   condition: []
   action:
+  - service: script.telegram_notification_tous
+    data:
+      message: "Alerte météo {{states('sensor.44_weather_alert')}} en cours:\n {%-\
+        \ for attr in ['Vent violent', 'Pluie-inondation', 'Orages', 'Inondation',\
+        \ 'Neige-verglas', 'Canicule', 'Grand-froid', 'Avalanches', 'Vagues-submersion']\
+        \ -%} {%- if state_attr('sensor.44_weather_alert', attr) != '' and state_attr('sensor.44_weather_alert',\
+        \ attr) != None %}\n - {{attr}} : {{state_attr('sensor.44_weather_alert',\
+        \ attr)}} {%- endif -%} {% endfor -%}"
+  - service: script.notification_sms_variable_obligatoire_tous
+    data:
+      message: 'Alerte météo!! {{states(''sensor.44_weather_alert'')}} en cours: {%-
+        for attr in [''Vent violent'', ''Pluie-inondation'', ''Orages'', ''Inondation'',
+        ''Neige-verglas'',''Canicule'', ''Grand-froid'', ''Avalanches'', ''Vagues-submersion'']
+        -%} {%- if state_attr(''sensor.44_weather_alert'', attr) != ''Vert'' and state_attr(''sensor.44_weather_alert'',
+        attr) != None %} - {{attr}} : {{state_attr(''sensor.44_weather_alert'', attr)}}
+        {%- endif -%} {% endfor -%}'
   - service: notify.huawei_lte
     data:
       message: test
-  - service: notify.sms_pascal
+      target: 650295195
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - service: script.notification_sms_variable_obligatoire_pascal
     data:
-      message: test
+      message: test2
   - service: notify.alexa_media_cuisine_echo_dot
     data:
       data:
         type: tts
-      message: lesalexiens.fr  premier site francophone dactualité consacré à Alexa
-        et aux appareils Amazon Echo
+      message: A que coucou
   mode: single
 - id: '1603972802135'
   alias: Test - Demo Alexa et sms
@@ -573,13 +594,13 @@
   description: ''
   trigger:
   - platform: state
-    entity_id: sensor.rappel_agenda
+    entity_id: sensor.rappel_agenda_pascal
     to: '120'
   - platform: state
-    entity_id: sensor.rappel_agenda
+    entity_id: sensor.rappel_agenda_pascal
     to: '1440'
   - platform: state
-    entity_id: sensor.rappel_agenda
+    entity_id: sensor.rappel_agenda_pascal
     to: '2880'
   condition: []
   action:
@@ -930,6 +951,11 @@
   - platform: time
     at: 06:30:00
     id: Désactivation auto de l'alarme nuit
+  - platform: state
+    entity_id: alarm_control_panel.alarme_maison
+    to: armed_home
+    id: Alarme_Activé
+    from: arming
   condition: []
   action:
   - choose:
@@ -938,9 +964,7 @@
         id: AlarmeNuit
       sequence:
       - service: script.eteindre_des_appareils_pour_la_nuit
-      - service: alarm_control_panel.alarm_arm_away
-        data: {}
-        entity_id: alarm_control_panel.blink_maison
+      - service: alarm_control_panel.alarm_arm_night
       - service: notify.telegram_stephanie
         data:
           message: Alarme pour la nuit est maintenant activée à {{ states('sensor.time')
@@ -957,7 +981,7 @@
             activée!!!</amazon:effect>
     - conditions:
       - condition: trigger
-        id: AlarmeTotale
+        id: Alarme_Activé
       sequence:
       - service: notify.alexa_media_cuisine_echo_dot
         data:
@@ -1472,3 +1496,47 @@
         type: brightness_decrease
     default: []
   mode: single
+- id: '1637527686440'
+  alias: Notification pour alerte météo
+  description: Envoie une notification sur Telegram si une alerte météo est levée
+    par Météo-France
+  trigger:
+  - platform: state
+    entity_id: sensor.44_weather_alert
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: sensor.44_weather_alert
+        state: Jaune,Orange,Rouge
+      sequence:
+      - service: script.telegram_notification_tous
+        data:
+          message: "Alerte météo {{states('sensor.44_weather_alert')}} en cours:\n\
+            \ {%- for attr in ['Vent violent', 'Pluie-inondation', 'Orages', 'Inondation',\
+            \ 'Neige-verglas', 'Canicule', 'Grand-froid', 'Avalanches', 'Vagues-submersion']\
+            \ -%} {%- if state_attr('sensor.44_weather_alert', attr) != 'Vert' and\
+            \ state_attr('sensor.44_weather_alert', attr) != None %}\n - {{attr}}\
+            \ : {{state_attr('sensor.44_weather_alert', attr)}} {%- endif -%} {% endfor\
+            \ -%}"
+      - service: script.notification_sms_variable_message_obligatoire_tous
+        data:
+          message: 'Alerte météo!! {{states(''sensor.44_weather_alert'')}} en cours:
+            {%- for attr in [''Vent violent'', ''Pluie-inondation'', ''Orages'', ''Inondation'',
+            ''Neige-verglas'',''Canicule'', ''Grand-froid'', ''Avalanches'', ''Vagues-submersion'']
+            -%} {%- if state_attr(''sensor.44_weather_alert'', attr) != ''Vert'' and
+            state_attr(''sensor.44_weather_alert'', attr) != None %} - {{attr}} :
+            {{state_attr(''sensor.44_weather_alert'', attr)}} {%- endif -%} {% endfor
+            -%}'
+    - conditions:
+      - condition: state
+        entity_id: sensor.44_weather_alert
+        state: Vert
+      sequence:
+      - service: script.telegram_tous
+        data:
+          message: Fin de l'alerte météo.
+      - service: script.notification_sms_variable_message_obligatoire_tous
+        data:
+          message: Fin de l'alerte météo.
