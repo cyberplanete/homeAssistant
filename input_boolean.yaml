@@ -1,3 +1,19 @@
-         doorbell_raw:
+      doorbell_raw:
             name: Etat Radiateur cuisine
             initial: off
+            
+      aspirateur_hallentree:
+        name: Hall d'entree
+        icon: mdi:foot-print
+      aspirateur_couloirentree:
+        name: Couloir entree
+        icon: mdi:foot-print        
+      aspirateur_salon:
+        name: Salon
+        icon: mdi:sofa
+      aspirateur_sam:
+        name: Salle à manger
+        icon: mdi:table-furniture
+      aspirateur_cuisine:
+        name: Cuisine
+        icon: mdi:silverware-fork-knife

@@ -38,8 +38,8 @@
       - binary_sensor.detecteur_incendie_chambre_clarence_smoke_alarm_smoke_detected_4
     # Buanderie 
       - binary_sensor.detecteur_incendie_buanderie_smoke_alarm_smoke_detected_5
-    # # Garage 
-      - binary_sensor.detecteur_incendie_garage_smoke_alarm_smoke_detected_6
+    # # # Garage 
+    #   - binary_sensor.detecteur_incendie_garage_smoke_alarm_smoke_detected_6
 
 
   detecteurs_inondation:
@@ -57,3 +57,13 @@
 #      - switch.onoff_home_cinema_switch_2
       - switch.prise_outillage_switch_2
       - switch.prise_bureau_chambre_clarence
+
+
+  aspirateurs_rooms:
+      name: PiècesRDCAspirateur
+      entities:
+        - input_boolean.aspirateur_hallentree
+        - input_boolean.aspirateur_couloirentree
+        - input_boolean.aspirateur_cuisine
+        - input_boolean.aspirateur_cam
+        - input_boolean.aspirateur_salon

@@ -354,3 +354,18 @@ binary_sensor.lumi_lumi_sensor_motion_aq2_d47e8a05_ias_zone:
      icon_color: >
       if (state == 'on') return 'red';
       
+      
+############################################################## Aspirateur Pieces ##########################################################       
+
+
+input_boolean.aspirateur_hallentree:
+    room_id: "1"
+input_boolean.aspirateur_couloirentree:
+    room_id: "5"
+input_boolean.aspirateur_cuisine:
+    room_id: "2"
+input_boolean.aspirateur_sam:
+    room_id: "3"
+input_boolean.aspirateur_salon:
+    room_id: "4"
+      
