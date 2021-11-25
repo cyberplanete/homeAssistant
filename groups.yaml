@@ -7,7 +7,7 @@
       - binary_sensor.co_buanderie_contact
       - binary_sensor.ir_garage_occupancy
       - binary_sensor.ir_cuisine_any
-      - binary_sensor.ir_salon_any_2
+      - binary_sensor.ir_salon_occupancy
       - binary_sensor.ir_couloir_any_3
       - binary_sensor.ir_buanderie_occupancy
   alarme_nuit_detecteurs:

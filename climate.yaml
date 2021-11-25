@@ -28,5 +28,17 @@
     name: radiateur_buanderie
     sensor: sensor.ir_buanderie_temperature
     
+  - platform: qubino_wire_pilot
+    heater: light.radiateur_chambre_parents
+    name: radiateur_ch_parents
+    sensor: sensor.degc_clima_chambre_parents_temperature
     
+  - platform: qubino_wire_pilot
+    heater: light.radiateur_couloir_etage
+    name: radiateur_couloir_etage
+    sensor: sensor.ir_couloir_etage_temperature    
     
+  - platform: qubino_wire_pilot
+    heater: light.radiateur_sdb
+    name: radiateur_sdb
+    sensor: sensor.ir_couloir_etage_temperature

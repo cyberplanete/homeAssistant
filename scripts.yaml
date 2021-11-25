@@ -468,3 +468,61 @@ aspirateur_nettoyage_segments_message:
       topic: valetudo/aspirateur_rdc_dream_d9/MapSegmentationCapability/clean/set
       payload_template: '{"segment_ids": {{segments}}}'
   mode: single
+alarme_passage_des_radiateurs_en_mode_eco:
+  alias: Alarme - passage des radiateurs en mode Eco
+  sequence:
+  - service: climate.set_preset_mode
+    target:
+      entity_id:
+      - climate.radiateur_buanderie
+    data:
+      preset_mode: eco
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - service: climate.set_preset_mode
+    target:
+      entity_id:
+      - climate.radiateur_ch_jardin
+    data:
+      preset_mode: eco
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - service: climate.set_preset_mode
+    target:
+      entity_id:
+      - climate.radiateur_ch_rue
+    data:
+      preset_mode: eco
+  - service: climate.set_preset_mode
+    target:
+      entity_id:
+      - climate.radiateur_cuisine
+    data:
+      preset_mode: eco
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - service: climate.set_preset_mode
+    target:
+      entity_id:
+      - climate.radiateur_sam
+    data:
+      preset_mode: eco
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - service: script.telegram_tous
+    data:
+      message: ' Passage des radiateurs en mode eco pour la nuit'
+  mode: single
+  icon: mdi:radiator-off

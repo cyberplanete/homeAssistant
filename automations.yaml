@@ -328,16 +328,42 @@
 - id: '1610552427664'
   alias: Test Variable
   description: ''
-  trigger:
-  - platform: state
-    entity_id: group.alarme_absence_detecteurs
-    to: 'on'
+  trigger: []
   condition: []
   action:
   - service: notify.telegram_pascal
     data:
       message: Attention!!! intrusion détectée "{% for state in states|selectattr('entity_id','in',state_attr('group.alarme_absence_detecteurs','entity_id'))|selectattr('state','eq','on')|list
         -%}{{state.name+', '}}{%- endfor %}"
+  - service: script.telegram_tous
+    data:
+      message: Alarme pour la nuit est maintenant activée à {{ states('sensor.time')
+        }}
+  - service: script.telegram_to
+    data:
+      message: 'Coucou ... bulletin méteo... Une journée{% set condition = (states.weather.la_chevroliere.attributes.forecast[0].condition)
+        %} {% set conditions = {''clear-night'': ''nuit claire'', ''cloudy'': ''nuageuse'',
+        ''exceptional'': ''exceptionnelle'', ''fog'': '' avec broullard'', ''hail'':
+        ''grêle'', ''lightning'': ''Orageuse'', ''lightning-rainy'': ''orageuse avec
+        de la pluie'', ''partlycloudy'': ''partiellement nuageuse'', ''pouring'':
+        '' avec pluie torentielle'', ''rainy'': ''pluvieuse'', ''snowy'': ''avec de
+        la neige'', ''snowy-rainy'': '' avec neige et pluvieuse'', ''sunny'': ''ensoleillé'',
+        ''windy'': ''Venteuse'', ''windy-variant'': ''variante venteuse''} %} {{ conditions[condition]
+        }} est attendue aujourd''hui , avec une température moyenne de {{state_attr(''weather.la_chevroliere'',
+        ''forecast'')[0].temperature }}°C et un minimum de {{state_attr(''weather.la_chevroliere'',
+        ''forecast'')[0].templow }}°C. Demain une journée {% set condition = (states.weather.la_chevroliere.attributes.forecast[1].condition)
+        %} {% set conditions = {''clear-night'': ''nuit claire'', ''cloudy'': ''nuageuse'',
+        ''exceptional'': ''exceptionnelle'', ''fog'': '' avec broullard'', ''hail'':
+        ''grêle'', ''lightning'': ''Orageuse'', ''lightning-rainy'': ''orageuse avec
+        de la pluie'', ''partlycloudy'': ''partiellement nuageuse'', ''pouring'':
+        '' avec pluie torentielle'', ''rainy'': ''pluvieuse'', ''snowy'': ''avec de
+        la neige'', ''snowy-rainy'': '' avec neige et pluvieuse'', ''sunny'': ''ensoleillé'',
+        ''windy'': ''Venteuse'', ''windy-variant'': ''variante venteuse''} %} {{ conditions[condition]
+        }} est prévue avec une température maxi de {{state_attr(''weather.la_chevroliere'',
+        ''forecast'')[1].temperature }}'
+  - service: script.notification_alexa_cuisine
+    data:
+      message: Alarme activée à {{ states('sensor.time') }}
   mode: single
 - id: '1610711662990'
   alias: Notification - Portail garage ouverture fermeture
@@ -678,9 +704,8 @@
   mode: single
 - id: '1637085470962'
   alias: Chauffage - rez de chaussée - En Semaine
-  description: Le chauffage de la cuisine se déclenche pour le petit déjeuner des
-    enfants . Quand le chauffage de la buanderie est déclenche, le radiateur cuisine
-    sera éteind après un délai défini dans le script
+  description: Le chauffage de la buanderie se déclenche pour le petit déjeuner des
+    enfants .
   trigger:
   - platform: time
     at: input_datetime.radiateur_cuisine_on_only_time
@@ -695,9 +720,15 @@
     at: input_datetime.radiateur_buanderie_off_only_time
     id: Radiateur Buanderie off
   - platform: time_pattern
-    id: weekend_cuisine
+    id: weekend_buanderie
     minutes: '5'
     seconds: '0'
+  - platform: time
+    at: input_datetime.radiateur_sam_on_only_time
+    id: Radiateur SAM on
+  - platform: time
+    at: input_datetime.radiateur_sam_off_only_time
+    id: Radiateur SAM off
   condition: []
   action:
   - choose:
@@ -711,30 +742,19 @@
         - wed
         - thu
         - fri
+        after: input_datetime.radiateur_buanderie_on_only_time
+      - condition: template
+        value_template: '{{state_attr(''climate.radiateur_buanderie'', ''preset_mode'')
+          != ''comfort''}}'
       sequence:
       - service: climate.set_preset_mode
         target:
           entity_id: climate.radiateur_buanderie
         data:
           preset_mode: comfort
-      - delay:
-          hours: 0
-          minutes: 30
-          seconds: 0
-          milliseconds: 0
-      - service: climate.set_preset_mode
-        target:
-          entity_id: climate.radiateur_cuisine
-        data:
-          preset_mode: eco
       - service: script.telegram_tous
         data:
-          message: '"Passage du radiateur de la cuisine en mode eco"'
-      - service: notify.alexa_media_echo_cuisine
-        data:
-          data:
-            type: announce
-          message: '"Passage du radiateur de la cuisine en mode eco"'
+          message: '"Passage du radiateur buanderie en mode confort"'
     - conditions:
       - condition: trigger
         id: Radiateur cuisine
@@ -745,6 +765,10 @@
         - wed
         - thu
         - fri
+        after: input_datetime.radiateur_cuisine_on_only_time
+      - condition: template
+        value_template: '{{state_attr(''climate.radiateur_cuisine'', ''preset_mode'')
+          != ''comfort''}}'
       sequence:
       - service: climate.set_preset_mode
         target:
@@ -761,27 +785,24 @@
         - wed
         - thu
         - fri
+        after: input_datetime.radiateur_buanderie_off_only_time
+      - condition: template
+        value_template: '{{state_attr(''climate.radiateur_buanderie'', ''preset_mode'')
+          != ''eco''}}'
       sequence:
       - service: climate.set_preset_mode
         target:
           entity_id: climate.radiateur_buanderie
         data:
           preset_mode: eco
-      - service: climate.set_preset_mode
-        target:
-          entity_id: climate.radiateur_cuisine
-        data:
-          preset_mode: comfort
       - service: script.telegram_tous
         data:
-          message: '"Passage du radiateur de la buanderie en mode eco et activation
-            du mode confort pour le radiateur cuisine"'
+          message: '"Passage du radiateur de la buanderie en mode eco "'
       - service: notify.alexa_media_echo_cuisine
         data:
           data:
             type: announce
-          message: '"Passage du radiateur de la buanderie en mode eco et activation
-            du mode confort pour le radiateur cuisine"'
+          message: '"Passage du radiateur de la buanderie en mode eco "'
     - conditions:
       - condition: trigger
         id: Radiateur cuisine off
@@ -792,6 +813,11 @@
         - wed
         - thu
         - fri
+        after: input_datetime.radiateur_cuisine_off_only_time
+      - condition: device
+        device_id: ''
+        domain: ''
+        entity_id: ''
       sequence:
       - service: climate.set_preset_mode
         target:
@@ -808,7 +834,7 @@
           message: '"Passage du radiateur de la cuisine en mode eco"'
     - conditions:
       - condition: trigger
-        id: weekend_cuisine
+        id: weekend_buanderie
       - condition: or
         conditions:
         - condition: time
@@ -824,33 +850,88 @@
           - sun
           after: '11:00:00'
         - condition: time
-          before: '21:00:00'
+          before: '20:30:00'
           weekday:
           - sat
           - sun
-          after: '19:00:00'
+          after: '18:00:00'
+      - condition: template
+        value_template: '{{state_attr(''climate.radiateur_buanderie'', ''preset_mode'')
+          != ''comfort''}}'
       sequence:
       - service: climate.set_preset_mode
         target:
-          entity_id: climate.radiateur_cuisine
+          entity_id:
+          - climate.radiateur_buanderie
         data:
           preset_mode: comfort
       - service: notify.alexa_media_echo_cuisine
         data:
           data:
             type: announce
-          message: '"Passage du radiateur de la cuisine en mode confort"'
-    default:
-    - service: climate.set_preset_mode
-      target:
-        entity_id: climate.radiateur_cuisine
-      data:
-        preset_mode: eco
-    - service: notify.alexa_media_echo_cuisine
-      data:
+          message: '"Passage du radiateur de la buanderie en mode confort"'
+    - conditions:
+      - condition: and
+        conditions:
+        - condition: time
+          weekday:
+          - sat
+          - sun
+          before: 08:00:00
+          after: '20:00:00'
+        - condition: template
+          value_template: '{{state_attr(''climate.radiateur_buanderie'', ''preset_mode'')
+            != ''eco''}}'
+        - condition: trigger
+          id: weekend_buanderie
+      sequence:
+      - service: climate.set_preset_mode
+        target:
+          entity_id: climate.radiateur_buanderie
         data:
-          type: announce
-        message: '"Passage du radiateur de la cuisine en mode eco"'
+          preset_mode: eco
+      - service: notify.alexa_media_echo_cuisine
+        data:
+          data:
+            type: announce
+          message: '"Passage du radiateur de la buanderie en mode eco"'
+    - conditions:
+      - condition: trigger
+        id: Radiateur SAM on
+      - condition: template
+        value_template: '{{state_attr(''climate.radiateur_sam'', ''preset_mode'')
+          != ''comfort''}}'
+      sequence:
+      - service: climate.set_preset_mode
+        target:
+          entity_id: climate.radiateur_sam
+        data:
+          preset_mode: comfort
+    - conditions:
+      - condition: trigger
+        id: Radiateur SAM off
+      - condition: template
+        value_template: '{{state_attr(''climate.radiateur_sam'', ''preset_mode'')
+          != ''eco''}}'
+      sequence:
+      - service: climate.set_preset_mode
+        target:
+          entity_id: climate.radiateur_sam
+        data:
+          preset_mode: eco
+    - conditions:
+      - condition: trigger
+        id: Radiateur SAM off
+      - condition: template
+        value_template: '{{state_attr(''climate.radiateur_sam'', ''preset_mode'')
+          != ''eco''}}'
+      sequence:
+      - service: climate.set_preset_mode
+        target:
+          entity_id: climate.radiateur_sam
+        data:
+          preset_mode: eco
+    default: []
   mode: single
 - id: '1637268010654'
   alias: Notification - NAS-NETGEAR ou TRUENAS - ON
@@ -965,11 +1046,9 @@
       sequence:
       - service: script.eteindre_des_appareils_pour_la_nuit
       - service: alarm_control_panel.alarm_arm_night
-      - service: notify.telegram_stephanie
-        data:
-          message: Alarme pour la nuit est maintenant activée à {{ states('sensor.time')
-            }}
-      - service: notify.telegram_pascal
+        target:
+          entity_id: alarm_control_panel.blink_maison
+      - service: script.telegram_tous
         data:
           message: Alarme pour la nuit est maintenant activée à {{ states('sensor.time')
             }}
@@ -979,6 +1058,7 @@
             type: tts
           message: <amazon:effect name='whispered'>Alarme pour la nuit est maintenant
             activée!!!</amazon:effect>
+      - service: script.alarme_passage_des_radiateurs_en_mode_eco
     - conditions:
       - condition: trigger
         id: Alarme_Activé
@@ -1497,7 +1577,7 @@
     default: []
   mode: single
 - id: '1637527686440'
-  alias: Notification pour alerte météo
+  alias: Notification - météo alert
   description: Envoie une notification sur Telegram si une alerte météo est levée
     par Météo-France
   trigger:
@@ -1540,3 +1620,34 @@
       - service: script.notification_sms_variable_message_obligatoire_tous
         data:
           message: Fin de l'alerte météo.
+- id: '1637791913066'
+  alias: Notification - Prévision meteo
+  description: ''
+  trigger:
+  - platform: time
+    at: 07:15:00
+  condition: []
+  action:
+  - service: script.notification_sms_variable_message_obligatoire_tous
+    data:
+      message: 'Coucou ... bulletin méteo... Une journée{% set condition = (states.weather.la_chevroliere.attributes.forecast[0].condition)
+        %} {% set conditions = {''clear-night'': ''nuit claire'', ''cloudy'': ''nuageuse'',
+        ''exceptional'': ''exceptionnelle'', ''fog'': '' avec broullard'', ''hail'':
+        ''grêle'', ''lightning'': ''Orageuse'', ''lightning-rainy'': ''orageuse avec
+        de la pluie'', ''partlycloudy'': ''partiellement nuageuse'', ''pouring'':
+        '' avec pluie torentielle'', ''rainy'': ''pluvieuse'', ''snowy'': ''avec de
+        la neige'', ''snowy-rainy'': '' avec neige et pluvieuse'', ''sunny'': ''ensoleillé'',
+        ''windy'': ''Venteuse'', ''windy-variant'': ''variante venteuse''} %} {{ conditions[condition]
+        }} est attendue aujourd''hui , avec une température moyenne de {{state_attr(''weather.la_chevroliere'',
+        ''forecast'')[0].temperature }}°C et un minimum de {{state_attr(''weather.la_chevroliere'',
+        ''forecast'')[0].templow }}°C. Demain une journée {% set condition = (states.weather.la_chevroliere.attributes.forecast[1].condition)
+        %} {% set conditions = {''clear-night'': ''nuit claire'', ''cloudy'': ''nuageuse'',
+        ''exceptional'': ''exceptionnelle'', ''fog'': '' avec broullard'', ''hail'':
+        ''grêle'', ''lightning'': ''Orageuse'', ''lightning-rainy'': ''orageuse avec
+        de la pluie'', ''partlycloudy'': ''partiellement nuageuse'', ''pouring'':
+        '' avec pluie torentielle'', ''rainy'': ''pluvieuse'', ''snowy'': ''avec de
+        la neige'', ''snowy-rainy'': '' avec neige et pluvieuse'', ''sunny'': ''ensoleillé'',
+        ''windy'': ''Venteuse'', ''windy-variant'': ''variante venteuse''} %} {{ conditions[condition]
+        }} est prévue avec une température maxi de {{state_attr(''weather.la_chevroliere'',
+        ''forecast'')[1].temperature }}'
+  mode: single
