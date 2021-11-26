@@ -1,26 +1,12 @@
 # Radiateur Cuisine on
-  radiateur_cuisine_on_date_time:
-     name: Input with both date and time
-     has_date: true
-     has_time: true
-  radiateur_cuisine_on_only_date:
-    name: Input with only date
-    has_date: true
-    has_time: false
+
   radiateur_cuisine_on_only_time:
     name: Input with only time
     has_date: false
     has_time: true
     
 # Radiateur Cuisine off
-  radiateur_cuisine_off_date_time:
-     name: Input with both date and time
-     has_date: true
-     has_time: true
-  radiateur_cuisine_off_only_date:
-    name: Input with only date
-    has_date: true
-    has_time: false
+
   radiateur_cuisine_off_only_time:
     name: Input with only time
     has_date: false
@@ -29,28 +15,14 @@
 ####################################################################################
 
 # Radiateur sam on
-  radiateur_sam_on_date_time:
-     name: Input with both date and time
-     has_date: true
-     has_time: true
-  radiateur_sam_on_only_date:
-    name: Input with only date
-    has_date: true
-    has_time: false
+
   radiateur_sam_on_only_time:
     name: Input with only time
     has_date: false
     has_time: true
     
 # Radiateur sam off
-  radiateur_sam_off_date_time:
-     name: Input with both date and time
-     has_date: true
-     has_time: true
-  radiateur_sam_off_only_date:
-    name: Input with only date
-    has_date: true
-    has_time: false
+
   radiateur_sam_off_only_time:
     name: Input with only time
     has_date: false
@@ -59,28 +31,14 @@
 ####################################################################################
 
 # Radiateur entree on
-  radiateur_entree_on_date_time:
-     name: Input with both date and time
-     has_date: true
-     has_time: true
-  radiateur_entree_on_only_date:
-    name: Input with only date
-    has_date: true
-    has_time: false
+
   radiateur_entree_on_only_time:
     name: Input with only time
     has_date: false
     has_time: true
     
 # Radiateur entree off
-  radiateur_entree_off_date_time:
-     name: Input with both date and time
-     has_date: true
-     has_time: true
-  radiateur_entree_off_only_date:
-    name: Input with only date
-    has_date: true
-    has_time: false
+
   radiateur_entree_off_only_time:
     name: Input with only time
     has_date: false
@@ -89,28 +47,14 @@
  ####################################################################################   
     
 # Radiateur ch jardin on
-  radiateur_ch_jardin_on_date_time:
-     name: Input with both date and time
-     has_date: true
-     has_time: true
-  radiateur_ch_jardin_on_only_date:
-    name: Input with only date
-    has_date: true
-    has_time: false
+
   radiateur_ch_jardin_on_only_time:
     name: Input with only time
     has_date: false
     has_time: true
     
 # Radiateur ch_jardin off
-  radiateur_ch_jardin_off_date_time:
-     name: Input with both date and time
-     has_date: true
-     has_time: true
-  radiateur_ch_jardin_only_date:
-    name: Input with only date
-    has_date: true
-    has_time: false
+
   radiateur_ch_jardin_off_only_time:
     name: Input with only time
     has_date: false
@@ -119,28 +63,14 @@
 ####################################################################################
 
 # Radiateur ch_rue on
-  radiateur_ch_rue_on_date_time:
-     name: Input with both date and time
-     has_date: true
-     has_time: true
-  radiateur_ch_rue_on_only_date:
-    name: Input with only date
-    has_date: true
-    has_time: false
+
   radiateur_ch_rue_on_only_time:
     name: Input with only time
     has_date: false
     has_time: true
     
 # Radiateur ch_rue off
-  radiateur_ch_rue_off_date_time:
-     name: Input with both date and time
-     has_date: true
-     has_time: true
-  radiateur_ch_rue_off_only_date:
-    name: Input with only date
-    has_date: true
-    has_time: false
+
   radiateur_ch_rue_off_only_time:
     name: Input with only time
     has_date: false
@@ -149,28 +79,14 @@
 ####################################################################################
 
 # Radiateur buanderie on
-  radiateur_buanderie_on_date_time:
-     name: Input with both date and time
-     has_date: true
-     has_time: true
-  radiateur_buanderie_on_only_date:
-    name: Input with only date
-    has_date: true
-    has_time: false
+
   radiateur_buanderie_on_only_time:
     name: Input with only time
     has_date: false
     has_time: true
     
 # Radiateur buanderie off
-  radiateur_buanderie_off_date_time:
-     name: Input with both date and time
-     has_date: true
-     has_time: true
-  radiateur_buanderie_off_only_date:
-    name: Input with only date
-    has_date: true
-    has_time: false
+
   radiateur_buanderie_off_only_time:
     name: Input with only time
     has_date: false
@@ -179,30 +95,41 @@
 ####################################################################################
 
 # Radiateur ch_parents on
-  radiateur_ch_parents_on_date_time:
-     name: Input with both date and time
-     has_date: true
-     has_time: true
-  radiateur_ch_parents_on_only_date:
-    name: Input with only date
-    has_date: true
-    has_time: false
   radiateur_ch_parents_on_only_time:
     name: Input with only time
     has_date: false
     has_time: true
     
 # Radiateur ch_parents off
-  radiateur_ch_parents_off_date_time:
-     name: Input with both date and time
-     has_date: true
-     has_time: true
-  radiateur_ch_parents_off_only_date:
-    name: Input with only date
-    has_date: true
-    has_time: false
   radiateur_ch_parents_off_only_time:
     name: Input with only time
     has_date: false
     has_time: true
+    
+####################################################################################
 
+# Radiateur sdb on
+  radiateur_sdb_on_only_time:
+    name: Input with only time
+    has_date: false
+    has_time: true
+    
+# Radiateur sdb off
+  radiateur_sdb_off_only_time:
+    name: Input with only time
+    has_date: false
+    has_time: true
+    
+####################################################################################
+
+# Radiateur couloir_etage on
+  radiateur_couloir_etage_only_time:
+    name: Input with only time
+    has_date: false
+    has_time: true
+    
+# Radiateur sdb off
+  radiateur_couloir_etage_off_only_time:
+    name: Input with only time
+    has_date: false
+    has_time: true

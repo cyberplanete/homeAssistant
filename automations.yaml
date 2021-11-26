@@ -41,28 +41,19 @@
 - id: '1603972802135'
   alias: Test - Demo Alexa et sms
   description: ''
-  trigger:
-  - platform: state
-    entity_id: light.radiateur_cuisine_0000_id_0000_level
+  trigger: []
   condition: []
   action:
-  - service: notify.alexa_media_cuisine_echo_dot
-    data:
-      data:
-        type: tts
-      message: 'Alarme en cours d''activation, 30 secondes pour quitter la maison '
   - service: notify.telegram_pascal
     data:
       message: 'Alarme en cours d''activation, 30 secondes pour quitter la maison '
   - service: notify.telegram_stephanie
     data:
       message: 'Alarme en cours d''activation, 30 secondes pour quitter la maison '
-  - service: notify.alexa_media_cuisine_echo_dot
+  - service: script.notification_alexa_cuisine
     data:
-      data:
-        type: tts
-      message: <amazon:effect name='whispered'>Une personne sonne au portail!!! bande
-        de bouffon!!</amazon:effect>
+      message: 'Arrêt du ballon eau chaude. Température de l''eau: {{ states(''sensor.temperature_ballon_eau_chaude'')
+        }}'
   mode: single
 - id: '1604585592706'
   alias: Portail rue - Ouverture Totale
@@ -1349,10 +1340,8 @@
         data:
           message: 'Arrêt du ballon eau chaude. Température de l''eau: {{ states(''sensor.temperature_ballon_eau_chaude'')
             }}'
-      - service: notify.alexa_media_echo_cuisine
+      - service: script.notification_alexa_cuisine
         data:
-          data:
-            type: announce
           message: 'Arrêt du ballon eau chaude. Température de l''eau: {{ states(''sensor.temperature_ballon_eau_chaude'')
             }}'
     - conditions:
@@ -1391,10 +1380,8 @@
         data:
           message: 'Mise en marche du ballon eau chaude. Température de l''eau: {{
             states(''sensor.temperature_ballon_eau_chaude'') }}'
-      - service: notify.alexa_media_echo_cuisine
+      - service: script.notification_alexa_cuisine
         data:
-          data:
-            type: announce
           message: 'Mise en marche du ballon eau chaude. Température de l''eau: {{
             states(''sensor.temperature_ballon_eau_chaude'') }}'
     default: []

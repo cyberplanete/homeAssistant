@@ -234,7 +234,7 @@ alexa_courrier:
   mode: single
   icon: mdi:email-newsletter
 notification_alexa_cuisine:
-  alias: Alexa - Notification - Cuisine
+  alias: Alexa - Notification - Cuisine - Variable
   sequence:
   - service: notify.alexa_media_echo_cuisine
     data:
