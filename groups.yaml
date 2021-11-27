@@ -2,28 +2,27 @@
   alarme_absence_detecteurs:
     name: alarme_absence_detecteurs
     entities:
-      - binary_sensor.co_entree_access_control_window_door_is_open
-      - binary_sensor.co_garage_access_control_window_door_is_open_2
+      - binary_sensor.co_porte_entree_access_control_window_door_is_open
+      - binary_sensor.co_garage_access_control_window_door_is_open
       - binary_sensor.co_buanderie_contact
       - binary_sensor.ir_garage_occupancy
-      - binary_sensor.ir_cuisine_any
+      - binary_sensor.ir_cuisine_occupancy
       - binary_sensor.ir_salon_occupancy
-      - binary_sensor.ir_couloir_any_3
       - binary_sensor.ir_buanderie_occupancy
   alarme_nuit_detecteurs:
     name: alarme_nuit_detecteurs
     entities:
-      - binary_sensor.pst02_c_door_window_3_in_1_sensor_access_control_door_window_open_2
-      - binary_sensor.pst02_c_door_window_3_in_1_sensor_access_control_door_window_open
+      - binary_sensor.co_porte_entree_access_control_window_door_is_open
+      - binary_sensor.co_garage_access_control_window_door_is_open
       - binary_sensor.co_buanderie_contact
       - binary_sensor.ir_garage_occupancy
 
   alexa_echo_tous:
     name: alexa_echo_tous
     entities:
-      - media_player.cuisine_echo_dot
-      - media_player.joret_2eme_echo_dot
-      - media_player.joret_3eme_echo_dot
+      - media_player.echo_cuisine
+      - media_player.echo_clarence
+      - media_player.echo_eloise
 
   detecteurs_incendie:
     name: detecteurs_incendie
@@ -59,11 +58,21 @@
       - switch.prise_bureau_chambre_clarence
 
 
-  aspirateurs_rooms:
+  aspirateurs_rooms_rdc:
       name: PiècesRDCAspirateur
       entities:
         - input_boolean.aspirateur_hallentree
         - input_boolean.aspirateur_couloirentree
         - input_boolean.aspirateur_cuisine
-        - input_boolean.aspirateur_cam
+        - input_boolean.aspirateur_sam
         - input_boolean.aspirateur_salon
+        
+  aspirateurs_rooms_etage:      
+      name: PiècesEtageAspirateur
+      entities:
+        - input_boolean.aspirateur_cheloise
+        - input_boolean.aspirateur_chclarence
+        - input_boolean.aspirateur_sdb
+        - input_boolean.aspirateur_wc
+        - input_boolean.aspirateur_couloiretage
+        - input_boolean.aspirateur_chparents

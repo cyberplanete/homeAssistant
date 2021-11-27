@@ -449,23 +449,23 @@ notification_sms_variable_message_obligatoire_tous:
       message: '{{ message }}'
   mode: single
 aspirateur_nettoyage_des_segments:
-  alias: Aspirateur Nettoyage Segments
+  alias: Aspirateur Nettoyage Segments rdc
   sequence:
   - service: script.turn_on
     target:
       entity_id: script.aspirateur_nettoyage_segments_message
     data:
       variables:
-        segments: '{{expand("group.aspirateurs_rooms") | selectattr("state","eq","on")  |
+        segments: '{{expand("group.aspirateurs_rooms_rdc") | selectattr("state","eq","on")  |
           map(attribute="attributes.room_id") | list | to_json}}'
   mode: single
   icon: mdi:arrow-right
 aspirateur_nettoyage_segments_message:
-  alias: Aspirateur nettoyage segments message
+  alias: Aspirateur nettoyage segments message rdc
   sequence:
   - service: mqtt.publish
     data:
-      topic: valetudo/aspirateur_rdc_dream_d9/MapSegmentationCapability/clean/set
+      topic: valetudo/aspirateur_dream_d9_rdc/MapSegmentationCapability/clean/set
       payload_template: '{"segment_ids": {{segments}}}'
   mode: single
 alarme_passage_des_radiateurs_en_mode_eco:
@@ -526,3 +526,23 @@ alarme_passage_des_radiateurs_en_mode_eco:
       message: ' Passage des radiateurs en mode eco pour la nuit'
   mode: single
   icon: mdi:radiator-off
+aspirateur_nettoyage_segments_message_etage:
+  alias: Aspirateur nettoyage segments message etage
+  sequence:
+  - service: mqtt.publish
+    data:
+      topic: valetudo/aspirateur_etage_dream_d9/MapSegmentationCapability/clean/set
+      payload_template: '{"segment_ids": {{segments}}}'
+  mode: single
+aspirateur_nettoyage_segments_etage:
+  alias: Aspirateur Nettoyage Segments etage
+  sequence:
+  - service: script.turn_on
+    target:
+      entity_id: script.aspirateur_nettoyage_segments_message_etage
+    data:
+      variables:
+        segments: '{{expand("group.aspirateurs_rooms_etage") | selectattr("state","eq","on")  |
+          map(attribute="attributes.room_id") | list | to_json}}'
+  mode: single
+  icon: mdi:arrow-right

@@ -360,23 +360,12 @@
   alias: Notification - Portail garage ouverture fermeture
   description: ''
   trigger:
-  - type: opened
-    platform: device
-    device_id: e233b35ab616769a8bcd1023aa17ed73
-    entity_id: binary_sensor.co_garage_access_control_window_door_is_open_2
-    domain: binary_sensor
+  - platform: state
+    entity_id: binary_sensor.co_garage_access_control_window_door_is_open
     id: Notification - Portail ouvert
-  - type: not_opened
-    platform: device
-    device_id: e233b35ab616769a8bcd1023aa17ed73
-    entity_id: binary_sensor.co_garage_access_control_window_door_is_open_2
-    domain: binary_sensor
-    id: Notification - Portail fermé
+    to: 'on'
   condition: []
   action:
-  - service: script.notification_alexa_cuisine
-    data:
-      message: Le portail est fermé !!!
   - choose:
     - conditions:
       - condition: trigger
@@ -385,14 +374,10 @@
       - service: script.notification_alexa_cuisine
         data:
           message: Le portail est ouvert !!!
-    - conditions:
-      - condition: trigger
-        id: Notification - Portail fermé
-      sequence:
-      - service: script.notification_alexa_cuisine
-        data:
-          message: Le portail est fermé !!!
-    default: []
+    default:
+    - service: script.notification_alexa_cuisine
+      data:
+        message: Le portail est fermé !!!
   mode: single
 - id: '1611044575778'
   alias: Portails - exterieur - Intérieur - Auto off

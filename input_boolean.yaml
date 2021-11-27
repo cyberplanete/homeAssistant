@@ -17,3 +17,24 @@
       aspirateur_cuisine:
         name: Cuisine
         icon: mdi:silverware-fork-knife
+        
+        
+        
+      aspirateur_cheloise:
+        name: Chambre Eloise
+        icon: mdi:bed
+      aspirateur_chclarence:
+        name: Chambre clarence
+        icon: mdi:bunk-bed
+      aspirateur_couloiretage:
+        name: Couloir etage
+        icon: mdi:foot-print        
+      aspirateur_wc:
+        name: WC
+        icon: mdi:human-male-female
+      aspirateur_chparents:
+        name: Chambre parents
+        icon: mdi:bed-double
+      aspirateur_sdb:
+        name: SDB
+        icon: mdi:bathtub        
