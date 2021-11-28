@@ -364,6 +364,12 @@
     entity_id: binary_sensor.co_garage_access_control_window_door_is_open
     id: Notification - Portail ouvert
     to: 'on'
+    from: 'off'
+  - platform: state
+    entity_id: binary_sensor.co_garage_access_control_window_door_is_open
+    id: Notification - Portail ferme
+    to: 'off'
+    from: 'on'
   condition: []
   action:
   - choose:
@@ -374,10 +380,14 @@
       - service: script.notification_alexa_cuisine
         data:
           message: Le portail est ouvert !!!
-    default:
-    - service: script.notification_alexa_cuisine
-      data:
-        message: Le portail est fermé !!!
+    - conditions:
+      - condition: trigger
+        id: Notification - Portail ferme
+      sequence:
+      - service: script.notification_alexa_cuisine
+        data:
+          message: Le portail est fermé !!!
+    default: []
   mode: single
 - id: '1611044575778'
   alias: Portails - exterieur - Intérieur - Auto off
@@ -718,7 +728,6 @@
         - wed
         - thu
         - fri
-        after: input_datetime.radiateur_buanderie_on_only_time
       - condition: template
         value_template: '{{state_attr(''climate.radiateur_buanderie'', ''preset_mode'')
           != ''comfort''}}'
@@ -741,7 +750,6 @@
         - wed
         - thu
         - fri
-        after: input_datetime.radiateur_cuisine_on_only_time
       - condition: template
         value_template: '{{state_attr(''climate.radiateur_cuisine'', ''preset_mode'')
           != ''comfort''}}'
@@ -761,7 +769,6 @@
         - wed
         - thu
         - fri
-        after: input_datetime.radiateur_buanderie_off_only_time
       - condition: template
         value_template: '{{state_attr(''climate.radiateur_buanderie'', ''preset_mode'')
           != ''eco''}}'
@@ -789,11 +796,9 @@
         - wed
         - thu
         - fri
-        after: input_datetime.radiateur_cuisine_off_only_time
-      - condition: device
-        device_id: ''
-        domain: ''
-        entity_id: ''
+      - condition: template
+        value_template: '{{state_attr(''climate.radiateur_cuisine'', ''preset_mode'')
+          != ''eco''}}'
       sequence:
       - service: climate.set_preset_mode
         target:
@@ -888,19 +893,7 @@
         id: Radiateur SAM off
       - condition: template
         value_template: '{{state_attr(''climate.radiateur_sam'', ''preset_mode'')
-          != ''eco''}}'
-      sequence:
-      - service: climate.set_preset_mode
-        target:
-          entity_id: climate.radiateur_sam
-        data:
-          preset_mode: eco
-    - conditions:
-      - condition: trigger
-        id: Radiateur SAM off
-      - condition: template
-        value_template: '{{state_attr(''climate.radiateur_sam'', ''preset_mode'')
-          != ''eco''}}'
+          != eco }}'
       sequence:
       - service: climate.set_preset_mode
         target:

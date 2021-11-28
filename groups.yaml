@@ -38,7 +38,7 @@
     # Buanderie 
       - binary_sensor.detecteur_incendie_buanderie_smoke_alarm_smoke_detected_5
     # # # Garage 
-    #   - binary_sensor.detecteur_incendie_garage_smoke_alarm_smoke_detected_6
+      - binary_sensor.detecteur_incendie_garage_smoke_alarm_smoke_detected
 
 
   detecteurs_inondation:
