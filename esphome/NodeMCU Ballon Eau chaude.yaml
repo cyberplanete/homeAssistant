@@ -1,25 +1,50 @@
+substitutions:
+  esphome_name: nodemcu_temp_eau_chaude
+
 esphome:
-  name: NodeMCU Ballon Eau chaude
+  name: ${esphome_name}
   platform: ESP8266
   board: nodemcuv2
 
 wifi:
-  ssid: "NodeMCU Ballon Eau chaude"
-  password: "NodeMCU Ballon Eau chaude"
-
+  ssid: !secret esphome_ssid
+  password: !secret esphome_password
+  use_address: 192.168.0.11
+  domain: .cyberplanete.local
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "Nodemcu Ballon Eau Chaude"
-    password: !secret nodeMCUBallonEau
+    ssid: "Nodemcu-Ballon-Eau-Chaude"
+    password: "gY2KQlZvhCk6"
 
-captive_portal:
-
-# Enable logging
 logger:
+  level: debug
 
-# Enable Home Assistant API
 api:
-  password: !secret nodeMCUBallonEauAPI
+  reboot_timeout: 60min
 
 ota:
-  password: !secret nodeMCUBallonEauAPI
+  password: !secret auth_password
+
+web_server:
+  port: 80
+  auth:
+    username: !secret auth_login
+    password: !secret auth_password
+    
+time:
+  - platform: homeassistant
+
+mqtt:
+  broker: !secret mosquitto_broker
+  username: !secret mosquitto_username
+  password: !secret mosquitto_password
+  discovery: true
+
+
+dallas:
+  - pin: GPIO4
+    
+sensor:
+  - platform: dallas
+    address: 0xFC01204279CA3D28
+    name: "temperature ballon eau chaude"

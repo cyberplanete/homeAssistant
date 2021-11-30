@@ -81,30 +81,48 @@
   trigger:
   - type: opened
     platform: device
-    device_id: 5eee4c1bd2e37dc885dc58fc650d70d4
-    entity_id: binary_sensor.co_boite_aux_lettres_colis_contact
+    device_id: 1084f2830125ead3d4b635bb5d89da42
+    entity_id: binary_sensor.co_boites_aux_lettres_colis_access_control_window_door_is_open
     domain: binary_sensor
-    id: Notification - Colis
   - type: opened
     platform: device
-    device_id: 2bd95f516ad4eeac8f2b1c4f36542c32
-    entity_id: binary_sensor.co_boite_aux_lettres_lettres_contact
+    device_id: cd7c4787b12a8528ef7a8019606981e0
+    entity_id: binary_sensor.co_boite_aux_lettres_lettres_access_control_window_door_is_open
     domain: binary_sensor
-    id: Notification - Courrier
   condition: []
   action:
   - choose:
     - conditions:
-      - condition: trigger
-        id: Notification - Colis
+      - condition: and
+        conditions:
+        - type: is_open
+          condition: device
+          device_id: 1084f2830125ead3d4b635bb5d89da42
+          entity_id: binary_sensor.co_boites_aux_lettres_colis_access_control_window_door_is_open
+          domain: binary_sensor
       sequence:
       - service: script.alexa_colis
     - conditions:
-      - condition: trigger
-        id: Notification - Courrier
-      - condition: template
-        value_template: '{{ state_attr(''weather.maison'', ''wind_speed'')|float <
-          23 }}'
+      - condition: and
+        conditions:
+        - condition: template
+          value_template: '{{ state_attr(''weather.maison'', ''wind_speed'')|float
+            < 23 }}'
+        - type: is_not_open
+          condition: device
+          device_id: 1084f2830125ead3d4b635bb5d89da42
+          entity_id: binary_sensor.co_boites_aux_lettres_colis_access_control_window_door_is_open
+          domain: binary_sensor
+          for:
+            hours: 0
+            minutes: 0
+            seconds: 0
+            milliseconds: 0
+        - type: is_open
+          condition: device
+          device_id: cd7c4787b12a8528ef7a8019606981e0
+          entity_id: binary_sensor.co_boite_aux_lettres_lettres_access_control_window_door_is_open
+          domain: binary_sensor
       sequence:
       - service: script.alexa_courrier
         data: {}
@@ -1254,7 +1272,7 @@
   description: Gestionnaire du ballon eau chaude
   trigger:
   - platform: template
-    value_template: '{{ states.sensor.temperature_ballon_eau_chaude.state | float
+    value_template: '{{ states.sensor.temperature_ballon_eau_chaude_3.state | float
       }}'
   - platform: time
     at: 07:00:00
@@ -1262,13 +1280,13 @@
   - platform: time
     at: '21:00:00'
     id: Ballon eau chaude - Arrêt PM
-  - type: value
+  - type: temperature
     platform: device
     device_id: ee8663b349afc7665d58051c2ba8f255
-    entity_id: sensor.temperature_ballon_eau_chaude
+    entity_id: sensor.temperature_ballon_eau_chaude_3
     domain: sensor
-    above: 43
-    below: 43
+    above: 42
+    below: 42
   - platform: time
     at: '16:30:00'
   condition: []
@@ -1280,12 +1298,12 @@
         - condition: or
           conditions:
           - condition: template
-            value_template: '{{ states.sensor.temperature_ballon_eau_chaude.state
+            value_template: '{{ states.sensor.temperature_ballon_eau_chaude_3.state
               | float >= 55 }}'
-          - type: is_value
+          - type: is_temperature
             condition: device
             device_id: ee8663b349afc7665d58051c2ba8f255
-            entity_id: sensor.temperature_ballon_eau_chaude
+            entity_id: sensor.temperature_ballon_eau_chaude_3
             domain: sensor
             above: 55
         - condition: device
@@ -1316,11 +1334,11 @@
         domain: switch
       - service: script.telegram_tous
         data:
-          message: 'Arrêt du ballon eau chaude. Température de l''eau: {{ states(''sensor.temperature_ballon_eau_chaude'')
+          message: 'Arrêt du ballon eau chaude. Température de l''eau: {{ states(''sensor.temperature_ballon_eau_chaude_3'')
             }}'
       - service: script.notification_alexa_cuisine
         data:
-          message: 'Arrêt du ballon eau chaude. Température de l''eau: {{ states(''sensor.temperature_ballon_eau_chaude'')
+          message: 'Arrêt du ballon eau chaude. Température de l''eau: {{ states(''sensor.temperature_ballon_eau_chaude_3'')
             }}'
     - conditions:
       - condition: and
@@ -1328,14 +1346,14 @@
         - condition: or
           conditions:
           - condition: template
-            value_template: '{{ states.sensor.temperature_ballon_eau_chaude.state
+            value_template: '{{ states.sensor.temperature_ballon_eau_chaude_3.state
               | float <= 43 }}'
-          - type: is_value
+          - type: is_temperature
             condition: device
             device_id: ee8663b349afc7665d58051c2ba8f255
-            entity_id: sensor.temperature_ballon_eau_chaude
+            entity_id: sensor.temperature_ballon_eau_chaude_3
             domain: sensor
-            below: 45
+            below: 43
         - condition: device
           type: is_off
           device_id: 66df720f2014d4da4f744175d7052986
@@ -1357,11 +1375,11 @@
       - service: script.telegram_tous
         data:
           message: 'Mise en marche du ballon eau chaude. Température de l''eau: {{
-            states(''sensor.temperature_ballon_eau_chaude'') }}'
+            states(''sensor.temperature_ballon_eau_chaude_3'') }}'
       - service: script.notification_alexa_cuisine
         data:
           message: 'Mise en marche du ballon eau chaude. Température de l''eau: {{
-            states(''sensor.temperature_ballon_eau_chaude'') }}'
+            states(''sensor.temperature_ballon_eau_chaude_3'') }}'
     default: []
   mode: single
 - id: '1637347853910'
@@ -1615,4 +1633,23 @@
         ''windy'': ''Venteuse'', ''windy-variant'': ''variante venteuse''} %} {{ conditions[condition]
         }} est prévue avec une température maxi de {{state_attr(''weather.la_chevroliere'',
         ''forecast'')[1].temperature }}'
+  mode: single
+- id: '1638191370237'
+  alias: Gestion chauffage
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.radiateur_cuisine_etat
+  condition: []
+  action:
+  - service: script.telegram_notification_pascal
+    data:
+      message: '{{  states.sensor.radiateur_cuisine_etat.state }}'
+  - service: input_select.select_option
+    data_template:
+      entity_id: input_select.mode_chauffage_radcuisine
+      option: "{% if is_state('sensor.radiateur_cuisine_etat', 'eco') %}\n  Eco\n\
+        {%-elif is_state('sensor.radiateur_cuisine_etat', 'comfort') %}\n  Confort\n\
+        {%-elif is_state('sensor.radiateur_cuisine_etat', 'away') %}\n  Hors-Gel\n\
+        {% else %}\n  Arret\n{% endif %}\n"
   mode: single

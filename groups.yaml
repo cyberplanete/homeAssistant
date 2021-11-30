@@ -2,8 +2,8 @@
   alarme_absence_detecteurs:
     name: alarme_absence_detecteurs
     entities:
-      - binary_sensor.co_porte_entree_access_control_window_door_is_open
-      - binary_sensor.co_garage_access_control_window_door_is_open
+      - binary_sensor.co_entree_contact
+      - binary_sensor.co_portail_garage_contac
       - binary_sensor.co_buanderie_contact
       - binary_sensor.ir_garage_occupancy
       - binary_sensor.ir_cuisine_occupancy
@@ -12,8 +12,8 @@
   alarme_nuit_detecteurs:
     name: alarme_nuit_detecteurs
     entities:
-      - binary_sensor.co_porte_entree_access_control_window_door_is_open
-      - binary_sensor.co_garage_access_control_window_door_is_open
+      - binary_sensor.co_entree_contact
+      - binary_sensor.co_portail_garage_contac
       - binary_sensor.co_buanderie_contact
       - binary_sensor.ir_garage_occupancy
 
