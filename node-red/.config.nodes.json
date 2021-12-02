@@ -1500,5 +1500,25 @@
                 "file": "/config/node-red/node_modules/node-red-multi-sensor/multiSensor.js"
             }
         }
+    },
+    "node-red-contrib-amazon-echo": {
+        "name": "node-red-contrib-amazon-echo",
+        "version": "0.1.10",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "alexa-local-hub": {
+                "name": "alexa-local-hub",
+                "types": [
+                    "amazon-echo-hub",
+                    "amazon-echo-device"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-amazon-echo",
+                "file": "/config/node-red/node_modules/node-red-contrib-amazon-echo/index.js"
+            }
+        }
     }
 }

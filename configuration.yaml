@@ -196,17 +196,25 @@ alarm_control_panel:
   - platform: manual
     name: Alarme maison
     code: "1234"
-    arming_time: 60
-    delay_time: 20
-    trigger_time: 4
+    disarm_after_trigger: false # Après la durée du trigger time, l'alarme revient en état armée
+
     disarmed:
-      trigger_time: 0
-    armed_night:
-      arming_time: 0
-      delay_time: 0
-    armed_home:
-      arming_time: 0
-      delay_time: 0
+      trigger_time: 0 # Le fait de de désarmer arrête immédiatement l'alarme
+
+      armed_night:
+        arming_time: 1 # temps en secondes pour quitter la maison
+        delay_time: 0 # temps en secondes pour désarmer avant déclenchement
+        trigger_time: 60 # temps en secondes pendant lequel la sirene retentit (60 secondes dans la nuit)
+
+      armed_home:
+        arming_time: 60 # L'alarme s'activera au bout de 60 secondes
+        delay_time: 10 # Lorsqu'elle est activée, elle se declenchera au bout de 10 secondes
+        trigger_time: 300 # La sirène s'arrtera au bout de 5 minutes
+
+      armed_away: #Mode activiation manuelle (quand on est dans la maison et on part)
+        arming_time: 60
+        delay_time: 10
+        trigger_time: 300
 ########################################## ANDROID TV ##################################################################################################
 
 media_player:

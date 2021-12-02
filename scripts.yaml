@@ -546,3 +546,13 @@ aspirateur_nettoyage_segments_etage:
           map(attribute="attributes.room_id") | list | to_json}}'
   mode: single
   icon: mdi:arrow-right
+alexa_notification_sam_variable:
+  alias: Alexa - Notification - SAM - Variable
+  sequence:
+  - service: notify.alexa_media_joret_echo_flex
+    data:
+      data:
+        type: announce
+      message: '{{ message }}'
+  mode: single
+  icon: mdi:cube
