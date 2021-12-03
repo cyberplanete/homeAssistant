@@ -244,7 +244,7 @@ notification_alexa_cuisine:
   mode: single
   icon: mdi:cube
 notification_alexa_clarence:
-  alias: Alexa - Notification - Clarence
+  alias: Alexa - Notification - Clarence - Variable
   sequence:
   - service: media_player.volume_up
     data: {}
@@ -258,7 +258,7 @@ notification_alexa_clarence:
   mode: single
   icon: mdi:cube
 notification_alexa_eloise:
-  alias: Alexa - Notification - Eloise
+  alias: Alexa - Notification - Eloise - Variable
   sequence:
   - service: media_player.volume_up
     data: {}
@@ -556,3 +556,92 @@ alexa_notification_sam_variable:
       message: '{{ message }}'
   mode: single
   icon: mdi:cube
+alarme_fermeture_des_volets:
+  alias: Alarme - Fermeture des volets
+  sequence:
+  - device_id: c855df1a046c2207f78ffb16685d16ec
+    domain: cover
+    entity_id: cover.volet_sam_gr
+    type: set_position
+    position: 100
+  - device_id: 25dd93fdc28117fa0014ec7b29c9b9bc
+    domain: cover
+    entity_id: cover.volet_buanderie
+    type: set_position
+    position: 100
+  - device_id: cef743e0b64c1b3c0923de4d36730438
+    domain: cover
+    entity_id: cover.volet_cuisine
+    type: set_position
+    position: 100
+  - device_id: 3dce984996219a0b49dd039b9bac3953
+    domain: cover
+    entity_id: cover.volet_salon
+    type: set_position
+    position: 100
+  - device_id: 04ed3a9cd7241c102da9b90c314edba8
+    domain: cover
+    entity_id: cover.volet_sam
+    type: set_position
+    position: 100
+  - device_id: bee3c2dcb70ef835edc8e78164d2118d
+    domain: cover
+    entity_id: cover.volet_garage_2
+    type: set_position
+    position: 100
+  - device_id: cd404ff669476c74b93e382e5d808a2f
+    domain: cover
+    entity_id: cover.volet_garage
+    type: set_position
+    position: 100
+  - device_id: 714d3596ac90f4fcc58c95259ea16b9e
+    domain: cover
+    entity_id: cover.volet_eloise
+    type: set_position
+    position: 100
+  - device_id: cabecaec4a261849f8d06f879af2c721
+    domain: cover
+    entity_id: cover.volet_chambre_clarence
+    type: set_position
+    position: 100
+  - device_id: 95d0d265a2f21156213ac5cbc303e6a7
+    domain: cover
+    entity_id: cover.volet_sdb
+    type: set_position
+    position: 100
+  - device_id: a0b27f50d1682e0ea76fd286eaeb3b20
+    domain: cover
+    entity_id: cover.volet_chambre_parents
+    type: set_position
+    position: 100
+  mode: single
+  icon: mdi:curtains-closed
+alarme_eteindre_des_appareils_en_mode_totale:
+  alias: Alarme - Éteindre des appareils en mode totale
+  sequence:
+  - type: turn_off
+    device_id: 3c5b5cf5f84886f42059d0a23d64ac09
+    entity_id: switch.prisetv_salon_switch
+    domain: switch
+  - type: turn_off
+    device_id: 4942a6bddcf769b3f7ec50a2877fe694
+    entity_id: switch.prise_bureau_chambre_clarence
+    domain: switch
+  - type: turn_off
+    device_id: 18a82f3877d876fdbb8f16e454b6f845
+    entity_id: switch.onoff_tv_chambre_jardin_switch_2
+    domain: switch
+  - type: turn_off
+    device_id: 87b502772e2fe9cb7c2dad2f09dbd72a
+    entity_id: switch.onoff_tv_chambre_parent_switch
+    domain: switch
+  - type: turn_off
+    device_id: f2ce7fb51b013bada97928ca97d7a817
+    entity_id: switch.onoff_bureau_salon_switch_3
+    domain: switch
+  - type: turn_on
+    device_id: 6f9cedbbd8180b11e3a173ec3491c13a
+    entity_id: switch.onoff_distributeurchaleur_switch
+    domain: switch
+  mode: single
+  icon: mdi:alarm-bell

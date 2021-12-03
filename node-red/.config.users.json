@@ -13,6 +13,10 @@
             "tours": {
                 "welcome": "2.1.3"
             }
-        }
+        },
+        "debug": {
+            "filter": "filterCurrent"
+        },
+        "menu-menu-item-sidebar": true
     }
 }
