@@ -220,6 +220,11 @@ alarm_control_panel:
 media_player:
   - platform: androidtv
     adb_server_ip: 192.168.0.90
+    name: Tab Cuisine_old
+    host: 192.168.0.168
+
+  - platform: androidtv
+    adb_server_ip: 192.168.0.241
     name: Tab Cuisine
     host: 192.168.0.168
 
