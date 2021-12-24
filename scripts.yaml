@@ -559,61 +559,16 @@ alexa_notification_sam_variable:
 alarme_fermeture_des_volets:
   alias: Alarme - Fermeture des volets
   sequence:
-  - device_id: c855df1a046c2207f78ffb16685d16ec
-    domain: cover
-    entity_id: cover.volet_sam_gr
-    type: set_position
-    position: 100
-  - device_id: 25dd93fdc28117fa0014ec7b29c9b9bc
-    domain: cover
-    entity_id: cover.volet_buanderie
-    type: set_position
-    position: 100
-  - device_id: cef743e0b64c1b3c0923de4d36730438
-    domain: cover
-    entity_id: cover.volet_cuisine
-    type: set_position
-    position: 100
-  - device_id: 3dce984996219a0b49dd039b9bac3953
-    domain: cover
-    entity_id: cover.volet_salon
-    type: set_position
-    position: 100
-  - device_id: 04ed3a9cd7241c102da9b90c314edba8
-    domain: cover
-    entity_id: cover.volet_sam
-    type: set_position
-    position: 100
-  - device_id: bee3c2dcb70ef835edc8e78164d2118d
-    domain: cover
-    entity_id: cover.volet_garage_2
-    type: set_position
-    position: 100
-  - device_id: cd404ff669476c74b93e382e5d808a2f
-    domain: cover
-    entity_id: cover.volet_garage
-    type: set_position
-    position: 100
-  - device_id: 714d3596ac90f4fcc58c95259ea16b9e
-    domain: cover
-    entity_id: cover.volet_eloise
-    type: set_position
-    position: 100
-  - device_id: cabecaec4a261849f8d06f879af2c721
-    domain: cover
-    entity_id: cover.volet_chambre_clarence
-    type: set_position
-    position: 100
-  - device_id: 95d0d265a2f21156213ac5cbc303e6a7
-    domain: cover
-    entity_id: cover.volet_sdb
-    type: set_position
-    position: 100
-  - device_id: a0b27f50d1682e0ea76fd286eaeb3b20
-    domain: cover
-    entity_id: cover.volet_chambre_parents
-    type: set_position
-    position: 100
+  - service: cover.close_cover
+    target:
+      entity_id:
+      - cover.volet_buanderie
+      - cover.volet_cuisine
+      - cover.volet_garage
+      - cover.volet_garage_2
+      - cover.volet_salon
+      - cover.volet_sam
+      - cover.volet_sam_grand
   mode: single
   icon: mdi:curtains-closed
 alarme_eteindre_des_appareils_en_mode_totale:

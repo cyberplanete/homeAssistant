@@ -449,7 +449,7 @@
     },
     "node-red-contrib-bigtimer": {
         "name": "node-red-contrib-bigtimer",
-        "version": "2.7.5",
+        "version": "2.7.6",
         "local": false,
         "user": false,
         "nodes": {
@@ -506,7 +506,7 @@
     },
     "node-red-contrib-home-assistant-websocket": {
         "name": "node-red-contrib-home-assistant-websocket",
-        "version": "0.38.0",
+        "version": "0.39.0",
         "local": false,
         "user": false,
         "nodes": {
@@ -622,7 +622,7 @@
     },
     "node-red-contrib-modbus": {
         "name": "node-red-contrib-modbus",
-        "version": "5.15.0",
+        "version": "5.16.0",
         "local": false,
         "user": false,
         "nodes": {
@@ -631,7 +631,7 @@
                 "types": [
                     "modbus-client"
                 ],
-                "enabled": true,
+                "enabled": false,
                 "local": false,
                 "user": false,
                 "module": "node-red-contrib-modbus",
@@ -642,7 +642,7 @@
                 "types": [
                     "modbus-response"
                 ],
-                "enabled": true,
+                "enabled": false,
                 "local": false,
                 "user": false,
                 "module": "node-red-contrib-modbus",
@@ -653,7 +653,7 @@
                 "types": [
                     "modbus-read"
                 ],
-                "enabled": true,
+                "enabled": false,
                 "local": false,
                 "user": false,
                 "module": "node-red-contrib-modbus",
@@ -664,7 +664,7 @@
                 "types": [
                     "modbus-getter"
                 ],
-                "enabled": true,
+                "enabled": false,
                 "local": false,
                 "user": false,
                 "module": "node-red-contrib-modbus",
@@ -675,7 +675,7 @@
                 "types": [
                     "modbus-flex-getter"
                 ],
-                "enabled": true,
+                "enabled": false,
                 "local": false,
                 "user": false,
                 "module": "node-red-contrib-modbus",
@@ -686,7 +686,7 @@
                 "types": [
                     "modbus-write"
                 ],
-                "enabled": true,
+                "enabled": false,
                 "local": false,
                 "user": false,
                 "module": "node-red-contrib-modbus",
@@ -697,7 +697,7 @@
                 "types": [
                     "modbus-flex-write"
                 ],
-                "enabled": true,
+                "enabled": false,
                 "local": false,
                 "user": false,
                 "module": "node-red-contrib-modbus",
@@ -708,7 +708,7 @@
                 "types": [
                     "modbus-server"
                 ],
-                "enabled": true,
+                "enabled": false,
                 "local": false,
                 "user": false,
                 "module": "node-red-contrib-modbus",
@@ -719,7 +719,7 @@
                 "types": [
                     "modbus-flex-server"
                 ],
-                "enabled": true,
+                "enabled": false,
                 "local": false,
                 "user": false,
                 "module": "node-red-contrib-modbus",
@@ -730,7 +730,7 @@
                 "types": [
                     "modbus-queue-info"
                 ],
-                "enabled": true,
+                "enabled": false,
                 "local": false,
                 "user": false,
                 "module": "node-red-contrib-modbus",
@@ -741,7 +741,7 @@
                 "types": [
                     "modbus-flex-connector"
                 ],
-                "enabled": true,
+                "enabled": false,
                 "local": false,
                 "user": false,
                 "module": "node-red-contrib-modbus",
@@ -752,7 +752,7 @@
                 "types": [
                     "modbus-io-config"
                 ],
-                "enabled": true,
+                "enabled": false,
                 "local": false,
                 "user": false,
                 "module": "node-red-contrib-modbus",
@@ -763,7 +763,7 @@
                 "types": [
                     "modbus-response-filter"
                 ],
-                "enabled": true,
+                "enabled": false,
                 "local": false,
                 "user": false,
                 "module": "node-red-contrib-modbus",
@@ -774,7 +774,7 @@
                 "types": [
                     "modbus-flex-sequencer"
                 ],
-                "enabled": true,
+                "enabled": false,
                 "local": false,
                 "user": false,
                 "module": "node-red-contrib-modbus",
@@ -1276,7 +1276,7 @@
                     "rpi-mouse",
                     "rpi-keyboard"
                 ],
-                "enabled": true,
+                "enabled": false,
                 "local": false,
                 "user": false,
                 "module": "node-red-node-pi-gpio",
@@ -1518,6 +1518,315 @@
                 "user": false,
                 "module": "node-red-contrib-amazon-echo",
                 "file": "/config/node-red/node_modules/node-red-contrib-amazon-echo/index.js"
+            }
+        }
+    },
+    "node-red-contrib-boolean-logic-ultimate": {
+        "name": "node-red-contrib-boolean-logic-ultimate",
+        "version": "1.0.39",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "BooleanLogicUltimate": {
+                "name": "BooleanLogicUltimate",
+                "types": [
+                    "BooleanLogicUltimate"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-boolean-logic-ultimate",
+                "file": "/config/node-red/node_modules/node-red-contrib-boolean-logic-ultimate/boolean-logic-ultimate/BooleanLogicUltimate.js"
+            },
+            "InvertUltimate": {
+                "name": "InvertUltimate",
+                "types": [
+                    "InvertUltimate"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-boolean-logic-ultimate",
+                "file": "/config/node-red/node_modules/node-red-contrib-boolean-logic-ultimate/boolean-logic-ultimate/InvertUltimate.js"
+            },
+            "FilterUltimate": {
+                "name": "FilterUltimate",
+                "types": [
+                    "FilterUltimate"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-boolean-logic-ultimate",
+                "file": "/config/node-red/node_modules/node-red-contrib-boolean-logic-ultimate/boolean-logic-ultimate/FilterUltimate.js"
+            },
+            "InterruptFlowUltimate": {
+                "name": "InterruptFlowUltimate",
+                "types": [
+                    "InterruptFlowUltimate"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-boolean-logic-ultimate",
+                "file": "/config/node-red/node_modules/node-red-contrib-boolean-logic-ultimate/boolean-logic-ultimate/InterruptFlowUltimate.js"
+            },
+            "BlinkerUltimate": {
+                "name": "BlinkerUltimate",
+                "types": [
+                    "BlinkerUltimate"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-boolean-logic-ultimate",
+                "file": "/config/node-red/node_modules/node-red-contrib-boolean-logic-ultimate/boolean-logic-ultimate/BlinkerUltimate.js"
+            },
+            "SimpleOutputUltimate": {
+                "name": "SimpleOutputUltimate",
+                "types": [
+                    "SimpleOutputUltimate"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-boolean-logic-ultimate",
+                "file": "/config/node-red/node_modules/node-red-contrib-boolean-logic-ultimate/boolean-logic-ultimate/SimpleOutputUltimate.js"
+            },
+            "InjectUltimate": {
+                "name": "InjectUltimate",
+                "types": [
+                    "InjectUltimate"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-boolean-logic-ultimate",
+                "file": "/config/node-red/node_modules/node-red-contrib-boolean-logic-ultimate/boolean-logic-ultimate/InjectUltimate.js"
+            },
+            "StatusUltimate": {
+                "name": "StatusUltimate",
+                "types": [
+                    "StatusUltimate"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-boolean-logic-ultimate",
+                "file": "/config/node-red/node_modules/node-red-contrib-boolean-logic-ultimate/boolean-logic-ultimate/StatusUltimate.js"
+            },
+            "ImpulseUltimate": {
+                "name": "ImpulseUltimate",
+                "types": [
+                    "ImpulseUltimate"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-boolean-logic-ultimate",
+                "file": "/config/node-red/node_modules/node-red-contrib-boolean-logic-ultimate/boolean-logic-ultimate/ImpulseUltimate.js"
+            }
+        }
+    },
+    "node-red-contrib-boolean-logic": {
+        "name": "node-red-contrib-boolean-logic",
+        "version": "0.0.3",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "BooleanLogic": {
+                "name": "BooleanLogic",
+                "types": [
+                    "BooleanLogic"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-boolean-logic",
+                "file": "/config/node-red/node_modules/node-red-contrib-boolean-logic/boolean-logic/BooleanLogic.js"
+            },
+            "Invert": {
+                "name": "Invert",
+                "types": [
+                    "Invert"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-boolean-logic",
+                "file": "/config/node-red/node_modules/node-red-contrib-boolean-logic/boolean-logic/Invert.js"
+            },
+            "BDebug": {
+                "name": "BDebug",
+                "types": [
+                    "BDebug"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-boolean-logic",
+                "file": "/config/node-red/node_modules/node-red-contrib-boolean-logic/boolean-logic/BDebug.js"
+            }
+        }
+    },
+    "node-red-contrib-bool-gate": {
+        "name": "node-red-contrib-bool-gate",
+        "version": "1.0.2",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "and": {
+                "name": "and",
+                "types": [
+                    "and-gate"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-bool-gate",
+                "file": "/config/node-red/node_modules/node-red-contrib-bool-gate/nodes/and.js"
+            },
+            "or": {
+                "name": "or",
+                "types": [
+                    "or-gate"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-bool-gate",
+                "file": "/config/node-red/node_modules/node-red-contrib-bool-gate/nodes/or.js"
+            }
+        }
+    },
+    "node-red-contrib-cron": {
+        "name": "node-red-contrib-cron",
+        "version": "0.0.4",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "cron": {
+                "name": "cron",
+                "types": [
+                    "cron"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-cron",
+                "file": "/config/node-red/node_modules/node-red-contrib-cron/cron-node.js"
+            }
+        }
+    },
+    "node-red-contrib-vacation-timer": {
+        "name": "node-red-contrib-vacation-timer",
+        "version": "2.2.8",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "vacation-timer": {
+                "name": "vacation-timer",
+                "types": [
+                    "vacation-timer"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-vacation-timer",
+                "file": "/config/node-red/node_modules/node-red-contrib-vacation-timer/vacation-timer.js"
+            }
+        }
+    },
+    "node-red-contrib-doorbird": {
+        "name": "node-red-contrib-doorbird",
+        "version": "0.2.8",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "doorbird": {
+                "name": "doorbird",
+                "types": [
+                    "doorbird"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-doorbird",
+                "file": "/config/node-red/node_modules/node-red-contrib-doorbird/doorbird.js"
+            }
+        }
+    },
+    "node-red-contrib-doorbird-ultimate": {
+        "name": "node-red-contrib-doorbird-ultimate",
+        "version": "0.0.6",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "doorbird-config": {
+                "name": "doorbird-config",
+                "types": [
+                    "doorbird-config"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-doorbird-ultimate",
+                "file": "/config/node-red/node_modules/node-red-contrib-doorbird-ultimate/nodes/doorbird-config.js"
+            },
+            "doorbird-info": {
+                "name": "doorbird-info",
+                "types": [
+                    "doorbird-info"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-doorbird-ultimate",
+                "file": "/config/node-red/node_modules/node-red-contrib-doorbird-ultimate/nodes/doorbird-info.js"
+            },
+            "doorbird-open": {
+                "name": "doorbird-open",
+                "types": [
+                    "doorbird-open"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-doorbird-ultimate",
+                "file": "/config/node-red/node_modules/node-red-contrib-doorbird-ultimate/nodes/doorbird-open.js"
+            },
+            "doorbird-ui-image": {
+                "name": "doorbird-ui-image",
+                "types": [
+                    "ui_doorbird-ui-image"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-doorbird-ultimate",
+                "file": "/config/node-red/node_modules/node-red-contrib-doorbird-ultimate/nodes/doorbird-ui-image.js"
+            },
+            "doorbird-ui-video": {
+                "name": "doorbird-ui-video",
+                "types": [
+                    "ui_doorbird-ui-video"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-doorbird-ultimate",
+                "file": "/config/node-red/node_modules/node-red-contrib-doorbird-ultimate/nodes/doorbird-ui-video.js"
+            },
+            "doorbird-ring": {
+                "name": "doorbird-ring",
+                "types": [
+                    "doorbird-ring"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-doorbird-ultimate",
+                "file": "/config/node-red/node_modules/node-red-contrib-doorbird-ultimate/nodes/doorbird-ring.js"
             }
         }
     }
