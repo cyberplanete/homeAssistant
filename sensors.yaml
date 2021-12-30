@@ -206,41 +206,81 @@
 
 ########################################## ##################################################################################################
 
+# - platform: template
+#   sensors:
+#     radiateur_cuisine_etat:
+#       friendly_name: "Radiateur cuisine etat "
+#       icon_template: mdi:timer-sand
+#       value_template: "{{state_attr('climate.radiateur_cuisine', 'preset_mode') }}"
+#     radiateur_cuisine_etat:
+#       friendly_name: "Radiateur cuisine etat "
+#       icon_template: mdi:timer-sand
+#       value_template: "{{state_attr('climate.radiateur_sam', 'preset_mode') }}"
+#     radiateur_cuisine_etat:
+#       friendly_name: "Radiateur cuisine etat "
+#       icon_template: mdi:timer-sand
+#       value_template: "{{state_attr('climate.radiateur_buanderie', 'preset_mode') }}"
+#     radiateur_cuisine_etat:
+#       friendly_name: "Radiateur cuisine etat "
+#       icon_template: mdi:timer-sand
+#       value_template: "{{state_attr('climate.radiateur_couloiret', 'preset_mode') }}"
+#     radiateur_cuisine_etat:
+#       friendly_name: "Radiateur cuisine etat "
+#       icon_template: mdi:timer-sand
+#       value_template: "{{state_attr('climate.radiateur_cuisine', 'preset_mode') }}"
+#     radiateur_cuisine_etat:
+#       friendly_name: "Radiateur cuisine etat "
+#       icon_template: mdi:timer-sand
+#       value_template: "{{state_attr('climate.radiateur_cuisine', 'preset_mode') }}"
+#     radiateur_cuisine_etat:
+#       friendly_name: "Radiateur cuisine etat "
+#       icon_template: mdi:timer-sand
+#       value_template: "{{state_attr('climate.radiateur_cuisine', 'preset_mode') }}"
+#     radiateur_cuisine_etat:
+#       friendly_name: "Radiateur cuisine etat "
+#       icon_template: mdi:timer-sand
+#       value_template: "{{state_attr('climate.radiateur_cuisine', 'preset_mode') }}"
+#     radiateur_cuisine_etat:
+#       friendly_name: "Radiateur cuisine etat "
+#       icon_template: mdi:timer-sand
+#       value_template: "{{state_attr('climate.radiateur_cuisine', 'preset_mode') }}"
+
 - platform: template
   sensors:
-    radiateur_cuisine_etat:
-      friendly_name: "Radiateur cuisine etat "
+    volet_buanderie_battery:
+      friendly_name: "Batterie volet buanderie "
       icon_template: mdi:timer-sand
-      value_template: "{{state_attr('climate.radiateur_cuisine', 'preset_mode') }}"
-    radiateur_cuisine_etat:
-      friendly_name: "Radiateur cuisine etat "
-      icon_template: mdi:timer-sand
-      value_template: "{{state_attr('climate.radiateur_sam', 'preset_mode') }}"
-    radiateur_cuisine_etat:
-      friendly_name: "Radiateur cuisine etat "
-      icon_template: mdi:timer-sand
-      value_template: "{{state_attr('climate.radiateur_buanderie', 'preset_mode') }}"
-    radiateur_cuisine_etat:
-      friendly_name: "Radiateur cuisine etat "
-      icon_template: mdi:timer-sand
-      value_template: "{{state_attr('climate.radiateur_couloiret', 'preset_mode') }}"
-    radiateur_cuisine_etat:
-      friendly_name: "Radiateur cuisine etat "
-      icon_template: mdi:timer-sand
-      value_template: "{{state_attr('climate.radiateur_cuisine', 'preset_mode') }}"
-    radiateur_cuisine_etat:
-      friendly_name: "Radiateur cuisine etat "
-      icon_template: mdi:timer-sand
-      value_template: "{{state_attr('climate.radiateur_cuisine', 'preset_mode') }}"
-    radiateur_cuisine_etat:
-      friendly_name: "Radiateur cuisine etat "
-      icon_template: mdi:timer-sand
-      value_template: "{{state_attr('climate.radiateur_cuisine', 'preset_mode') }}"
-    radiateur_cuisine_etat:
-      friendly_name: "Radiateur cuisine etat "
-      icon_template: mdi:timer-sand
-      value_template: "{{state_attr('climate.radiateur_cuisine', 'preset_mode') }}"
-    radiateur_cuisine_etat:
-      friendly_name: "Radiateur cuisine etat "
-      icon_template: mdi:timer-sand
-      value_template: "{{state_attr('climate.radiateur_cuisine', 'preset_mode') }}"
+      value_template: "{{states('sensor.volet_battery_buanderie') }}"
+      device_class: battery
+    # radiateur_cuisine_etat:
+    #   friendly_name: "Radiateur cuisine etat "
+    #   icon_template: mdi:timer-sand
+    #   value_template: "{{state_attr('climate.radiateur_sam', 'preset_mode') }}"
+    # radiateur_cuisine_etat:
+    #   friendly_name: "Radiateur cuisine etat "
+    #   icon_template: mdi:timer-sand
+    #   value_template: "{{state_attr('climate.radiateur_buanderie', 'preset_mode') }}"
+    # radiateur_cuisine_etat:
+    #   friendly_name: "Radiateur cuisine etat "
+    #   icon_template: mdi:timer-sand
+    #   value_template: "{{state_attr('climate.radiateur_couloiret', 'preset_mode') }}"
+    # radiateur_cuisine_etat:
+    #   friendly_name: "Radiateur cuisine etat "
+    #   icon_template: mdi:timer-sand
+    #   value_template: "{{state_attr('climate.radiateur_cuisine', 'preset_mode') }}"
+    # radiateur_cuisine_etat:
+    #   friendly_name: "Radiateur cuisine etat "
+    #   icon_template: mdi:timer-sand
+    #   value_template: "{{state_attr('climate.radiateur_cuisine', 'preset_mode') }}"
+    # radiateur_cuisine_etat:
+    #   friendly_name: "Radiateur cuisine etat "
+    #   icon_template: mdi:timer-sand
+    #   value_template: "{{state_attr('climate.radiateur_cuisine', 'preset_mode') }}"
+    # radiateur_cuisine_etat:
+    #   friendly_name: "Radiateur cuisine etat "
+    #   icon_template: mdi:timer-sand
+    #   value_template: "{{state_attr('climate.radiateur_cuisine', 'preset_mode') }}"
+    # radiateur_cuisine_etat:
+    #   friendly_name: "Radiateur cuisine etat "
+    #   icon_template: mdi:timer-sand
+    #   value_template: "{{state_attr('climate.radiateur_cuisine', 'preset_mode') }}"

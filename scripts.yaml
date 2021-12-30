@@ -335,52 +335,6 @@ alarme_notification:
       message: '{{ message }}'
   mode: single
   icon: mdi:alarm-bell
-portails:
-  alias: Portails - Ouvertures des portails en sortie
-  sequence:
-  - type: turn_on
-    device_id: 28c5881462bdb208a01e1845323f575e
-    entity_id: switch.portail_garage_switch_2
-    domain: switch
-  - delay: '15'
-  - type: turn_on
-    device_id: 45e8584c4797248cd483bcf51c0664a9
-    entity_id: switch.portail_exterieur
-    domain: switch
-  - delay: '30'
-  - type: turn_on
-    device_id: 28c5881462bdb208a01e1845323f575e
-    entity_id: switch.portail_garage_switch_2
-    domain: switch
-  mode: single
-  icon: hass:door
-portails_ouvertures_des_portails_en_rentrant:
-  alias: Portails - Ouvertures des portails en rentrant
-  sequence:
-  - type: turn_on
-    device_id: 45e8584c4797248cd483bcf51c0664a9
-    entity_id: switch.portail_exterieur
-    domain: switch
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 10
-      milliseconds: 0
-  - type: turn_on
-    device_id: 28c5881462bdb208a01e1845323f575e
-    entity_id: switch.portail_garage_switch_2
-    domain: switch
-  - delay:
-      hours: 0
-      minutes: 2
-      seconds: 0
-      milliseconds: 0
-  - type: turn_on
-    device_id: 28c5881462bdb208a01e1845323f575e
-    entity_id: switch.portail_garage_switch_2
-    domain: switch
-  mode: single
-  icon: hass:door
 notification_sms_variable_obligatoire_pascal:
   alias: Notification SMS - Variable {{message}} obligatoire - Pascal
   sequence:
@@ -562,12 +516,6 @@ alarme_fermeture_des_volets:
   - service: cover.close_cover
     target:
       entity_id:
-      - cover.volet_buanderie
-      - cover.volet_cuisine
-      - cover.volet_garage
-      - cover.volet_garage_2
-      - cover.volet_salon
-      - cover.volet_sam
       - cover.volet_sam_grand
   mode: single
   icon: mdi:curtains-closed

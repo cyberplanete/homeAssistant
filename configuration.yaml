@@ -1,5 +1,6 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
+mobile_app:
 
 lovelace:
   resources:
@@ -40,8 +41,8 @@ wake_on_lan:
 ########################################## DATABASE ##################################################################################################
 recorder:
   db_url: !secret url_posgres_db
-  purge_interval: 2
-  purge_keep_days: 90
+  auto_purge: true
+  purge_keep_days: 65
   include:
     domains:
       - sensor
@@ -72,6 +73,10 @@ recorder:
       - sensor.last_boot # Comes from 'systemmonitor' sensor platform
       - sensor.date
       - sensor.hacs
+      - sensor.time
+      - sensor.date_time_iso # Don't record date and time
+      - sensor.yr_symbol # Ignore this as well
+      - group.weather # Don't save weather
     event_types:
       - service_removed
       - service_executed
