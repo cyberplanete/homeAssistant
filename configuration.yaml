@@ -185,7 +185,7 @@ huawei_lte:
       recipient:
         - !secret stephanie_number
         - !secret pascal_number
-
+########################################## REST COMMAND ##################################################################################################
 rest_command:
   truenas_shutdown:
     url: http://192.168.0.140/api/v2.0/system/shutdown/
@@ -194,6 +194,10 @@ rest_command:
     password: !secret truenas_password
     headers:
       content-Type: application/json
+
+  launch_doorbird_on_android_tab:
+    url: !secret fullykiosk
+    method: POST
 
 ########################################## ALARME ##################################################################################################
 
