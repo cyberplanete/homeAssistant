@@ -71,7 +71,7 @@ sensor.prise_poele_electric_w:
       if (state > 33) return 'red'; 
       return 'blue';
 ############################################################## TEMPERATURES ##########################################################
-sensor.routing_multilevel_sensor_instance_1_air_temperature:
+sensor.temp_buanderie_bt_battery_level:
   templates:
     icon_color: >
       if (state > 25) return 'red'; 
@@ -104,6 +104,14 @@ sensor.c_clima_buanderie_air_temperature:
       return 'blue';
 ###### Chambre parents #####
 sensor.degc_clima_chambre_parents_temperature:
+  templates:
+    icon_color: >
+      if (state > 25) return 'red'; 
+      if (state >= 18) return 'green';
+      if (state >= 16) return 'rgb(181,244,202)';
+      return 'blue';
+
+sensor.temp_chparents_bt_battery_level:
   templates:
     icon_color: >
       if (state > 25) return 'red'; 
