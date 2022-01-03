@@ -1,0 +1,5 @@
+- platform: generic
+  still_image_url: !secret doorbirdUrlHttp
+  stream_source: !secret doorbirdUrlRtsp
+  name: "Caméra Doorbird"
+  verify_ssl: false
