@@ -163,6 +163,16 @@
       value_template: >-
         {{((as_timestamp(states.calendar.joret_clarence_gmail_com.attributes.start_time) - as_timestamp(now())) / 60) | default(99) | int }}
 
+    rappel_agenda_nous:
+      friendly_name: Temps avant rappel agenda nous
+      value_template: >-
+        {{((as_timestamp(states.calendar.nous.attributes.start_time) - as_timestamp(now())) / 60) | default(99) | int }}
+
+    rappel_agenda_stephanie:
+      friendly_name: Temps avant rappel agenda stephanie
+      value_template: >-
+        {{((as_timestamp(states.calendar.stephanie.attributes.start_time) - as_timestamp(now())) / 60) | default(99) | int }}
+
 ###################################### SURVEILLANCE DES BATTERIE - TEMPLATE ########################################################################################
 
 ######### NUT UPS ################################################################################################################################

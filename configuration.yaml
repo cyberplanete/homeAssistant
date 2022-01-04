@@ -175,8 +175,6 @@ doorbird:
 # sms:
 #   device: /dev/ttyUSB1
 
-
-
 ########################################## MODEM GSM ##################################################################################################
 
 huawei_lte:
@@ -200,6 +198,11 @@ rest_command:
   launch_doorbird_on_android_tab:
     url: !secret fullykiosk
     method: POST
+
+  fully_kiosk_cuisine_cmd:
+    url: !secret fully_kiosk_cuisine_cmd
+  fully_kiosk_cuisine_playsound:
+    url: !secret fully_kiosk_cuisine_playsound
 
 ########################################## ALARME ##################################################################################################
 
