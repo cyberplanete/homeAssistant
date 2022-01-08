@@ -548,3 +548,8 @@ alarme_eteindre_des_appareils_en_mode_totale:
     domain: switch
   mode: single
   icon: mdi:alarm-bell
+doorbird_apps:
+  alias: Lancer Doorbird apps
+  sequence:
+  - service: rest_command.launch_doorbird_on_android_tab
+  mode: single

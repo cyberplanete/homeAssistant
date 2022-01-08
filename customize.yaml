@@ -355,6 +355,14 @@ sensor.ir_salon_battery:
       if (state >= 20) return 'orange';
       return 'red';
 
+###### IR Salon ######
+sensor.ir_salle_a_manger_battery:
+  templates:
+    icon_color: >
+      if (state >= 40) return 'green'; 
+      if (state >= 20) return 'orange';
+      return 'red';
+
 ################################################################# Battery Volets ###############################################################
 
 ###### buanderie #####

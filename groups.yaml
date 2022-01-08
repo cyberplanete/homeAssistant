@@ -1,78 +1,77 @@
 # Example configuration.yaml entry
-  alarme_absence_detecteurs:
-    name: alarme_absence_detecteurs
-    entities:
-      - binary_sensor.co_entree_contact
-      - binary_sensor.co_portail_garage_contac
-      - binary_sensor.co_buanderie_contact
-      - binary_sensor.ir_garage_occupancy
-      - binary_sensor.ir_cuisine_occupancy
-      - binary_sensor.ir_salon_occupancy
-      - binary_sensor.ir_buanderie_occupancy
-  alarme_nuit_detecteurs:
-    name: alarme_nuit_detecteurs
-    entities:
-      - binary_sensor.co_entree_contact
-      - binary_sensor.co_portail_garage_contac
-      - binary_sensor.co_buanderie_contact
-      - binary_sensor.ir_garage_occupancy
+alarme_absence_detecteurs:
+  name: alarme_absence_detecteurs
+  entities:
+    - binary_sensor.co_entree_contact
+    - binary_sensor.co_portail_garage_contac
+    - binary_sensor.co_buanderie_contact
+    - binary_sensor.ir_garage_occupancy
+    - binary_sensor.ir_cuisine_occupancy
+    - binary_sensor.ir_salon_occupancy
+    - binary_sensor.ir_buanderie_occupancy
+    - binary_sensor.ir_salle_a_manger_occupancy
+alarme_nuit_detecteurs:
+  name: alarme_nuit_detecteurs
+  entities:
+    - binary_sensor.co_entree_contact
+    - binary_sensor.co_portail_garage_contac
+    - binary_sensor.co_buanderie_contact
+    - binary_sensor.ir_garage_occupancy
 
-  alexa_echo_tous:
-    name: alexa_echo_tous
-    entities:
-      - media_player.echo_cuisine
-      - media_player.echo_clarence
-      - media_player.echo_eloise
+alexa_echo_tous:
+  name: alexa_echo_tous
+  entities:
+    - media_player.echo_cuisine
+    - media_player.echo_clarence
+    - media_player.echo_eloise
 
-  detecteurs_incendie:
-    name: detecteurs_incendie
-    entities:
+detecteurs_incendie:
+  name: detecteurs_incendie
+  entities:
     # SAM
-      - binary_sensor.detecteur_incendie_sam_smoke_alarm_smoke_detected
+    - binary_sensor.detecteur_incendie_sam_smoke_alarm_smoke_detected
     # Entree
-      - binary_sensor.detecteur_incendie_entree_smoke_alarm_smoke_detected_2
+    - binary_sensor.detecteur_incendie_entree_smoke_alarm_smoke_detected_2
     # Couloir
-      - binary_sensor.detecteur_incendie_couloir_smoke_alarm_smoke_detected_3
-    # Chambre rue  
-      - binary_sensor.detecteur_incendie_chambre_clarence_smoke_alarm_smoke_detected_4
-    # Buanderie 
-      - binary_sensor.detecteur_incendie_buanderie_smoke_alarm_smoke_detected_5
-    # # # Garage 
-      - binary_sensor.detecteur_incendie_garage_smoke_alarm_smoke_detected
+    - binary_sensor.detecteur_incendie_couloir_smoke_alarm_smoke_detected_3
+    # Chambre rue
+    - binary_sensor.detecteur_incendie_chambre_clarence_smoke_alarm_smoke_detected_4
+    # Buanderie
+    - binary_sensor.detecteur_incendie_buanderie_smoke_alarm_smoke_detected_5
+    # # # Garage
+    - binary_sensor.detecteur_incendie_garage_smoke_alarm_smoke_detected
 
+detecteurs_inondation:
+  name: detecteurs_inondation
+  entities:
+    - binary_sensor.detecteur_inondation_ballon_eau_chaude_water_leak
+    - binary_sensor.detecteur_inondation_garage_water_leak
 
-  detecteurs_inondation:
-    name: detecteurs_inondation
-    entities:
-      - binary_sensor.detecteur_inondation_ballon_eau_chaude_water_leak
-      - binary_sensor.detecteur_inondation_garage_water_leak
+alarme_eteindre_nuit:
+  name: alarme_eteindre_nuit
+  entities:
+    - switch.onoff_tv_chambre_jardin_switch_2
+    - switch.onoff_tv_chambre_parent_switch
+    - switch.onoff_bureau_salon_switch_3
+    #      - switch.onoff_home_cinema_switch_2
+    - switch.prise_outillage_switch_2
+    - switch.prise_bureau_chambre_clarence
 
-  alarme_eteindre_nuit:
-    name: alarme_eteindre_nuit
-    entities:
-      - switch.onoff_tv_chambre_jardin_switch_2
-      - switch.onoff_tv_chambre_parent_switch
-      - switch.onoff_bureau_salon_switch_3
-#      - switch.onoff_home_cinema_switch_2
-      - switch.prise_outillage_switch_2
-      - switch.prise_bureau_chambre_clarence
+aspirateurs_rooms_rdc:
+  name: PiècesRDCAspirateur
+  entities:
+    - input_boolean.aspirateur_hallentree
+    - input_boolean.aspirateur_couloirentree
+    - input_boolean.aspirateur_cuisine
+    - input_boolean.aspirateur_sam
+    - input_boolean.aspirateur_salon
 
-
-  aspirateurs_rooms_rdc:
-      name: PiècesRDCAspirateur
-      entities:
-        - input_boolean.aspirateur_hallentree
-        - input_boolean.aspirateur_couloirentree
-        - input_boolean.aspirateur_cuisine
-        - input_boolean.aspirateur_sam
-        - input_boolean.aspirateur_salon
-        
-  aspirateurs_rooms_etage:      
-      name: PiècesEtageAspirateur
-      entities:
-        - input_boolean.aspirateur_cheloise
-        - input_boolean.aspirateur_chclarence
-        - input_boolean.aspirateur_sdb
-        - input_boolean.aspirateur_wc
-        - input_boolean.aspirateur_couloiretage
-        - input_boolean.aspirateur_chparents
+aspirateurs_rooms_etage:
+  name: PiècesEtageAspirateur
+  entities:
+    - input_boolean.aspirateur_cheloise
+    - input_boolean.aspirateur_chclarence
+    - input_boolean.aspirateur_sdb
+    - input_boolean.aspirateur_wc
+    - input_boolean.aspirateur_couloiretage
+    - input_boolean.aspirateur_chparents
