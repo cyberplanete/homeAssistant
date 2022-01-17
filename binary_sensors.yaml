@@ -70,8 +70,7 @@
     #                         {% elif is_state('light.radiateur_buanderie_level_2','off') %}
     #                         {{'En Arrêt'}}
     #                         {% endif -%}
-         
-         
+
 
     #   etat_poele_granules:
     #   # Note that 'value_template' is required. I have to add it, but I only want to change the icon...
@@ -82,6 +81,3 @@
     #                         {% elif states.sensor.prise_poele_electric_w | float < 18  %}
     #                             {{'En Arrêt'}}
     #                         {% endif -%}      
-         
-         
-       
