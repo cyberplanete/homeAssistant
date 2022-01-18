@@ -32,6 +32,7 @@ input_datetime: !include input_dateTime.yaml
 input_boolean: !include input_boolean.yaml
 vacuum: !include aspirateurs.yaml
 camera: !include cameras.yaml
+device_tracker: !include deviceTracker.yaml
 
 homeassistant:
   customize: !include customize.yaml
