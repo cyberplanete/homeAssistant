@@ -2,7 +2,7 @@
   count: 5
   consider_home: 600
   hosts:
-    eloise_telephone: 192.168.0.45
-    clarence_telephone: 192.168.0.42
-    stephanie_telephone: 192.168.0.43
-    pascal_telephone: 192.168.0.239
+    eloise_telephone: 192.168.0.21
+    clarence_telephone: 192.168.0.23
+    stephanie_telephone: 192.168.0.24
+    pascal_telephone: 192.168.0.25
