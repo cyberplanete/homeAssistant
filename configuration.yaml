@@ -36,7 +36,6 @@ device_tracker: !include deviceTracker.yaml
 
 homeassistant:
   customize: !include customize.yaml
-
 wake_on_lan:
 
 ########################################## DATABASE ##################################################################################################
