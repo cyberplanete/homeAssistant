@@ -16,6 +16,8 @@ wifi:
     ssid: "Nodemcu-Ballon-Eau-Chaude"
     password: "gY2KQlZvhCk6"
 
+captive_portal:
+
 logger:
   level: debug
 

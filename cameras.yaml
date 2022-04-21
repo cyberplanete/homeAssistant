@@ -1,5 +1,11 @@
 - platform: generic
-  still_image_url: !secret doorbirdUrlHttp
-  stream_source: !secret doorbirdUrlRtsp
-  name: "Caméra Doorbird"
-  verify_ssl: false
+  name: "Portier"
+  still_image_url: http://192.168.0.175/cgi-bin/snapshot.cgi
+  authentication: digest
+  stream_source: !secret portierdUrlRtsp
+  username: !secret portierUser
+  password: !secret portierPassword
+
+- platform: push
+  name: portier last motion
+  webhook_id: motion_webkook_portier

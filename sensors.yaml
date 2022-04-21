@@ -294,3 +294,31 @@
     #   friendly_name: "Radiateur cuisine etat "
     #   icon_template: mdi:timer-sand
     #   value_template: "{{state_attr('climate.radiateur_cuisine', 'preset_mode') }}"
+
+- platform: mqtt
+  name: "DahuaVTO Event"
+  state_topic: "DahuaVTO/CallNoAnswered/Event"
+  value_template: "{{ value_json.Action }}"
+
+- platform: mqtt
+  name: "DahuaVTO Event"
+  state_topic: "DahuaVTO/CallNoAnswered/Event"
+  value_template: "{{ value_json.Action }}"
+ 
+- platform: mqtt
+  name: "DahuaVTO MotionEvent"
+  state_topic: "DahuaVTO/VideoMotion/Event"
+  value_template: "{{ value_json.Action }}"
+ 
+- platform: mqtt
+  name: "DahuaVTO AccessControl"
+  state_topic: "DahuaVTO/AccessControl/Event"
+  value_template: "{{ value_json.Action }}"
+  
+- platform: mqtt
+  name: "DahuaVTO CallSnap"
+  state_topic: "DahuaVTO/CallSnap"
+  value_template: "{{ value_json.Action }}"
+
+  
+  

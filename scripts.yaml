@@ -91,10 +91,11 @@ alexa_colis:
 eteindre_des_appareils_pour_la_nuit:
   alias: Alarme - Éteindre des appareils en mode nuit
   sequence:
-  - type: turn_off
-    device_id: 3c5b5cf5f84886f42059d0a23d64ac09
-    entity_id: switch.prisetv_salon_switch
-    domain: switch
+  - device_id: 42df314d314311203e850ad443c35ecd
+    domain: select
+    entity_id: select.prise_tv_salon_power_outage_memory
+    type: select_option
+    option: 'off'
   - type: turn_off
     device_id: 4942a6bddcf769b3f7ec50a2877fe694
     entity_id: switch.prise_bureau_chambre_clarence
@@ -139,8 +140,12 @@ allumer_des_appareils_quand_alarme_eteinte:
     entity_id: switch.prise_bureau_chambre_clarence
     domain: switch
   - type: turn_on
-    device_id: 3c5b5cf5f84886f42059d0a23d64ac09
-    entity_id: switch.prisetv_salon_switch
+    device_id: 42df314d314311203e850ad443c35ecd
+    entity_id: switch.prise_tv_salon
+    domain: switch
+  - type: turn_on
+    device_id: f61375bea9244f44c1abe5f54e1b4187
+    entity_id: switch.prise_bureau_eloise
     domain: switch
   mode: single
   icon: mdi:alarm-bell
@@ -195,8 +200,10 @@ snapshot_doobird_telegram:
   sequence:
   - service: camera.snapshot
     data:
-      filename: /config/www/snapshots/snapshots_doorbird.jpg
-    entity_id: camera.portier_live
+      filename: /config/www/snapshots/snapshots_portier.jpg
+    target:
+      entity_id:
+      - camera.portier
   - delay: '5'
   - service: telegram_bot.send_photo
     data:
@@ -204,12 +211,12 @@ snapshot_doobird_telegram:
       target: '246735540'
   - service: telegram_bot.send_photo
     data:
-      file: /config/www/snapshots/snapshots_doorbird.jpg
+      file: /config/www/snapshots/snapshots_portier.jpg
       target: '315573228'
   - service: telegram_bot.send_photo
     data:
       target: '2099122657'
-      file: /config/www/snapshots/snapshots_doorbird.jpg
+      file: /config/www/snapshots/snapshots_portier.jpg
   mode: single
   icon: mdi:camera-front
 alexa_courrier:
@@ -522,10 +529,11 @@ alarme_fermeture_des_volets:
 alarme_eteindre_des_appareils_en_mode_totale:
   alias: Alarme - Éteindre des appareils en mode totale
   sequence:
-  - type: turn_off
-    device_id: 3c5b5cf5f84886f42059d0a23d64ac09
-    entity_id: switch.prisetv_salon_switch
-    domain: switch
+  - device_id: 42df314d314311203e850ad443c35ecd
+    domain: select
+    entity_id: select.prise_tv_salon_power_outage_memory
+    type: select_option
+    option: 'off'
   - type: turn_off
     device_id: 4942a6bddcf769b3f7ec50a2877fe694
     entity_id: switch.prise_bureau_chambre_clarence

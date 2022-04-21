@@ -1,7 +1,7 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 mobile_app:
-
+ffmpeg:
 lovelace:
   resources:
     - url: /local/community/lovelace-multiple-entity-row/multiple-entity-row.js
@@ -118,12 +118,14 @@ discovery:
 http:
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
+  ip_ban_enabled: true
+  login_attempts_threshold: 5
 
-mqtt:
-  broker: core-mosquitto
-  username: !secret mosquitto_username
-  password: !secret mosquitto_password
-  discovery: true
+# mqtt:
+#   broker: core-mosquitto
+#   username: !secret mosquitto_username
+#   password: !secret mosquitto_password
+#   discovery: true
 
 #Zwave mise à jour openzwave
 # zwave:
@@ -134,6 +136,12 @@ mqtt:
 google:
   client_id: !secret google_id
   client_secret: !secret google_key
+
+########################################## TELEGRAM ##################################################################################################
+
+blink:
+  username: !secret username_blink
+  password: !secret password_blink
 
 ########################################## TELEGRAM ##################################################################################################
 
@@ -156,20 +164,6 @@ telegram_bot:
 #       url: "amazon.fr"
 
 ########################################## DOORBIRD ##################################################################################################
-
-#Doorbird
-doorbird:
-  devices:
-    - host: !secret DOORBIRD_IP
-      username: !secret DOORBIRD_USERNAME
-      password: !secret DOORBIRD_PASSWORD
-      token: !secret Token
-      name: Portier
-      events:
-        - carillon
-        - une_personne_sonne
-        - ouvrir_portail
-        - unit_2_bell
 
 # configuration SMS avec cle
 # sms:
@@ -200,8 +194,8 @@ rest_command:
     headers:
       content-Type: application/json
 
-  launch_doorbird_on_android_tab:
-    url: !secret fullykiosk
+  launch_portier_app_on_android_tab:
+    url: !secret fullykiosk_showApp
     method: POST
 
   fully_kiosk_cuisine_cmd:
