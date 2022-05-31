@@ -18,7 +18,7 @@
 # Comment this if you don't want to include your Node-RED flows.
 # This is only valid if you install Node-RED as Home Assistant Add-on
 !node-red/
-!screenshots/*
+!screenshots/
 
 # Uncomment this if you don' want to include secrets.yaml 
 secrets.yaml
