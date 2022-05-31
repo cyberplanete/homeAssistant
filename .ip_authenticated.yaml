@@ -12,8 +12,8 @@
   city: null
   country: null
   hostname: supervisor
-  last_used_at: '2022-05-31T14:07:11.742029+00:00'
-  prev_used_at: '2022-05-31T13:37:11.694758+00:00'
+  last_used_at: '2022-05-31T14:37:11.761299+00:00'
+  prev_used_at: '2022-05-31T14:07:11.742029+00:00'
   region: null
   user_id: 3aa9e9eb7e4a4089858736e478ddcc44
   username: Supervisor
@@ -21,8 +21,8 @@
   city: null
   country: null
   hostname: pc_pascal.cyberplanete.local
-  last_used_at: '2022-05-31T13:56:37.671964+00:00'
-  prev_used_at: '2022-05-31T10:28:51.431682+00:00'
+  last_used_at: '2022-05-31T14:34:03.800496+00:00'
+  prev_used_at: '2022-05-31T14:30:26.965572+00:00'
   region: null
   user_id: 22dc2cbd23294fbd88e870fe08e62bf2
   username: cyberplanete
@@ -30,8 +30,8 @@
   city: null
   country: null
   hostname: tablette_cuisine.cyberplanete.local
-  last_used_at: '2022-05-31T13:55:39.339769+00:00'
-  prev_used_at: '2022-05-31T13:25:31.419313+00:00'
+  last_used_at: '2022-05-31T14:25:43.473128+00:00'
+  prev_used_at: '2022-05-31T13:55:39.339769+00:00'
   region: null
   user_id: 522f3b1fdd7d40e8aefbb2500db579e3
   username: tablette

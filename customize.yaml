@@ -54,7 +54,7 @@ input_select.mode_chauffage_general:
       if (state == 'Confort -1') return 'rgb(131,158,14)';
 
 ########################################## PORTE GARAGE ###########################################################################
-binary_sensor.co_garage_access_control_window_door_is_open_2:
+binary_sensor.co_portail_garage_contact:
   templates:
     icon: >
       if (state == 'on') return 'mdi:garage-open';
@@ -88,7 +88,7 @@ sensor.degc_clima_chambre_jardin_temperature:
       if (state >= 16) return 'rgb(181,244,202)';
       return 'blue';
 ###### Chambre rue #####
-sensor.c_clima_buanderie_air_temperature:
+sensor.temp_chclarence_bt_temperature:
   templates:
     icon_color: >
       if (state > 25) return 'red'; 
@@ -97,7 +97,7 @@ sensor.c_clima_buanderie_air_temperature:
       return 'blue';
 
 ###### Chambre parents #####
-sensor.degc_clima_chambre_parents_temperature:
+sensor.temp_chparents_bt_temperature:
   templates:
     icon_color: >
       if (state > 25) return 'red'; 
@@ -114,7 +114,7 @@ sensor.ir_cuisine_air_temperature:
       if (state >= 16) return 'rgb(181,244,202)';
       return 'blue';
 ###### Salon #####
-sensor.ir_salon_air_temperature_2:
+sensor.temp_sam_bt_temperature:
   templates:
     icon_color: >
       if (state > 25) return 'red'; 
@@ -130,7 +130,7 @@ sensor.blink_cam_jardin_2_temperature:
       if (state >= 16) return 'rgb(181,244,202)';
       return 'blue';
 
-sensor.ir_couloir_air_temperature_3:
+sensor.temp_couloiretage_bt_temperature:
   templates:
     icon_color: >
       if (state > 25) return 'red'; 
@@ -138,19 +138,19 @@ sensor.ir_couloir_air_temperature_3:
       if (state >= 16) return 'rgb(181,244,202)';
       return 'blue';
 ############################################################## IMPRIMANTES ##########################################################
-sensor.brother_mfc_j5720dw_bk:
+sensor.mfc_j5720dw_black_ink_remaining:
   templates:
     icon_color: black
 
-sensor.brother_mfc_j5720dw_m:
+sensor.mfc_j5720dw_magenta_ink_remaining:
   templates:
     icon_color: magenta
 
-sensor.brother_mfc_j5720dw_c:
+sensor.mfc_j5720dw_cyan_ink_remaining:
   templates:
     icon_color: cyan
 
-sensor.brother_mfc_j5720dw_y:
+sensor.mfc_j5720dw_yellow_ink_remaining:
   templates:
     icon_color: yellow
 ############################################################## BATTERIES ##########################################################
@@ -188,12 +188,6 @@ sensor.temp_buanderie_bt_battery_level:
       if (state >= 40) return 'green'; 
       if (state >= 20) return 'orange';
       return 'red';
-sensor.temp_chparents_bt_battery_level:
-  templates:
-    icon_color: >
-      if (state >= 40) return 'green'; 
-      if (state >= 20) return 'orange';
-      return 'red';
 
 ###### Clima Ch Jardin ######
 sensor.degc_clima_chambre_jardin_battery:
@@ -203,7 +197,7 @@ sensor.degc_clima_chambre_jardin_battery:
       if (state >= 20) return 'orange';
       return 'red';
 ###### Clima Ch parents ######
-sensor.degc_clima_chambre_parents_battery:
+sensor.temp_chparents_bt_battery_level:
   templates:
     icon_color: >
       if (state >= 40) return 'green'; 
@@ -464,14 +458,14 @@ input_boolean.aspirateur_salon:
   room_id: "2"
 
 input_boolean.aspirateur_chclarence:
-  room_id: "1"
-input_boolean.aspirateur_cheloise:
-  room_id: "2"
-input_boolean.aspirateur_sdb:
   room_id: "3"
+input_boolean.aspirateur_cheloise:
+  room_id: "4"
+input_boolean.aspirateur_sdb:
+  room_id: "2"
 input_boolean.aspirateur_couloiretage:
   room_id: "5"
 input_boolean.aspirateur_chparents:
   room_id: "6"
 input_boolean.aspirateur_wc:
-  room_id: "4"
+  room_id: "1"

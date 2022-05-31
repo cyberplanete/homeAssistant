@@ -7,5 +7,5 @@
   password: !secret portierPassword
 
 - platform: push
-  name: portier last motion
-  webhook_id: motion_webkook_portier
+  name: MotionEyelastmotion
+  webhook_id: motioneye_webkook_portier

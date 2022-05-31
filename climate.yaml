@@ -6,39 +6,39 @@
   - platform: qubino_wire_pilot
     heater: light.radiateur_sam
     name: radiateur_sam
-    sensor: sensor.ir_salon_air_temperature_2
+    sensor: sensor.temp_sam_bt_temperature
 
   - platform: qubino_wire_pilot
     heater: light.radiateur_entree_level
     name: radiateur_entree
-    sensor: sensor.degc_clima_entree_temperature
+    sensor: sensor.temp_entree_bt_temperature
 
   - platform: qubino_wire_pilot
     heater: light.radiateur_etage_jardin_level_3
     name: radiateur_ch_jardin
-    sensor: sensor.degc_clima_chambre_jardin_temperature
+    sensor: sensor.temp_chjardin_bt_temperature
 
   - platform: qubino_wire_pilot
     heater: light.radiateur_etage_rue_level_4
     name: radiateur_ch_rue
-    sensor: sensor.degc_clima_chambre_clarence_temperature
+    sensor: sensor.temp_chclarence_bt_temperature
 
   - platform: qubino_wire_pilot
     heater: light.radiateur_buanderie_level_2
     name: radiateur_buanderie
-    sensor: sensor.ir_buanderie_temperature
+    sensor: sensor.temp_buanderie_bt_temperature
     
   - platform: qubino_wire_pilot
     heater: light.radiateur_chambre_parents
     name: radiateur_ch_parents
-    sensor: sensor.degc_clima_chambre_parents_temperature
+    sensor: sensor.temp_chparents_bt_temperature
     
   - platform: qubino_wire_pilot
     heater: light.radiateur_couloir_etage
     name: radiateur_couloir_etage
-    sensor: sensor.ir_couloir_etage_temperature    
+    sensor: sensor.temp_couloiretage_bt_temperature    
     
   - platform: qubino_wire_pilot
     heater: light.radiateur_sdb
     name: radiateur_sdb
-    sensor: sensor.ir_couloir_etage_temperature
+    sensor: sensor.temp_sdb_bt_temperature

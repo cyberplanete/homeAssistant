@@ -82,9 +82,44 @@
     #                             {{'En Arrêt'}}
     #                         {% endif -%}      
     
+
+
 - platform: mqtt
   name: "Portier - Une personne sonne"
   state_topic: "DahuaVTO/BackKeyLight/Event"
   value_template: "{{ value_json.Data.State }}"
   payload_on: "1"
   payload_off: "0"
+  
+- platform: workday
+  country: FR
+  workdays: [mon, tue, wed, thu, fri]
+  
+- platform: tod
+  name: nuit
+  after: sunset
+  before: sunrise
+
+- platform: tod
+  name: jour
+  after: sunrise
+  before: sunset
+
+- platform: tod
+  name: soir
+  after: '17:00'
+  before: '21:00'
+
+- platform: tod
+  name: Quiet time
+  after: '21:00'
+  before: '06:00'
+
+
+- platform: tod
+  name: Tôt la matinée
+  after: '05:50'
+  before: '08:30'
+
+
+  

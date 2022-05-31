@@ -1,3 +1,112 @@
+
+- platform: rest
+  name: Glances - SERVER - Uptime
+  value_template: '{{ value_json }}'
+  resource: http://proxmox.cyberplanete.local:61208/api/3/uptime
+  
+- platform: rest
+  resource: http://proxmox.cyberplanete.local:61208/api/3/cpu
+  name: Glances - SERVER - CPU
+  value_template:  '{{ "ok" }}'
+  json_attributes:
+      - total
+    
+
+- platform: rest
+  name: Glances - SERVER - CPU - Temperature
+  device_class: temperature
+  unit_of_measurement: "°C"
+  value_template: '{{ value_json[0].value }}'
+  resource: http://proxmox.cyberplanete.local:61208/api/3/sensors    
+    
+
+- platform: rest
+  resource: http://proxmox.cyberplanete.local:61208/api/3/fs
+  name: Glances - SERVER - Disk
+  value_template:  '{{ "ok" }}'
+  json_attributes_path: '$[1]'
+  json_attributes:
+      - free
+      - size
+      - used
+- platform: rest
+  resource: http://proxmox.cyberplanete.local:61208/api/3/mem
+  name: Glances - SERVER - RAM
+  value_template:  '{{ "ok" }}'
+  json_attributes:
+      - used
+      - free
+      - total
+
+- platform: rest
+  resource: http://proxmox.cyberplanete.local:61208/api/3/processlist
+  name: Glances - SERVER - CPU - Process - glances
+  value_template:  '{{ "ok" }}'
+  json_attributes_path: '$..[?(@.name=="glances")]'
+  json_attributes:
+      - name
+      - status
+      - username
+      - pid
+
+
+- platform: template
+  sensors:
+      glances_server_cpu_used_pct:
+        friendly_name: "Glances - SERVER - CPU Used"
+        unit_of_measurement: "%"
+        value_template: '{{ state_attr("sensor.glances_server_cpu", "total") }}'
+
+- platform: template
+  sensors:
+      glances_server_ram_used_mb:
+        friendly_name: "Glances - SERVER - RAM Used"
+        unit_of_measurement: "MB"
+        value_template: '{{ (state_attr("sensor.glances_server_ram", "used") | float / 1024/1024) | round(0) }}'
+
+- platform: template
+  sensors:
+      glances_server_ram_free_mb:
+        friendly_name: "Glances - SERVER - RAM Free"
+        unit_of_measurement: "MB"
+        value_template: '{{ (state_attr("sensor.glances_server_ram", "free") | float / 1024/1024) | round(0) }}'
+
+
+- platform: template
+  sensors:
+      glances_server_ram_total_mb:
+        friendly_name: "Glances - SERVER - RAM Total"
+        unit_of_measurement: "MB"
+        value_template: '{{ (state_attr("sensor.glances_server_ram", "total") | float / 1024/1024) | round(0) }}'
+
+
+- platform: template
+  sensors:
+      glances_server_disk_used_gb:
+        friendly_name: "Glances - SERVER - Disk Used"
+        unit_of_measurement: "GB"
+        value_template: '{{ (state_attr("sensor.glances_server_disk", "used") | float / 1024/1024/1024) | round(2) }}'
+
+- platform: template
+  sensors:
+      glances_server_disk_free_gb:
+        friendly_name: "Glances - SERVER - Disk Free"
+        unit_of_measurement: "GB"
+        value_template: '{{ (state_attr("sensor.glances_server_disk", "free") | float / 1024/1024/1024) | round(2) }}'
+
+- platform: template
+  sensors:
+      glances_server_disk_size_gb:
+        friendly_name: "Glances - SERVER - Disk Size"
+        unit_of_measurement: "GB"
+        value_template: '{{ (state_attr("sensor.glances_server_disk", "size") | float / 1024/1024/1024) | round(2) }}'
+
+
+
+- platform: authenticated
+  enable_notification: false    
+
+
 - platform: template
   sensors:
     low_battery:
@@ -149,29 +258,45 @@
 
     ###################################### GOOGLE CALENDAR - TEMPLATE ########################################################################################
     rappel_agenda_pascal:
-      friendly_name: Temps avant rappel agenda pascal
+      friendly_name: Rappel agenda pascal
       value_template: >-
-        {{((as_timestamp(states.calendar.pascal_joret_gmail_com.attributes.start_time) - as_timestamp(now())) / 60) | default(99) | int }}
+        {{((as_timestamp(states.calendar.agenda_pascal.attributes.start_time) - as_timestamp(now())) / 60) | default(99) | int }}
 
     rappel_agenda_eloise:
-      friendly_name: Temps avant rappel agenda eloise
+      friendly_name: Rappel agenda eloise
       value_template: >-
-        {{((as_timestamp(states.calendar.eloise_joret_gmail_com.attributes.start_time) - as_timestamp(now())) / 60) | default(99) | int }}
+        {{((as_timestamp(states.calendar.agenda_eloise.attributes.start_time) - as_timestamp(now())) / 60) | default(99) | int }}
 
     rappel_agenda_clarence:
-      friendly_name: Temps avant rappel agenda clarence
+      friendly_name: Rappel agenda clarence
       value_template: >-
-        {{((as_timestamp(states.calendar.joret_clarence_gmail_com.attributes.start_time) - as_timestamp(now())) / 60) | default(99) | int }}
+        {{((as_timestamp(states.calendar.agenda_clarence.attributes.start_time) - as_timestamp(now())) / 60) | default(99) | int }}
 
     rappel_agenda_famille:
-      friendly_name: Temps avant rappel agenda nous
+      friendly_name: Rappel agenda nous
       value_template: >-
-        {{((as_timestamp(states.calendar.famille.attributes.start_time) - as_timestamp(now())) / 60) | default(99) | int }}
+        {{((as_timestamp(states.calendar.agenda_famille.attributes.start_time) - as_timestamp(now())) / 60) | default(99) | int }}
 
     rappel_agenda_stephanie:
-      friendly_name: Temps avant rappel agenda stephanie
+      friendly_name: Rappel agenda stephanie
       value_template: >-
-        {{((as_timestamp(states.calendar.stephanie.attributes.start_time) - as_timestamp(now())) / 60) | default(99) | int }}
+        {{((as_timestamp(states.calendar.agenda_stephanie.attributes.start_time) - as_timestamp(now())) / 60) | default(99) | int }}
+        
+    rappel_agenda_pascal_pro:
+      friendly_name: Rappel agenda pascal pro
+      value_template: >-
+        {{((as_timestamp(states.calendar.agenda_pascal_pro.attributes.start_time) - as_timestamp(now())) / 60) | default(99) | int }} 
+        
+    rappel_agenda_parents:
+      friendly_name: Rappel agenda parents
+      value_template: >-
+        {{((as_timestamp(states.calendar.agenda_parents.attributes.start_time) - as_timestamp(now())) / 60) | default(99) | int }}    
+        
+    rappel_agenda_jour_ferie:
+      friendly_name: Rappel agenda jour ferie
+      value_template: >-
+        {{((as_timestamp(states.calendar.agenda_jours_feries_en_france.attributes.start_time) - as_timestamp(now())) / 60) | default(99) | int }}    
+        
 
 ###################################### SURVEILLANCE DES BATTERIE - TEMPLATE ########################################################################################
 
@@ -294,7 +419,10 @@
     #   friendly_name: "Radiateur cuisine etat "
     #   icon_template: mdi:timer-sand
     #   value_template: "{{state_attr('climate.radiateur_cuisine', 'preset_mode') }}"
-
+    
+    
+    
+    
 - platform: mqtt
   name: "DahuaVTO Event"
   state_topic: "DahuaVTO/CallNoAnswered/Event"
@@ -318,7 +446,5 @@
 - platform: mqtt
   name: "DahuaVTO CallSnap"
   state_topic: "DahuaVTO/CallSnap"
-  value_template: "{{ value_json.Action }}"
-
-  
-  
+  value_template: "{{ value_json.Action }}"    
+    

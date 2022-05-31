@@ -1,7 +1,6 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
-mobile_app:
-ffmpeg:
+
 lovelace:
   resources:
     - url: /local/community/lovelace-multiple-entity-row/multiple-entity-row.js
@@ -12,6 +11,7 @@ lovelace:
 frontend:
   extra_module_url:
     - /local/custom-ui/custom-ui.js
+  themes: !include_dir_merge_named themes
 
 group: !include groups.yaml
 automation: !include automations.yaml
@@ -33,10 +33,16 @@ input_boolean: !include input_boolean.yaml
 vacuum: !include aspirateurs.yaml
 camera: !include cameras.yaml
 device_tracker: !include deviceTracker.yaml
+timer: !include timers.yaml
+
 
 homeassistant:
   customize: !include customize.yaml
 wake_on_lan:
+
+history:
+logbook:
+energy:
 
 ########################################## DATABASE ##################################################################################################
 recorder:
@@ -64,18 +70,17 @@ recorder:
       - camera
       - automation
     entity_globs:
-      - sensor.weather_*
-      - sensor.sensor.ups_*
+      - sensor.44_*
+      - sensor.la_chevroliere_*
+      - sensor.myups_*
       - binary_sensor.huawei_*
       - switch.echo_*
     entities:
       - sun.sun # Don't record sun data
-      - sensor.last_boot # Comes from 'systemmonitor' sensor platform
       - sensor.date
       - sensor.hacs
       - sensor.time
       - sensor.date_time_iso # Don't record date and time
-      - sensor.yr_symbol # Ignore this as well
       - group.weather # Don't save weather
     event_types:
       - service_removed
@@ -230,19 +235,5 @@ alarm_control_panel:
       trigger_time: 300
 ########################################## ANDROID TV ##################################################################################################
 
-media_player:
-  - platform: androidtv
-    adb_server_ip: 192.168.0.90
-    name: Tab Cuisine_old
-    host: 192.168.0.168
+      
 
-  - platform: androidtv
-    adb_server_ip: 192.168.0.241
-    name: Tab Cuisine
-    host: 192.168.0.168
-
-person:
-  - name: Pascal
-    id: ada6789
-    device_trackers:
-      - device_tracker.oneplus_pascal

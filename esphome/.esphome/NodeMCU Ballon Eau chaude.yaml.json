@@ -2,7 +2,7 @@
   "storage_version": 1,
   "name": "nodemcu_temp_eau_chaude",
   "comment": null,
-  "esphome_version": "2022.3.2",
+  "esphome_version": "2022.5.1",
   "src_version": 1,
   "address": "192.168.0.11",
   "web_port": 80,

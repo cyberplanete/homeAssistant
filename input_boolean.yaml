@@ -1,40 +1,119 @@
-      doorbell_raw:
-            name: Etat Radiateur cuisine
-            initial: off
-            
-      aspirateur_hallentree:
-        name: Hall d'entree
-        icon: mdi:foot-print
-      aspirateur_couloirentree:
-        name: Couloir entree
-        icon: mdi:foot-print        
-      aspirateur_salon:
-        name: Salon
-        icon: mdi:sofa
-      aspirateur_sam:
-        name: Salle à manger
-        icon: mdi:table-furniture
-      aspirateur_cuisine:
-        name: Cuisine
-        icon: mdi:silverware-fork-knife
-        
-        
-        
-      aspirateur_cheloise:
-        name: Chambre Eloise
-        icon: mdi:bed
-      aspirateur_chclarence:
-        name: Chambre clarence
-        icon: mdi:bunk-bed
-      aspirateur_couloiretage:
-        name: Couloir etage
-        icon: mdi:foot-print        
-      aspirateur_wc:
-        name: WC
-        icon: mdi:human-male-female
-      aspirateur_chparents:
-        name: Chambre parents
-        icon: mdi:bed-double
-      aspirateur_sdb:
-        name: SDB
-        icon: mdi:bathtub        
+doorbell_raw:
+  name: Etat Radiateur cuisine
+  initial: off
+
+aspirateur_hallentree:
+  name: Hall d'entree
+  icon: mdi:foot-print
+aspirateur_couloirentree:
+  name: Couloir entree
+  icon: mdi:foot-print
+aspirateur_salon:
+  name: Salon
+  icon: mdi:sofa
+aspirateur_sam:
+  name: Salle à manger
+  icon: mdi:table-furniture
+aspirateur_cuisine:
+  name: Cuisine
+  icon: mdi:silverware-fork-knife
+
+aspirateur_cheloise:
+  name: Chambre Eloise
+  icon: mdi:bed
+aspirateur_chclarence:
+  name: Chambre clarence
+  icon: mdi:bunk-bed
+aspirateur_couloiretage:
+  name: Couloir etage
+  icon: mdi:foot-print
+aspirateur_wc:
+  name: WC
+  icon: mdi:human-male-female
+aspirateur_chparents:
+  name: Chambre parents
+  icon: mdi:bed-double
+aspirateur_sdb:
+  name: SDB
+  icon: mdi:bathtub
+
+boite_aux_lettres_colis:
+  name: alert_colis
+  icon: mdi:mailbox-open-outline
+
+boite_aux_lettres_lettre:
+  name: alert_lettre
+  icon: mdi:email-newsletter
+
+nas_netgear:
+  name: NAS NETGEAR
+  icon: mdi:email-newsletter
+
+nas_nl54l:
+  name: Serveur de fichier
+  icon: mdi:email-newsletter
+
+script_portail_sortant_nd:
+  name: script portail entrant nd
+  icon: mdi:garage
+
+script_portail_entrant_nd:
+  name: script portail sortant nd
+  icon: mdi:garage
+
+portail_garage_nd:
+  name: portail garage
+  icon: mdi:garage
+  
+portail_exterieur_nd:
+  name: portail exterieur
+  icon: mdi:garage
+  
+volets_etages_nd:
+  name: volets étage
+  icon: mdi:window-shutter
+  
+  
+volets_rez_chaussee_nd:
+  name: volets rez-de-chaussée
+  icon: mdi:window-shutter
+  
+lumiere_garage_nd:
+  name: lumière garage
+  icon: mdi:lightbulb
+  
+lumiere_clarence_nd:
+  name: lumière clarence
+  icon: mdi:lightbulb
+  
+lumiere_parents_nd:
+  name: lumière parents
+  icon: mdi:lightbulb
+  
+temperature_eau_chaude_nd:
+  name: température eau chaude
+  icon: mdi:coolant-temperature
+  
+volets_maison_nd:
+  name: volets de la maison
+  icon: mdi:window-shutter
+  
+module_zigbee_nd:
+  name: module zigbee
+  icon: mdi:home-assistant
+
+module_zwave_nd:
+  name: module zwave
+  icon: mdi:home-assistant
+  
+module_mosquitto_nd:
+  name: module mosquitto
+  icon: mdi:home-assistant
+
+module_home_assistant_nd:
+  name: home assistant
+  icon: mdi:home-assistant
+  
+modules_domotique_nd:
+  name: modules domotique
+  icon: mdi:home-assistant

@@ -17,7 +17,8 @@
             }
         },
         "debug": {
-            "filter": "filterCurrent"
+            "filter": "filterCurrent",
+            "filteredNodes": []
         },
         "menu-menu-item-sidebar": true,
         "menu-menu-item-palette": true

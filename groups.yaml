@@ -25,6 +25,13 @@ alexa_echo_tous:
     - media_player.echo_clarence
     - media_player.echo_eloise
 
+weather:
+  name: méteo
+  entities:
+    - sensor.44_weather_alert
+    - sensor.la_chevroliere_uv
+    - weather.maison
+
 detecteurs_incendie:
   name: detecteurs_incendie
   entities:
@@ -47,8 +54,19 @@ detecteurs_inondation:
     - binary_sensor.detecteur_inondation_ballon_eau_chaude_water_leak
     - binary_sensor.detecteur_inondation_garage_water_leak
 
-switchs_alarme__nuit:
-  name: Groupe switchs alarme nuit
+switchs_alarme__nuit_on:
+  name: Groupe switchs alarme nuit - On
+  entities:
+    #- switch.prise_tv_salon
+    #- switch.prise_tv_parents
+    #- switch.prise_tv_eloise
+    #      - switch.onoff_home_cinema_switch_2
+    - switch.prise_outillage_switch_2
+    - switch.prise_bureau_chambre_clarence
+    - switch.prise_bureau_eloise
+
+switchs_alarme__nuit_off:
+  name: Groupe switchs alarme nuit - off
   entities:
     - switch.prise_tv_salon
     - switch.prise_tv_parents
@@ -58,13 +76,24 @@ switchs_alarme__nuit:
     - switch.prise_bureau_chambre_clarence
     - switch.prise_bureau_eloise
 
-switchs_alarme_totale:
-  name: Groupe switchs alarme totale
+switchs_alarme_totale_on:
+  name: Groupe switchs alarme totale - on
   entities:
     - switch.prise_tv_salon
     - switch.prise_tv_parents
     - switch.prise_tv_eloise
-    #      - switch.onoff_home_cinema_switch_2
+    #      - switch.onoff_home_cinema_switch_2 -Aspirateur
+    - switch.prise_outillage_switch_2
+    - switch.prise_bureau_chambre_clarence
+    - switch.prise_bureau_eloise
+
+switchs_alarme_totale_off:
+  name: Groupe switchs alarme totale - off
+  entities:
+    - switch.prise_tv_salon
+    - switch.prise_tv_parents
+    - switch.prise_tv_eloise
+    #      - switch.onoff_home_cinema_switch_2 - Aspirateur
     - switch.prise_outillage_switch_2
     - switch.prise_bureau_chambre_clarence
     - switch.prise_bureau_eloise

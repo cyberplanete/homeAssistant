@@ -1,78 +1,96 @@
 
 - cal_id: p#weeknum@group.v.calendar.google.com
   entities:
-  - device_id: numeros_de_semaine
+  - device_id: agenda_numeros_de_semaine
     ignore_availability: true
     name: "Num\xE9ros de semaine"
     track: true
 
 - cal_id: pascal.joret@gmail.com
   entities:
-  - device_id: pascal_joret_gmail_com
+  - device_id: agenda_pascal
     ignore_availability: true
     name: pascal.joret@gmail.com
     track: true
     offset: "!!"
+  - device_id: reminder_nettoyage_maison_pascal
+    name: Reminder Nettoyage maison pascal
+    track: true
+    search: "#Nettoyage maison - Pascal"
+    offset: "!!"
 
 - cal_id: joret.clarence@gmail.com
   entities:
-  - device_id: joret_clarence_gmail_com
+  - device_id: agenda_clarence
     ignore_availability: true
-    name: joret.clarence@gmail.com
+    name: agenda_clarence
     track: true
+    offset: "!!"
+  - device_id: reminder_nettoyage_maison_clarence
+    name: Reminder Nettoyage maison clarence
+    track: true
+    search: "#Nettoyage maison - Clarence"
     offset: "!!"
 
 - cal_id: eloise.joret@gmail.com
   entities:
-  - device_id: eloise_joret_gmail_com
+  - device_id: agenda_eloise
     ignore_availability: true
-    name: eloise.joret@gmail.com
+    name: agenda_eloise
     track: true
-  - device_id: reminder_nettoyage_sdb
-    name: Reminder Nettoyage SDB
+  - device_id: reminder_nettoyage_maison_eloise
+    name: Reminder Nettoyage SDB eloise
     track: true
-    search: "#Nettoyer salle de bain"
+    search: "#Nettoyage maison - Eloise"
     offset: "!!"
 
 - cal_id: family11212882908177741758@group.calendar.google.com
   entities:
-  - device_id: famille
+  - device_id: agenda_famille
     ignore_availability: true
     name: Famille
     track: true
 
 - cal_id: fr.french#holiday@group.v.calendar.google.com
   entities:
-  - device_id: jours_feries_en_france
+  - device_id: agenda_jours_feries_en_france
     ignore_availability: true
     name: "Jours f\xE9ri\xE9s en France"
     track: true
 
 - cal_id: dupont.stephanie@gmail.com
   entities:
-  - device_id: stephanie
+  - device_id: agenda_stephanie
     ignore_availability: true
     name: "St\xE9phanie"
+    track: true
+    offset: "!!"
+    
+- cal_id: pascal.steph@gmail.com
+  entities:
+  - device_id: agenda_parents
+    ignore_availability: true
+    name: Notre agenda
     track: true
     offset: "!!"
 
 - cal_id: r02oc25nmlccmn498rt77umfrmd9d9pu@import.calendar.google.com
   entities:
-  - device_id: notre_tableau
+  - device_id: agenda_notre_tableau
     ignore_availability: true
     name: Notre tableau
     track: true
 
 - cal_id: 90kmsfbmhueurlhf74e6od3rc8@group.calendar.google.com
   entities:
-  - device_id: domotique
+  - device_id: agenda_domotique
     ignore_availability: true
     name: Domotique
     track: true
 
 - cal_id: nshqh2b84dlrjnd2mhpiijo9hc@group.calendar.google.com
   entities:
-  - device_id: pascal_pro
+  - device_id: agenda_pascal_pro
     ignore_availability: true
     name: Pascal Pro
     track: true
