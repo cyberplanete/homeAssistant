@@ -1,6 +1,6 @@
-# HomeAssitant
+# HomeAssistant
 
-
+Quelques images de la configuration de mon serveur HomeAssistant
 
 ## Screenshots
 
