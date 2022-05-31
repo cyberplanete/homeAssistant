@@ -1,0 +1,9 @@
+- platform: tod
+  name: nuit
+  after: sunset
+  before: sunrise
+
+- platform: tod
+  name: jour
+  after: sunrise
+  before: sunset
