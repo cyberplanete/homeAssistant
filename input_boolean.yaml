@@ -49,6 +49,10 @@ nas_netgear:
   name: NAS NETGEAR
   icon: mdi:email-newsletter
 
+panne_electrique:
+    name: alert_panne_electrique
+    icon: mdi:electric-switch
+    
 nas_nl54l:
   name: Serveur de fichier
   icon: mdi:email-newsletter

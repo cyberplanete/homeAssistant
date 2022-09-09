@@ -103,9 +103,6 @@
 
 
 
-- platform: authenticated
-  enable_notification: false    
-
 
 - platform: template
   sensors:
@@ -186,31 +183,31 @@
     - "time_date"
     - "time_utc"
     - "beat"
-#Téléinfo récupération des données MQTT
-- platform: mqtt
-  name: index_edf_wh
-  state_topic: "edf/index_wh"
-  unit_of_measurement: "Wh"
-- platform: mqtt
-  name: index_edf_kwh
-  state_topic: "edf/index_kwh"
-  unit_of_measurement: "kWh"
-- platform: mqtt
-  name: inst_A
-  state_topic: "edf/iinst"
-  unit_of_measurement: "A"
-- platform: mqtt
-  name: index_hp_kwh
-  state_topic: "edf/index_hp_kwh"
-  unit_of_measurement: "kWh"
-- platform: mqtt
-  name: index_hc_kwh
-  state_topic: "edf/index_kwh"
-  unit_of_measurement: "kWh"
-- platform: mqtt
-  name: instantannee_watt
-  state_topic: "edf/puissance_inst"
-  unit_of_measurement: "Watt"
+# #Téléinfo récupération des données MQTT
+# - platform: mqtt
+#   name: index_edf_wh
+#   state_topic: "edf/index_wh"
+#   unit_of_measurement: "Wh"
+# - platform: mqtt
+#   name: index_edf_kwh
+#   state_topic: "edf/index_kwh"
+#   unit_of_measurement: "kWh"
+# - platform: mqtt
+#   name: inst_A
+#   state_topic: "edf/iinst"
+#   unit_of_measurement: "A"
+# - platform: mqtt
+#   name: index_hp_kwh
+#   state_topic: "edf/index_hp_kwh"
+#   unit_of_measurement: "kWh"
+# - platform: mqtt
+#   name: index_hc_kwh
+#   state_topic: "edf/index_hc_kwh"
+#   unit_of_measurement: "kWh"
+# - platform: mqtt
+#   name: instantannee_watt
+#   state_topic: "edf/puissance_inst"
+#   unit_of_measurement: "Watt"
 # ######################################################### EDF #######################################################################""
 # Conso EDF journalière
 - platform: template
@@ -423,28 +420,28 @@
     
     
     
-- platform: mqtt
-  name: "DahuaVTO Event"
-  state_topic: "DahuaVTO/CallNoAnswered/Event"
-  value_template: "{{ value_json.Action }}"
+# - platform: mqtt
+#   name: "DahuaVTO Event"
+#   state_topic: "DahuaVTO/CallNoAnswered/Event"
+#   value_template: "{{ value_json.Action }}"
 
-- platform: mqtt
-  name: "DahuaVTO Event"
-  state_topic: "DahuaVTO/CallNoAnswered/Event"
-  value_template: "{{ value_json.Action }}"
+# - platform: mqtt
+#   name: "DahuaVTO Event"
+#   state_topic: "DahuaVTO/CallNoAnswered/Event"
+#   value_template: "{{ value_json.Action }}"
  
-- platform: mqtt
-  name: "DahuaVTO MotionEvent"
-  state_topic: "DahuaVTO/VideoMotion/Event"
-  value_template: "{{ value_json.Action }}"
+# - platform: mqtt
+#   name: "DahuaVTO MotionEvent"
+#   state_topic: "DahuaVTO/VideoMotion/Event"
+#   value_template: "{{ value_json.Action }}"
  
-- platform: mqtt
-  name: "DahuaVTO AccessControl"
-  state_topic: "DahuaVTO/AccessControl/Event"
-  value_template: "{{ value_json.Action }}"
+# - platform: mqtt
+#   name: "DahuaVTO AccessControl"
+#   state_topic: "DahuaVTO/AccessControl/Event"
+#   value_template: "{{ value_json.Action }}"
   
-- platform: mqtt
-  name: "DahuaVTO CallSnap"
-  state_topic: "DahuaVTO/CallSnap"
-  value_template: "{{ value_json.Action }}"    
+# - platform: mqtt
+#   name: "DahuaVTO CallSnap"
+#   state_topic: "DahuaVTO/CallSnap"
+#   value_template: "{{ value_json.Action }}"    
     

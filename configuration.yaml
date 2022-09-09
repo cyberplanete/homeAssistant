@@ -34,7 +34,7 @@ vacuum: !include aspirateurs.yaml
 camera: !include cameras.yaml
 device_tracker: !include deviceTracker.yaml
 timer: !include timers.yaml
-
+mqtt: !include mqtt.yaml
 
 homeassistant:
   customize: !include customize.yaml
@@ -181,14 +181,14 @@ telegram_bot:
 
 ########################################## MODEM GSM ##################################################################################################
 
-huawei_lte:
-  - url: https://192.169.8.1
-    username: !secret usernamegsm
-    password: !secret motdepassegsm
-    notify:
-      recipient:
-        - !secret stephanie_number
-        - !secret pascal_number
+# huawei_lte:
+#   - url: https://192.169.8.1
+#     username: !secret usernamegsm
+#     password: !secret motdepassegsm
+#     notify:
+#       recipient:
+#         - !secret stephanie_number
+#         - !secret pascal_number
 ########################################## REST COMMAND ##################################################################################################
 rest_command:
   truenas_shutdown:
@@ -233,7 +233,14 @@ alarm_control_panel:
       arming_time: 60
       delay_time: 10
       trigger_time: 300
-########################################## ANDROID TV ##################################################################################################
+
+
+########################################## DYN OVH ##################################################################################################
+
+ovh:
+  domain: !secret ovh_domain
+  username: !secret ovh_username
+  password: !secret ovh_password
 
       
 

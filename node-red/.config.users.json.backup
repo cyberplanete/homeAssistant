@@ -13,14 +13,14 @@
                 "view-store-zoom": false
             },
             "tours": {
-                "welcome": "2.2.0"
+                "welcome": "3.0.0"
             }
         },
         "debug": {
             "filter": "filterCurrent",
             "filteredNodes": []
         },
-        "menu-menu-item-sidebar": true,
-        "menu-menu-item-palette": false
+        "menu-menu-item-sidebar": false,
+        "menu-menu-item-palette": true
     }
 }

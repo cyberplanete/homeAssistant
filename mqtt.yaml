@@ -1,1 +1,58 @@
+sensor:
+        - name: "DahuaVTO Event"
+          unique_id: "DahuaVTO/CallNoAnswered/Event"
+          state_topic: "DahuaVTO/CallNoAnswered/Event"
+          value_template: "{{ value_json.Action }}"
+        - name: "DahuaVTO MotionEvent"
+          unique_id: "DahuaVTO/VideoMotion/Event"
+          state_topic: "DahuaVTO/VideoMotion/Event"
+          value_template: "{{ value_json.Action }}"
+        - name: "DahuaVTO AccessControl"
+          unique_id: "DahuaVTO/AccessControl/Event"
+          state_topic: "DahuaVTO/AccessControl/Event"
+          value_template: "{{ value_json.Action }}"
+        - name: "DahuaVTO CallSnap"
+          unique_id: "DahuaVTO/CallSnap"
+          state_topic: "DahuaVTO/CallSnap"
+          value_template: "{{ value_json.Action }}"  
+          
+          
+          #Téléinfo récupération des données MQTT
 
+        - name: index_edf_wh
+          unique_id: "edf/index_wh"
+          state_topic: "edf/index_wh"
+          unit_of_measurement: "Wh"
+        
+        - name: index_edf_kwh
+          unique_id: "edf/index_kwh"
+          state_topic: "edf/index_kwh"
+          unit_of_measurement: "kWh"
+        
+        - name: inst_A
+          unique_id: "edf/iinst"
+          state_topic: "edf/iinst"
+          unit_of_measurement: "A"
+        
+        - name: index_hp_kwh
+          unique_id: "edf/index_hp_kwh"
+          state_topic: "edf/index_hp_kwh"
+          unit_of_measurement: "kWh"
+        
+        - name: index_hc_kwh
+          unique_id: "edf/index_hc_kwh"
+          state_topic: "edf/index_hc_kwh"
+          unit_of_measurement: "kWh"
+        
+        - name: instantannee_watt
+          unique_id: "edf/puissance_inst"
+          state_topic: "edf/puissance_inst"
+          unit_of_measurement: "Watt"
+          
+binary_sensor:
+        - name: "Portier - Une personne sonne"
+          unique_id: "DahuaVTO/BackKeyLight/Event"
+          state_topic: "DahuaVTO/BackKeyLight/Event"
+          value_template: "{{ value_json.Data.State }}"
+          payload_on: "1"
+          payload_off: "0"

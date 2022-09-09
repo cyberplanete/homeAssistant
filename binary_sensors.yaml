@@ -84,12 +84,12 @@
     
 
 
-- platform: mqtt
-  name: "Portier - Une personne sonne"
-  state_topic: "DahuaVTO/BackKeyLight/Event"
-  value_template: "{{ value_json.Data.State }}"
-  payload_on: "1"
-  payload_off: "0"
+# - platform: mqtt
+#   name: "Portier - Une personne sonne"
+#   state_topic: "DahuaVTO/BackKeyLight/Event"
+#   value_template: "{{ value_json.Data.State }}"
+#   payload_on: "1"
+#   payload_off: "0"
   
 - platform: workday
   country: FR
